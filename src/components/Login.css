@@ -1,0 +1,49 @@
+.Login-component {
+    position: relative;
+    height: 100vh;
+    width:100vw;
+    /* The image used */
+    /* position: relative; */
+    background-image: url(../CCLAB_photo.jpg);
+    /* opacity: 0.5; */
+    /* Full height */
+    height: 100vh; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.center{
+    display: flex;
+    /* text-align: center; */
+    /* align-content: center; */
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    /* padding: 2px; */
+  }
+
+  /* body
+{
+  background-color: #fcfcfc;
+} */
+
+.center-div
+{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 40vw;
+  height: 30vh;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  color: #f1f1f1;
+  font-weight: bold;
+  font-size: 2em;
+}
