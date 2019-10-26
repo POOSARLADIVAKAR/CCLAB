@@ -10,6 +10,7 @@ import { tsConstructorType } from '@babel/types';
 import axios from 'axios';
 import dotenv from 'dotenv';
 import Login from './components/Login';
+import Complaints from './components/Complaints'
 var jwt = require("jsonwebtoken");
 dotenv.config();
 
@@ -23,6 +24,7 @@ class App extends Component{
     console.log(token)
     if(token!=""&& token!=null){
       const decoded_token  = jwt.decode(token)
+      console.log("Decoded token in App.js")
       console.log(decoded_token)
       console.log(Date.now())
       const present_time = Math.round(Date.now()/1000)
@@ -50,7 +52,7 @@ class App extends Component{
     return (
       <div className="App">
         <BrowserRouter>
-          <Route exact path='/' component={Login}/>
+          <Route exact path='/' component={Complaints}/>
           <Route path='/Home' component={Home}/>
           <Route path='/Resources' component={Resources}/>
         </BrowserRouter>

@@ -1,10 +1,19 @@
 import React, { Component} from 'react'
 import NavBar from './NavBar'
 class Resources extends Component{
-    render(){
-        if((window.localStorage.getItem('cclab-token')=="")||(window.localStorage.getItem('cclab-token')==null)){
+    
+    componentWillMount(){
+        console.log("IN home component")
+        const token = window.localStorage.getItem("cclab-token")
+        if((token=="")||(token==null)){
             this.props.history.push("/")
         }
+    }
+
+    render(){
+        // if((window.localStorage.getItem('cclab-token')=="")||(window.localStorage.getItem('cclab-token')==null)){
+        //     this.props.history.push("/")
+        // }
         return(
             <div>
                 <NavBar/>

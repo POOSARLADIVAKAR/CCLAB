@@ -8,13 +8,22 @@ class Home extends Component{
     constructor(props){
         super(props)
     }
+    
+    componentWillMount(){
+        console.log("IN home component")
+        const token = window.localStorage.getItem("cclab-token")
+        if((token=="")||(token==null)){
+            this.props.history.push("/")
+        }
+    }
+
     render(){
         // also see if it has expired if necessary
         //not necessary because don't let loose his session 
         //remove token
-        if((window.localStorage.getItem('cclab-token')=="")||(window.localStorage.getItem('cclab-token')==null)){
-            this.props.history.push("/")
-        }
+        // if((window.localStorage.getItem('cclab-token')=="")||(window.localStorage.getItem('cclab-token')==null)){
+        //     this.props.history.push("/")
+        // }
         return (
             <div>
                 <NavBar/>     

@@ -5,10 +5,11 @@ const JWT_SECRET = "cclab"
 function generate_token(user){
     let u = {
         username : user.username,
-        email: user.email
+        email: user.email,
+        photo : user.photo
     }
     const token = jwt.sign(u,JWT_SECRET,{
-        expiresIn : 60*2 //24 hours expiry
+        expiresIn : 60*10 //24 hours expiry
     });
     return token
 }
