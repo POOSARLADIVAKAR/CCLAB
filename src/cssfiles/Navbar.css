@@ -1,0 +1,15 @@
+img {
+    position: relative;
+    /* float: left; */
+    width:  5%;
+    height: 5%;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+Navcolor {
+    background: red;
+}
+navigator {
+    float : left;
+}

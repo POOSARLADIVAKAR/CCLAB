@@ -15,9 +15,9 @@ router.get('/google/redirect', passport.authenticate('google',{ failureRedirect:
     // console.log(req)
     // const user_string_json = JSON.stringify(req.user)
     
-    const user = {username : req.user.username , email : req.user.email}
+    const user = {username : req.user.username , email : req.user.email , photo : req.user.photo}
     const user_token = jwthandler.generate_token(user);
-
+    console.log(user_token)
     res.redirect('http://localhost:3000/?user-token='+user_token);    
     // res.send(req.user);
 });
