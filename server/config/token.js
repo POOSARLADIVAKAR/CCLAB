@@ -8,7 +8,7 @@ function generate_token(user){
         email: user.email
     }
     const token = jwt.sign(u,JWT_SECRET,{
-        expiresIn : 10 //24 hours expiry
+        expiresIn : 60*2 //24 hours expiry
     });
     return token
 }
