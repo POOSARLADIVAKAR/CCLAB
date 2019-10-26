@@ -4,7 +4,7 @@
     width:100vw;
     /* The image used */
     /* position: relative; */
-    background-image: url(../CCLAB_photo.jpg);
+    background-image: url(../public/CCLAB_photo.jpg);
     /* opacity: 0.5; */
     /* Full height */
     height: 100vh; 

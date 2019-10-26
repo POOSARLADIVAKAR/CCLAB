@@ -7,6 +7,9 @@ const cookieSession=require('cookie-session');
 const mongoose = require('mongoose');
 const cors= require('cors');
 const userModel = require('./models/user-model');
+const cookieParser = require('cookie-parser')
+const jwthandler = require("./config/token")
+
 const app = express();
 
 //sudo service mongod start
@@ -24,7 +27,7 @@ app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: [keys.session.cookieKey]
 }));
-
+app.use(cookieParser())
 
 mongoose.connect('mongodb://127.0.0.1:27017/myapp',{useNewUrlParser: true},() => {
     console.log('connected to mongodb');
@@ -36,9 +39,17 @@ db.on('error',console.error.bind(console,'MongoDb Error'));
 
 app.get('/',(req,res)=>{
     console.log('requested `/` route');
-    res.send('request accpted');
+    // res.redirect("http://localhost:4000/auth/google")
+    res.send('in /')
 });
-
+// app.get('/query',(req,res)=>{
+//     console.log('in query')
+//     console.log(req)
+//     console.log(req.query.token)
+//     // // res.send(JSON.stringify(req.token))
+//     // res.send(req.query.token)
+//     res.send('in query')
+// })
 app.listen(4000, () => {
     console.log('app now listening for requests on port 4000');
 });
