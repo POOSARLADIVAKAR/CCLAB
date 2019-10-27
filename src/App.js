@@ -52,7 +52,7 @@ class App extends Component{
     return (
       <div className="App">
         <BrowserRouter>
-          <Route exact path='/' component={Complaints}/>
+          <Route exact path='/' component={Login}/>
           <Route path='/Home' component={Home}/>
           <Route path='/Resources' component={Resources}/>
         </BrowserRouter>

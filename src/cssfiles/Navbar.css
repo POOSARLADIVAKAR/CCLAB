@@ -1,15 +1,25 @@
 img {
     position: relative;
     /* float: left; */
-    width:  5%;
-    height: 5%;
+    width:  60px;
+    height: 60px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 20px;
     background-position: 50% 50%;
     background-repeat:   no-repeat;
     background-size:     cover;
 }
-Navcolor {
-    background: red;
-}
+
 navigator {
     float : left;
+}
+
+span.navItems{
+    font-size: 21px;
+}
+
+span.brandText{
+    font-size: 28px;
 }
