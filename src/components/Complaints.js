@@ -26,10 +26,7 @@ class Complaints extends Component{
           <div id="search_space" className="tabcontent">
             <div className = "searchBar"> {/*float top and bottom*/}
               <input type="text" placeholder = "Search ..."/>
-              <button type="button" >
-                Hello
-                <i className="fa fa-search"></i>
-              </button>
+             <button type="submit"><i class="fa fa-search"></i></button>
             </div>
             <div className = "bottom-content">
             {/*<Box/> Load component*/}

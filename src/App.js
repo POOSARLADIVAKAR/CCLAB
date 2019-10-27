@@ -10,6 +10,7 @@ import { tsConstructorType } from '@babel/types';
 import axios from 'axios';
 import dotenv from 'dotenv';
 import Login from './components/Login';
+import History from './components/History';
 import Complaints from './components/Complaints'
 var jwt = require("jsonwebtoken");
 dotenv.config();
@@ -52,7 +53,7 @@ class App extends Component{
     return (
       <div className="App">
         <BrowserRouter>
-          <Route exact path='/' component={Login}/>
+          <Route exact path='/' component={History}/>
           <Route path='/Home' component={Home}/>
           <Route path='/Resources' component={Resources}/>
         </BrowserRouter>
