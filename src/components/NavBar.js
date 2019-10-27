@@ -32,25 +32,24 @@ class NavBar extends Component{
         
         return (
             <Navbar  bg="primary" expand="lg"  variant = "light">
-            <Navbar.Brand>
-                <span className="brandText">CC-LAB</span>
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                    <Nav.Link><NavLink to="Home">
-                        <span className="navItems">Home</span>
-                    </NavLink></Nav.Link>
-                    <Nav.Link><NavLink to="Resources">
-                        <span className="navItems">Resources</span>
-                    </NavLink></Nav.Link>
-                </Nav>
-                
-                <span className = "navigator">
-                   <span className="navItems">{dispName}</span>
-                    <img className = "img" src={this.state.photo}></img>                    
-                </span>
-            </Navbar.Collapse>
+                <Navbar.Brand>
+                    <span className="brandText">CC-LAB</span>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link><NavLink to="Home">
+                            <span className="navItems">Home</span>
+                        </NavLink></Nav.Link>
+                        <Nav.Link><NavLink to="Resources">
+                            <span className="navItems">Resources</span>
+                        </NavLink></Nav.Link>
+                    </Nav>
+                    <span className = "navigator">
+                        <span className="navItems">{this.state.Displayname}</span>
+                        <img className = "img" src={this.state.photo}></img>                    
+                    </span>
+                </Navbar.Collapse>
             </Navbar>
         );
     }

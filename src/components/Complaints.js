@@ -1,48 +1,46 @@
 import React, {Component} from 'react'
-import {Row,Col,Container} from 'react-bootstrap'
 import NavBar from './NavBar'
+import {Nav} from 'react-bootstrap'
 import axios from 'axios'
-
+import M from 'materialize-css';
+import './../cssfiles/Complaints.css'
 class Complaints extends Component{
+  //add code for token removal
     componentDidMount(){
-        console.log("in complaints")
-        axios.get('http://localhost:4000/').then((res)=>{
-            console.log(res);
-        })        
+        console.log("in complaints")  
+        // axios.get('http://localhost:4000/').then((res)=>{
+        //     console.log(res);
+        // })
     }
-
-    // componentDidUpdate(){
-    //     document.addEventListener('DOMContentLoaded', function() {
-    //         var elems = document.querySelectorAll('.sidenav');
-    //         var instances = navbar-fixed.Sidenav.init(elems, options);
-    //     });
-
-    // }
     
-    render(){
-        return (
-            <div className="navbar-fixed">
-                <nav>
-                    <div className="nav-wrapper">
-                    <a href="#" className="brand-logo center">Logo</a>
-                    <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-                    <ul id="nav-mobile" className="right hide-on-med-and-down">
-                        <li><a href="sass.html">Sass</a></li>
-                        <li><a className="active" href="badges.html">Components</a></li>
-                        <li><a href="collapsible.html">JavaScript</a></li>
-                    </ul>
-                    </div>
-                </nav>
+  render(){
+    return (
+      <div>
+        <NavBar/>
+        <div className="parent"> 
+          <div className="tab">
+              <button className="tablinks" >Log</button>
+              <button className="tablinks" >Solved</button>
+          </div>
 
-                <ul className="sidenav" id="mobile-demo">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">Javascript</a></li>
-                    <li><a href="mobile.html">Mobile</a></li>
-                </ul> 
+          <div id="search_space" className="tabcontent">
+            <div className = "searchBar"> {/*float top and bottom*/}
+              <input type="text" placeholder = "Search ..."/>
+              <button type="button" >
+                Hello
+                <i className="fa fa-search"></i>
+              </button>
             </div>
-        )
-    }
+            <div className = "bottom-content">
+            {/*<Box/> Load component*/}
+              <h1>hello world</h1>
+              <h2>hello world</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default Complaints
+export default Complaints;
