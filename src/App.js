@@ -11,6 +11,7 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 import Login from './components/Login';
 import Complaints from './components/Complaints'
+import History from './components/History';
 var jwt = require("jsonwebtoken");
 dotenv.config();
 
@@ -55,6 +56,8 @@ class App extends Component{
           <Route exact path='/' component={Login}/>
           <Route path='/Home' component={Home}/>
           <Route path='/Resources' component={Resources}/>
+          <Route path='/Complaints' component={Complaints}/>
+          <Route path='/History' component={History}/>
         </BrowserRouter>
       </div>
     );

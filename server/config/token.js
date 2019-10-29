@@ -9,7 +9,7 @@ function generate_token(user){
         photo : user.photo
     }
     const token = jwt.sign(u,JWT_SECRET,{
-        expiresIn : 60 //24 hours expiry
+        expiresIn : 60*5 //24 hours expiry
     });
     return token
 }

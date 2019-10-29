@@ -3,10 +3,13 @@ import {Row,Col,Container} from 'react-bootstrap'
 import './../cssfiles/Home.css'
 import Login from './Login';
 import NavBar from './NavBar'
+import Nav_user from "./Nav_user"
+var jwt = require("jsonwebtoken");
 
 class Home extends Component{
     constructor(props){
         super(props)
+        this.state = { Nav_bar : <Nav_user/> }   
     }
     
     componentWillMount(){
@@ -14,6 +17,14 @@ class Home extends Component{
         const token = window.localStorage.getItem("cclab-token")
         if((token=="")||(token==null)){
             this.props.history.push("/")
+        }
+        else{
+            const decode_token = jwt.decode(token)
+            console.log("in resources page")
+            console.log(decode_token)
+            if(decode_token.email == "f20170225@hyderabad.bits-pilani.ac.in"){
+                this.setState({Nav_bar : <NavBar/>})
+            }
         }
     }
 
@@ -26,7 +37,7 @@ class Home extends Component{
         // }
         return (
             <div>
-                <NavBar/>     
+                {this.state.Nav_bar}
                 <ul className="flex-container">
                     <li className="flex-item grow">D208</li>
                     <li className="flex-item grow">D208</li>
