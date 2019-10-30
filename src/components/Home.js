@@ -47,11 +47,11 @@ class Home extends Component{
         // if((window.localStorage.getItem('cclab-token')=="")||(window.localStorage.getItem('cclab-token')==null)){
         //     this.props.history.push("/")
         // }
-        // this.sendComplaint({
-        // email:"divakarpoosarla123@gmail.com",
-        // room:"D201",
-        // desc:"Some system is not working"}
-        // )  // add a button ad call this onClick
+        this.sendComplaint({
+        email:"divakarpoosarla123@gmail.com",
+        room:"D201",
+        desc:"This complaint gets into solved"}
+        )  // add a button ad call this onClick
 
         return (
             <div>

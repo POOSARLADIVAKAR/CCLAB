@@ -9,7 +9,7 @@ import Complaints_Box from './Complaints_Box'
 class Complaints extends Component{
   constructor(props){
       super(props) 
-      this.state = { log : "" ,solved :"" } 
+      this.state = { data : []} 
   }
 
   componentWillMount(){
@@ -20,34 +20,53 @@ class Complaints extends Component{
       }
   }
   componentDidMount(){
+  
+  }
+  ///
+
+  // time of complaint and solved can also be added
+  //logout should be written remove token and push him to home page
+
+
+
+  logClicked = ()=>{
     axios.get('http://localhost:4000/Complaints/log').then((res) => {
-      this.setState({log : res.data })
-      // console.log(typeof(this.state.log[0]))
-      // console.log(this.state.log[0].Logged_user)
-      // console.log(this.state.log[0].Room_no)
+      this.setState({data : res.data })
       }
     )
+  }
+
+  solvedClicked = ()=>{
     axios.get('http://localhost:4000/Complaints/solved').then((res)=>{
-      this.setState({solved : res.data })
-      // console.log(res)
+      this.setState({data : res.data })
     })
   }
+
+  searchClicked = ()=>{
+    var search_string = document.getElementById("search_bar").value
+    axios.post('http://localhost:4000/Complaints/search',search_string).then((res)=>{
+      // this.setState({data : res.data })
+      console.log(res.data)
+    })
+    document.getElementById("search_bar").value = ""
+  }
+
   render(){
-    if(this.state.log == ""){
+    if(this.state.data.length == 0){
       return (<div>
         <NavBar/>
         <div className="parent"> 
 
           <div className="tab">
-              <button id = "Log"  className="tablinks" >Log</button>
-              <button id = "Solved"  className="tablinks" >Solved</button>
+              <button id = "Log"  onClick={this.logClicked} className="tablinks" >Log</button>
+              <button id = "Solved" onClick={this.solvedClicked} className="tablinks" >Solved</button>
           </div>
 
           <div id="search_space" className="tabcontent">
 
               <div className = "searchBar"> {/*float top and bottom*/}
-                    <input type="text" placeholder = "Search ..."/>
-                    <button type="submit" >
+                    <input id = "search_bar" type="text" placeholder = "Search ..."/>
+                    <button type="submit" onClick = {this.searchClicked} >
                       <i className="fa fa-search fa-2x"></i>
                     </button>
               </div>
@@ -62,17 +81,16 @@ class Complaints extends Component{
       <div>
         <NavBar/>
         <div className="parent"> 
-
           <div className="tab">
-              <button id = "Log"  className="tablinks" >Log</button>
-              <button id = "Solved"  className="tablinks" >Solved</button>
+              <button id = "Log"  onClick={this.logClicked} className="tablinks" >Log</button>
+              <button id = "Solved"  onClick={this.solvedClicked} className="tablinks" >Solved</button>
           </div>
 
           <div id="search_space" className="tabcontent">
 
               <div className = "searchBar"> {/*float top and bottom*/}
-                    <input type="text" placeholder = "Search ..."/>
-                    <button type="submit" >
+                    <input id = "search_bar" type="text" placeholder = "Search ..."/>
+                    <button type="submit" onClick = {this.searchClicked}>
                       <i className="fa fa-search fa-2x"></i>
                     </button>
               </div>
@@ -80,8 +98,8 @@ class Complaints extends Component{
             <div className = "bottom-content">
                   {/*<Box/> Load component*/}
                   {
-                    this.state.log.map(data=>(
-                        <Complaints_Box prop1={data.Logged_user} prop2={data.Room_no} prop3={data.Issue}/>
+                    this.state.data.map(data=>(
+                        <Complaints_Box prop1={data.Logged_user} prop2={data.Room_no} prop3={data.Issue} key={data._id}/>
                     ))
                   }
             </div>

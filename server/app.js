@@ -58,7 +58,8 @@ app.get('/',(req,res)=>{
 app.post('/Complaints',(req,res)=>{
     console.log(req.body)
     complaintModel.find({Logged_user : req.body.email,Room_no : req.body.room ,Issue : req.body.desc,}).then((Complaint)=>{
-        if(Complaint){
+        if(Complaint.length !=0 ){
+            console.log("Alredy found")
             console.log(Complaint)
             res.send(Complaint)
         }
@@ -67,13 +68,19 @@ app.post('/Complaints',(req,res)=>{
                 Logged_user : req.body.email,
                 Room_no : req.body.room,
                 Issue : req.body.desc,
-                Solved : false
+                Solved : true
             }).save().then((newComplaint)=>{
+                console.log("Newly created complaint")
                 console.log(newComplaint)
                 res.send(newComplaint)
             })
         }
     })
+})
+
+app.post('/Complaints/search',(req,res)=>{
+    console.log(req.body)
+    res.send(req.body)
 })
 
 app.get('/Complaints/log',(req,res)=>{
@@ -84,6 +91,7 @@ app.get('/Complaints/log',(req,res)=>{
     })
     
 })
+
 app.get('/Complaints/solved',(req,res)=>{
     // console.log('inside solved')
     complaintModel.find({Solved : true}).then((solved)=>{
