@@ -50,6 +50,15 @@ app.get('/',(req,res)=>{
 //     // res.send(req.query.token)
 //     res.send('in query')
 // })
+app.get('/Complaints/log',(req,res)=>{
+    console.log('inside log')
+    res.send(["inside log get method","hello world"])
+    
+})
+app.get('/Complaints/solved',(req,res)=>{
+    console.log('inside solved')
+    res.send(["inside solved get method"])
+})
 app.listen(4000, () => {
     console.log('app now listening for requests on port 4000');
 });

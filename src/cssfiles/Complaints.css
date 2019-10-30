@@ -5,7 +5,8 @@ div.parent{
 }
 div.tab{
     float: left;
-    border: 1px solid black;
+    border: 1px solid black; 
+    /* tab's border */
     background-color: #f1f1f1;
     width: 15%;
     height: 100%;
@@ -22,7 +23,6 @@ div.tab{
   border-bottom: 1px solid black;
   outline: none;
   text-align: center;
-  text-decoration-color: lawngreen;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -99,11 +99,25 @@ div.tab{
       display: block;
       bottom: 0;
       height: 90%;
+      /* width : 90%; */
       background-color: #c2c2e0;
+      overflow: scroll
   }
 
   div.Complaints_Box{
+      display: block;
       height : 200px;
-      width: 100%;
-      background-color: blue;
+      width: 99%;
+      background-color: rgb(231, 231, 236);
   }
+
+    
+    .field {
+      font-weight: bold;
+      font-size: 17px
+    }
+    .data {
+      text-align: left;
+      font-size: 17px
+    }
+

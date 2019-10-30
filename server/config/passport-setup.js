@@ -24,7 +24,7 @@ passport.use(
         callbackURL: '/auth/google/redirect'
 
     }, (accessToken, refreshToken, profile, done) => {
-        userModel.findOne({picture:profile._json.picture}).then((currentUser) => {
+        userModel.findOne({email:profile._json.email}).then((currentUser) => {
             if(currentUser){
                 console.log('user is: ', currentUser);
                 done(null, currentUser);
