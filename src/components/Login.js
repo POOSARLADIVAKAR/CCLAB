@@ -56,12 +56,12 @@ class Login extends Component{
         // console.log('Called after ComponentWillMount')
         return (
           <div className='Login-component'>
-          <div className="center-div">
-            <h1 className="center" style = {{"wordSpacing":"2px","marginTop":"50px"}}>Welcome to CC Lab Website</h1>
-            <br/>
-            <h2 className="center" style = {{"letterSpacing":"2px"}}>Let's Get Started</h2>
-            {this.Button}
-          </div>
+            <div className="center-div">
+              <h1 className="center" style = {{"wordSpacing":"2px","marginTop":"50px"}}>Welcome to CC Lab Website</h1>
+              <br/>
+              <h2 className="center" style = {{"letterSpacing":"2px"}}>Let's Get Started</h2>
+              {this.Button}
+            </div>
           </div>
          ); 
     }

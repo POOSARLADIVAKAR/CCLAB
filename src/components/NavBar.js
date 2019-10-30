@@ -15,18 +15,18 @@ class NavBar extends Component{
     }
     componentWillMount(){ 
         const token = window.localStorage.getItem("cclab-token")
-        console.log(token)
+        // console.log(token)
         if(token!=""&& token!=null){
           const decoded_token  = jwt.decode(token)
-          console.log("Decoded token in Navbar.js")
-          console.log(decoded_token)
+        //   console.log("Decoded token in Navbar.js")
+        //   console.log(decoded_token)
           this.setState({Displayname :decoded_token.username, photo : decoded_token.photo})
         }
       }
     render(){
-        console.log("Inside Navbar")
-        console.log(this.state.Displayname)
-        console.log(this.state.photo)
+        // console.log("Inside Navbar")
+        // console.log(this.state.Displayname)
+        // console.log(this.state.photo)
         return (
             <Navbar  expand="lg"  variant = "light" style={{"backgroundColor":"rgb(33,150,243)"}} >
                 <Navbar.Brand>

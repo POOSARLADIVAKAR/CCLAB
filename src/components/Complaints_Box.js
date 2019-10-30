@@ -6,9 +6,9 @@ class Complaints_Box extends Component{
         super(props)
         console.log(props)
         this.state = {
-            Room_No : props.prop1,
-            description : props.prop2,
-            Lodged_by : props.prop3
+            Room_No : props.prop2,
+            description : props.prop3,
+            Lodged_by : props.prop1
         }
     }
     render(){
@@ -18,7 +18,7 @@ class Complaints_Box extends Component{
                     <div className="mdl-cell mdl-cell--12-col ">
                         <div className="mdl-grid">
                             <div className="mdl-cell mdl-cell--6-col field">Email</div>
-                            <div className="mdl-cell mdl-cell--6-col data">R Gururaj (gururaj@hyderabad.bits-pilani.ac.in)</div>
+                            <div className="mdl-cell mdl-cell--6-col data">{this.state.Lodged_by}</div>
                             <br/><br/><br/>
                             <div className="mdl-cell mdl-cell--6-col field">Room.No</div>
                             <div className="mdl-cell mdl-cell--6-col data">{this.state.Room_No}</div>
