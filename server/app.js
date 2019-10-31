@@ -9,6 +9,8 @@ const cors= require('cors');
 const userModel = require('./models/user-model');
 const cookieParser = require('cookie-parser')
 const jwthandler = require("./config/token")
+const complaintModel = require('./models/Complaint_model')
+var bodyParser = require('body-parser'); //Parse data passed from post method and make it accessible
 
 const app = express();
 
@@ -28,6 +30,8 @@ app.use(cookieSession({
     keys: [keys.session.cookieKey]
 }));
 app.use(cookieParser())
+app.use(bodyParser.json()); //for any json i.e from front end
+app.use(bodyParser.urlencoded({ extended: false })) //for any url data eg:postman data
 
 mongoose.connect('mongodb://127.0.0.1:27017/myapp',{useNewUrlParser: true},() => {
     console.log('connected to mongodb');
@@ -50,6 +54,51 @@ app.get('/',(req,res)=>{
 //     // res.send(req.query.token)
 //     res.send('in query')
 // })
+
+app.post('/Complaints',(req,res)=>{
+    console.log(req.body)
+    complaintModel.find({Logged_user : req.body.email,Room_no : req.body.room ,Issue : req.body.desc,}).then((Complaint)=>{
+        if(Complaint.length !=0 ){
+            console.log("Alredy found")
+            console.log(Complaint)
+            res.send(Complaint)
+        }
+        else{
+            new complaintModel({
+                Logged_user : req.body.email,
+                Room_no : req.body.room,
+                Issue : req.body.desc,
+                Solved : true
+            }).save().then((newComplaint)=>{
+                console.log("Newly created complaint")
+                console.log(newComplaint)
+                res.send(newComplaint)
+            })
+        }
+    })
+})
+
+app.post('/Complaints/search',(req,res)=>{
+    console.log(req.body)
+    res.send(req.body)
+})
+
+app.get('/Complaints/log',(req,res)=>{
+    // console.log('inside log')
+    complaintModel.find({Solved : false}).then((log)=>{
+        console.log(log)
+        res.send(log)
+    })
+    
+})
+
+app.get('/Complaints/solved',(req,res)=>{
+    // console.log('inside solved')
+    complaintModel.find({Solved : true}).then((solved)=>{
+        console.log(solved)
+        res.send(solved)
+    })
+})
 app.listen(4000, () => {
     console.log('app now listening for requests on port 4000');
 });

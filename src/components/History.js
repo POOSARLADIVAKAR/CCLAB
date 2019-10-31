@@ -1,10 +1,23 @@
 import  React,{ Component } from "react";
 import NavBar from './NavBar'
-import Search from '../Assets/search.png'
+// import Search from '../Assets/search.png'
 // import {Nav, Tab,Row,Col} from 'react-bootstrap'
 
 
 class History extends Component{
+    constructor(props){
+        super(props)
+        
+    }
+    
+    componentWillMount(){
+        console.log("IN home component")
+        const token = window.localStorage.getItem("cclab-token")
+        if((token=="")||(token==null)){
+            this.props.history.push("/")
+        }
+    }
+
     render(){
         return(
              <div>
@@ -21,12 +34,12 @@ class History extends Component{
                     <div id="search_space" className="tabcontent">
                         <div className = "searchBar"> {/*float top and bottom*/}
                             <input type="text" placeholder = "Search ..."/>
-                            <button type="submit"><i className="fa fa-search fa-3x"></i></button>
+                            <button type="submit">
+                                <i className="fa fa-search fa-2x"></i>
+                            </button>
                         </div>
                         <div className = "bottom-content">
                             {/*<Box/> Load component*/}
-                            <h1>hello world</h1>
-                            <h2>hello world</h2>
                         </div>
                     </div>
                 </div>

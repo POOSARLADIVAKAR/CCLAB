@@ -12,6 +12,7 @@ import dotenv from 'dotenv';
 import Login from './components/Login';
 import History from './components/History';
 import Complaints from './components/Complaints'
+import History from './components/History';
 var jwt = require("jsonwebtoken");
 dotenv.config();
 
@@ -22,17 +23,17 @@ class App extends Component{
   componentWillMount(){ //local storage not default cleaned so explicitly deleated
     // every refresh loads this so every backend request or user force refresh calls this
     const token = window.localStorage.getItem("cclab-token")
-    console.log(token)
+    // console.log(token)
     if(token!=""&& token!=null){
       const decoded_token  = jwt.decode(token)
-      console.log("Decoded token in App.js")
-      console.log(decoded_token)
-      console.log(Date.now())
+      // console.log("Decoded token in App.js")
+      // console.log(decoded_token)
+      // console.log(Date.now())
       const present_time = Math.round(Date.now()/1000)
       const expiry_time = decoded_token.exp
 
       if(present_time > expiry_time ){
-        console.log("Removing token")
+        // console.log("Removing token")
         window.localStorage.removeItem("cclab-token")
       }
     }
@@ -43,7 +44,7 @@ class App extends Component{
     //   console.log(res.data)
     //   window.localStorage.setItem('cclab-token',JSON.stringify(res.data))
     // });
-    console.log("cc-lab token is"+window.localStorage.getItem('cclab-token'))
+    // console.log("cc-lab token is"+window.localStorage.getItem('cclab-token'))
     // axios.get('/query',{params:{token: window.localStorage.getItem('cclab-token') }}).then((res)=>{
     //   console.log(res)
     // });
@@ -56,6 +57,8 @@ class App extends Component{
           <Route exact path='/' component={History}/>
           <Route path='/Home' component={Home}/>
           <Route path='/Resources' component={Resources}/>
+          <Route path='/Complaints' component={Complaints}/>
+          <Route path='/History' component={History}/>
         </BrowserRouter>
       </div>
     );
