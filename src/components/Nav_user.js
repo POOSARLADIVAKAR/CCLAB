@@ -22,7 +22,13 @@ class Nav_user extends Component{
           console.log(decoded_token)
           this.setState({Displayname :decoded_token.username, photo : decoded_token.photo})
         }
-      }
+    }
+
+    logOut = () =>{
+        window.localStorage.removeItem("cclab-token")
+        window.location.reload()
+    }
+
     render(){
         console.log("Inside Navbar")
         console.log(this.state.Displayname)
@@ -46,6 +52,7 @@ class Nav_user extends Component{
                         <span className="navItems">{this.state.Displayname}</span>
                         <img className = "img" src={this.state.photo}></img>                    
                     </span>
+                    <span style={{"padding-left":"20px"}}><i className="fa fa-sign-out fa-2x signOut" onClick={this.logOut}></i> </span>                   
                 </Navbar.Collapse>
             </Navbar>
         );

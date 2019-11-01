@@ -48,9 +48,12 @@ class Home extends Component{
         //     this.props.history.push("/")
         // }
         this.sendComplaint({
-        email:"divakarpoosarla123@gmail.com",
-        room:"D201",
-        desc:"This complaint gets into solved"}
+            email:"divakarpoosarla123@gmail.com",
+            room:"D201",
+            date: Date(),
+            system : 23,
+            desc:"This complaint gets into Log information"
+        }
         )  // add a button ad call this onClick
 
         return (

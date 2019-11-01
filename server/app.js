@@ -67,8 +67,10 @@ app.post('/Complaints',(req,res)=>{
             new complaintModel({
                 Logged_user : req.body.email,
                 Room_no : req.body.room,
+                Date_time : req.body.date,
+                System_no : req.body.system,
                 Issue : req.body.desc,
-                Solved : true
+                Solved : false
             }).save().then((newComplaint)=>{
                 console.log("Newly created complaint")
                 console.log(newComplaint)
@@ -84,21 +86,30 @@ app.post('/Complaints/search',(req,res)=>{
 })
 
 app.get('/Complaints/log',(req,res)=>{
-    // console.log('inside log')
     complaintModel.find({Solved : false}).then((log)=>{
-        console.log(log)
+        // console.log(log)
         res.send(log)
     })
     
 })
 
 app.get('/Complaints/solved',(req,res)=>{
-    // console.log('inside solved')
     complaintModel.find({Solved : true}).then((solved)=>{
-        console.log(solved)
+        // console.log(solved)
         res.send(solved)
     })
 })
+app.post('/Complaints/update',(req,res)=>{
+    console.log(req.body)
+    console.log(req.body._id)
+    // res.send(req.body)
+    console.log("Data received")
+    complaintModel.update({_id: req.body.id},{Solved:true}  ).then((updated)=>{
+        console.log(updated)    
+    })
+    res.send("updated successfuly")
+})
+
 app.listen(4000, () => {
     console.log('app now listening for requests on port 4000');
 });
