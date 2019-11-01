@@ -10,6 +10,8 @@ var jwt = require("jsonwebtoken");
 class Home extends Component{
     constructor(props){
         super(props)
+        console.log("inside home")
+        console.log(props)
         this.state = { Nav_bar : <Nav_user/> }   
     }
     
@@ -23,7 +25,7 @@ class Home extends Component{
             const decode_token = jwt.decode(token)
             // console.log("in resources page")
             // console.log(decode_token)
-            if(decode_token.email == "f20170225@hyderabad.bits-pilani.ac.in"){
+            if(decode_token.email == "f20170209@hyderabad.bits-pilani.ac.in"){
                 this.setState({Nav_bar : <NavBar/>})
             }
         }
@@ -32,7 +34,7 @@ class Home extends Component{
         // console.log(complaint)
         Axios.post('/Complaints',complaint).then((res)=>{
             // console.log(complaint)
-            console.log("Complaint successfully sent")
+            // console.log("Complaint successfully sent")
         })
         .catch((error)=>{
             console.log(error + "Occured in sending")
@@ -47,11 +49,11 @@ class Home extends Component{
         // if((window.localStorage.getItem('cclab-token')=="")||(window.localStorage.getItem('cclab-token')==null)){
         //     this.props.history.push("/")
         // }
-        this.sendComplaint({
-        email:"divakarpoosarla123@gmail.com",
-        room:"D201",
-        desc:"This complaint gets into solved"}
-        )  // add a button ad call this onClick
+        // this.sendComplaint({
+        // email:"divakarpoosarla123@gmail.com",
+        // room:"D201",
+        // desc:"This complaint gets into solved"}
+        // )  // add a button ad call this onClick
 
         return (
             <div>

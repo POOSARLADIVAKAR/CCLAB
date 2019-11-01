@@ -15,18 +15,18 @@ class Nav_user extends Component{
     }
     componentWillMount(){ 
         const token = window.localStorage.getItem("cclab-token")
-        console.log(token)
         if(token!=""&& token!=null){
           const decoded_token  = jwt.decode(token)
-          console.log("Decoded token in Navbar.js")
-          console.log(decoded_token)
           this.setState({Displayname :decoded_token.username, photo : decoded_token.photo})
         }
       }
+
+    logOut = () =>{
+        window.localStorage.removeItem("cclab-token")
+        window.location.reload()
+    }
+
     render(){
-        console.log("Inside Navbar")
-        console.log(this.state.Displayname)
-        console.log(this.state.photo)
         return (
             <Navbar  expand="lg"  variant = "light" style={{"backgroundColor":"rgb(33,150,243)"}} >
                 <Navbar.Brand>
@@ -46,6 +46,7 @@ class Nav_user extends Component{
                         <span className="navItems">{this.state.Displayname}</span>
                         <img className = "img" src={this.state.photo}></img>                    
                     </span>
+                    <i class="fa fa-sign-out fa-3x signOut" onClick={this.logOut}></i>
                 </Navbar.Collapse>
             </Navbar>
         );

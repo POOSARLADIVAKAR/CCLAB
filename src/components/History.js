@@ -11,7 +11,7 @@ class History extends Component{
     }
     
     componentWillMount(){
-        console.log("IN home component")
+        // console.log("IN history component")
         const token = window.localStorage.getItem("cclab-token")
         if((token=="")||(token==null)){
             this.props.history.push("/")
