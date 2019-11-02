@@ -47,12 +47,15 @@ class Nav_user extends Component{
                         <Nav.Link><NavLink to="Resources" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">Resources</span>
                         </NavLink></Nav.Link>
+                        <Nav.Link><NavLink to="UserComplaints" style={{"color": "rgb(255,255,255)"}}>
+                            <span className="navItems">Complaints</span>
+                        </NavLink></Nav.Link>
                     </Nav>
                     <span className = "navigator">
                         <span className="navItems">{this.state.Displayname}</span>
                         <img className = "img" src={this.state.photo}></img>                    
                     </span>
-                    <span style={{"padding-left":"20px"}}><i className="fa fa-sign-out fa-2x signOut" onClick={this.logOut}></i> </span>                   
+                    <i className="fa fa-power-off fa-2x " style={{"padding-left":"20px","color":"#ddd"}} onClick={this.logOut}></i>            
                 </Navbar.Collapse>
             </Navbar>
         );

@@ -104,6 +104,17 @@ div.tab{
       overflow: scroll
   }
 
+  #user_complaint_form{
+    /* margin-top: 100px; */
+      display: block;
+      bottom: 0;
+      height: 100%;
+      /* width : 90%; */
+      /* background-color: #c2c2e0; */
+      background-color: whitesmoke;
+      overflow: scroll
+  }
+
   div.Complaints_Box{
       display: block;
       height : 200px;
