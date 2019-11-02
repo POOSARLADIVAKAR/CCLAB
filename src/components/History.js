@@ -1,12 +1,19 @@
 import  React,{ Component } from "react";
 import NavBar from './NavBar'
-// import Search from '../Assets/search.png'
-// import {Nav, Tab,Row,Col} from 'react-bootstrap'
+import History_Box from './History_Box'
+import {Grid,Row,Col} from 'react-bootstrap'
 
 
 class History extends Component{
     constructor(props){
         super(props)
+        this.state={
+            // data: [club=["crux","ad astra","physics"],room=["D207","D208","D207B"],date=["11-10-19","12-10-19","13-10-19"]]
+            data:[  {room:"D208",club:"crux",date:"12-10-19"},
+                    {room:"D208",club:"crux",date:"12-10-19"},
+                    {room:"D208",club:"crux",date:"12-10-19"}
+                 ]
+        }
         
     }
     
@@ -38,9 +45,16 @@ class History extends Component{
                                 <i className="fa fa-search fa-2x"></i>
                             </button>
                         </div>
-                        <div className = "bottom-content">
-                            {/*<Box/> Load component*/}
+                        <div className = "bottom-content" id="histClubs">
+                            {this.state.data.map((item)=>(
+                                <History_Box club={item.club} date={item.date} room={item.room} />
+                            ))}
                         </div>
+
+                        {/* <Grid>
+                            
+                        </Grid> */}
+
                     </div>
                 </div>
             </div>

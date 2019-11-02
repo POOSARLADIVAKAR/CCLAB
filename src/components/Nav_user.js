@@ -41,6 +41,9 @@ class Nav_user extends Component{
                         <Nav.Link><NavLink to="Resources" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">Resources</span>
                         </NavLink></Nav.Link>
+                        <Nav.Link><NavLink to="UserCompliants" style={{"color": "rgb(255,255,255)"}}>
+                            <span className="navItems">Compliants</span>
+                        </NavLink></Nav.Link>
                     </Nav>
                     <span className = "navigator">
                         <span className="navItems">{this.state.Displayname}</span>

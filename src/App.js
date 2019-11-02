@@ -13,6 +13,7 @@ import Login from './components/Login';
 // import History from './components/History';
 import Complaints from './components/Complaints'
 import History from './components/History';
+import UserCompliants from './components/UserCompliants'
 var jwt = require("jsonwebtoken");
 dotenv.config();
 
@@ -59,6 +60,7 @@ class App extends Component{
           <Route path='/Resources' component={Resources}/>
           <Route path='/Complaints' component={Complaints}/>
           <Route path='/History' component={History}/>
+          <Route path='/UserCompliants' component={UserCompliants}/>
         </BrowserRouter>
       </div>
     );
