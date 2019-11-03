@@ -2,6 +2,7 @@ import  React,{ Component } from "react";
 import NavBar from './NavBar'
 import History_Box from './History_Box'
 import {Grid,Row,Col} from 'react-bootstrap'
+import '../cssfiles/History.css'
 
 
 class History extends Component{

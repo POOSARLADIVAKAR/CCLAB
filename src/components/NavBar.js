@@ -22,13 +22,12 @@ class NavBar extends Component{
           const decoded_token  = jwt.decode(token)
           this.setState({Displayname :decoded_token.username, photo : decoded_token.photo})
         }
-      }
+    }
 
     logOut = () =>{
             window.localStorage.removeItem("cclab-token")
             window.location.reload()
-      }
-
+    }
 
     render(){
 
@@ -58,7 +57,8 @@ class NavBar extends Component{
                         <span className="navItems">{this.state.Displayname}</span>
                         <img className = "img" src={this.state.photo}></img> 
                     </span>
-                    <i class="fa fa-sign-out fa-3x signOut" onClick={this.logOut}></i>                    
+                    <i className="fa fa-power-off fa-2x " style={{"padding-left":"20px","color":"#ddd"}} onClick={this.logOut}></i>            
+                    
                 </Navbar.Collapse>
             </Navbar>
         );

@@ -7,6 +7,7 @@ const cookieSession=require('cookie-session');
 const mongoose = require('mongoose');
 const cors= require('cors');
 const userModel = require('./models/user-model');
+const resourceModel = require('./models/Resource_model')
 const cookieParser = require('cookie-parser')
 const jwthandler = require("./config/token")
 const complaintModel = require('./models/Complaint_model')
@@ -67,8 +68,10 @@ app.post('/Complaints',(req,res)=>{
             new complaintModel({
                 Logged_user : req.body.email,
                 Room_no : req.body.room,
+                Date_time : req.body.date,
+                System_no : req.body.system,
                 Issue : req.body.desc,
-                Solved : true
+                Solved : false
             }).save().then((newComplaint)=>{
                 console.log("Newly created complaint")
                 console.log(newComplaint)
@@ -79,26 +82,69 @@ app.post('/Complaints',(req,res)=>{
 })
 
 app.post('/Complaints/search',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     res.send(req.body)
 })
 
 app.get('/Complaints/log',(req,res)=>{
-    // console.log('inside log')
-    complaintModel.find({Solved : false}).then((log)=>{
-        console.log(log)
+    complaintModel.find({Solved : false}).sort({Date_time : -1}).then((log)=>{
+        // console.log(log)
         res.send(log)
     })
     
 })
 
 app.get('/Complaints/solved',(req,res)=>{
-    // console.log('inside solved')
-    complaintModel.find({Solved : true}).then((solved)=>{
-        console.log(solved)
+    complaintModel.find({Solved : true}).sort({Date_time : -1}).then((solved)=>{
+        // console.log(solved)
         res.send(solved)
     })
 })
+app.post('/Complaints/update',(req,res)=>{
+    // console.log(req.body)
+    // console.log(req.body._id)
+    // res.send(req.body)
+    console.log("Data received")
+    complaintModel.update({_id: req.body.id},{Solved:true}  ).then((updated)=>{
+        console.log(updated)    
+    })
+    res.send("updated successfuly")
+})
+
+app.post('/Complaints/mycomplaints',(req,res)=>{
+    // console.log(req.body)
+    complaintModel.find({Logged_user : req.body.email}).sort({Date_time : -1}).then((log)=>{
+        console.log(log)
+        console.log(JSON.stringify(log))
+        res.send(JSON.stringify(log))
+    })
+    // res.send("Successful request")
+})
+
+app.post('/Resources/display',(req,res)=>{
+    resourceModel.find({Room_no : req.body.Room_no}).then((data)=>{
+        res.send(JSON.stringify(data))
+    })
+})
+
+app.post('/Resources/update',(req,res)=>{
+    resourceModel.update({Room_no : req.body.Room_no},{...req.bdy}).then((updated)=>{
+        res.send(updated)
+    })
+    res.send("updated successfuly")
+})
+
+app.post('/Resources/insert',(req,res)=>{
+    new resourceModel({
+        //.....
+        //.....
+    }).save((newResource)=>{
+        console.log("Newly created Resource")
+                console.log(newResource)
+                res.send(newResource)
+    })
+})
+
 app.listen(4000, () => {
     console.log('app now listening for requests on port 4000');
 });

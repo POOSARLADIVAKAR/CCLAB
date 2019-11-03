@@ -8,17 +8,18 @@ import Home from './components/Home.js'
 import Resources from './components/Resources.js'
 import { tsConstructorType } from '@babel/types';
 import axios from 'axios';
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'; //dotenv is a module that loads variables from a .env file into process.env 
 import Login from './components/Login';
 // import History from './components/History';
 import Complaints from './components/Complaints'
 import History from './components/History';
-import UserCompliants from './components/UserCompliants'
+import UserComplaints from './components/UserComplaints'
 var jwt = require("jsonwebtoken");
 dotenv.config();
 
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URI_LOCAL;
+axios.defaults.baseURL = process.env.REACT_APP_API_URI_LOCAL; //dotenv is a module that loads variables from a .env file into process.env 
+//and is ideal for storing usernames, passwords, URL's and other sensitive bits and bobs.
 
 class App extends Component{
   componentWillMount(){ //local storage not default cleaned so explicitly deleated
@@ -60,7 +61,7 @@ class App extends Component{
           <Route path='/Resources' component={Resources}/>
           <Route path='/Complaints' component={Complaints}/>
           <Route path='/History' component={History}/>
-          <Route path='/UserCompliants' component={UserCompliants}/>
+          <Route path='/UserComplaints' component={UserComplaints}/>
         </BrowserRouter>
       </div>
     );

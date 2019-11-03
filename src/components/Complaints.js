@@ -100,7 +100,7 @@ class Complaints extends Component{
                   {/*<Box/> Load component*/}
                   {
                     this.state.data.map(data=>(
-                        <Complaints_Box prop1={data.Logged_user} prop2={data.Room_no} prop3={data.Issue} key={data._id}/>
+                        <Complaints_Box props={data} key={data._id}/>
                     ))
                   }
             </div>

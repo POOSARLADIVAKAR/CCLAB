@@ -30,18 +30,7 @@ class Home extends Component{
             }
         }
     }
-    sendComplaint = (complaint) => {
-        // console.log(complaint)
-        Axios.post('/Complaints',complaint).then((res)=>{
-            // console.log(complaint)
-            // console.log("Complaint successfully sent")
-        })
-        .catch((error)=>{
-            console.log(error + "Occured in sending")
-            
-            console.log("Complaint unsuccessful")
-        })
-    }
+    
     render(){
         // also see if it has expired if necessary
         //not necessary because don't let loose his session 
@@ -49,11 +38,7 @@ class Home extends Component{
         // if((window.localStorage.getItem('cclab-token')=="")||(window.localStorage.getItem('cclab-token')==null)){
         //     this.props.history.push("/")
         // }
-        // this.sendComplaint({
-        // email:"divakarpoosarla123@gmail.com",
-        // room:"D201",
-        // desc:"This complaint gets into solved"}
-        // )  // add a button ad call this onClick
+        
 
         return (
             <div>

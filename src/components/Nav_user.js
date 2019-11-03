@@ -19,7 +19,7 @@ class Nav_user extends Component{
           const decoded_token  = jwt.decode(token)
           this.setState({Displayname :decoded_token.username, photo : decoded_token.photo})
         }
-      }
+    }
 
     logOut = () =>{
         window.localStorage.removeItem("cclab-token")
@@ -41,15 +41,15 @@ class Nav_user extends Component{
                         <Nav.Link><NavLink to="Resources" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">Resources</span>
                         </NavLink></Nav.Link>
-                        <Nav.Link><NavLink to="UserCompliants" style={{"color": "rgb(255,255,255)"}}>
-                            <span className="navItems">Compliants</span>
+                        <Nav.Link><NavLink to="UserComplaints" style={{"color": "rgb(255,255,255)"}}>
+                            <span className="navItems">Complaints</span>
                         </NavLink></Nav.Link>
                     </Nav>
                     <span className = "navigator">
                         <span className="navItems">{this.state.Displayname}</span>
                         <img className = "img" src={this.state.photo}></img>                    
                     </span>
-                    <i class="fa fa-sign-out fa-3x signOut" onClick={this.logOut}></i>
+                    <i className="fa fa-power-off fa-2x " style={{"padding-left":"20px","color":"#ddd"}} onClick={this.logOut}></i>            
                 </Navbar.Collapse>
             </Navbar>
         );
