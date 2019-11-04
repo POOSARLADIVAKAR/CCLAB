@@ -121,24 +121,40 @@ app.post('/Complaints/mycomplaints',(req,res)=>{
     // res.send("Successful request")
 })
 
-app.post('/Resources/display',(req,res)=>{
-    resourceModel.find({Room_no : req.body.Room_no}).then((data)=>{
+app.get('/Resources/getData',(req,res)=>{
+    resourceModel.find({}).then((data)=>{
         res.send(JSON.stringify(data))
     })
 })
 
 app.post('/Resources/update',(req,res)=>{
-    resourceModel.update({Room_no : req.body.Room_no},{...req.bdy}).then((updated)=>{
+    console.log(req.body)
+    resourceModel.find({Room_no : req.body.Room_no}).then((items)=>{
+        console.log(items)
+    })
+
+    resourceModel.update({Room_no : req.body.Room_no},{...req.body}).then((updated)=>{
         res.send(updated)
     })
-    res.send("updated successfuly")
+    // res.send("updated successfuly")
 })
 
 app.post('/Resources/insert',(req,res)=>{
+    // send data through postman not used in application
+    console.log(req.body)
     new resourceModel({
-        //.....
-        //.....
-    }).save((newResource)=>{
+
+        Room_no : req.body.Room_no,
+        Systems : req.body.Systems,
+        Projector : req.body.Projector,
+        Seats : req.body.Seats,
+        Linux : req.body.Linux,
+        Windows : req.body.Windows,
+        Matlab : req.body.Matlab,
+        AutoCad : req.body.AutoCad,
+        QTspim : req.body.QTspim
+
+    }).save().then((newResource)=>{
         console.log("Newly created Resource")
                 console.log(newResource)
                 res.send(newResource)
