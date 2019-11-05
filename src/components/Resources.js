@@ -12,10 +12,11 @@ class Resources extends Component{
         this.state = { Nav_bar : <Nav_user/> , 
             keys : ["Systems","Seats","Projector","Linux","Windows","Matlab","AutoCad","QTspim"] ,
             data: [],
-            room : 0,
+            room : 0
             
         }
         this.edit = ""
+        this.room_name = "D201"
     }
     componentWillMount(){
         console.log("IN home component")
@@ -29,35 +30,55 @@ class Resources extends Component{
             console.log(decode_token)
             if(decode_token.email == "f20170209@hyderabad.bits-pilani.ac.in"){
                 this.setState({Nav_bar : <NavBar/>})
-                this.setState({admin:true})
+                this.edit =  <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit</button>
             }
-            this.edit =  <button type="button" className="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Change</button>
         }
-        // send request and get all rooms details
         Axios.get('http://localhost:4000/Resources/getData').then((res)=>{
             this.setState({data : res.data },()=>{
-                console.log(this.state.data)
             })
         })
 
     }
     getRoom = (e)=>{
-        console.log(e.target.id)
-        this.setState({room: Number(e.target.id)})   
+        // console.log(e.target.id)
+        // console.log(e.target.className)
+        console.log(document.getElementById(e.target.id).textContent)
+        this.room_name = document.getElementById(e.target.id).textContent
+        // console.log(document.getElementById(e.target.id))
+        // document.getElementById(e.target.id).style.background = "black"
+        this.setState({room: Number(e.target.id)},()=>{
+            this.render()
+        })   
     }
-// on click change room data [i]
+    send_data = (e) =>{
+        let update_data = this.state.data[this.state.room]
+        console.log(update_data)
+        if(e.target[0].value != "") update_data["Systems"] = e.target[0].value
+        if(e.target[1].value != "") update_data["Seats"] = e.target[1].value
+        if(e.target[2].value != "") update_data["Projector"] = e.target[2].value
+        if(e.target[3].value != "") update_data["Linux"] = e.target[3].value
+        if(e.target[4].value != "") update_data["Windows"] = e.target[4].value
+        if(e.target[5].value != "") update_data["AutoCad"] = e.target[5].value
+        if(e.target[6].value != "") update_data["Matlab"] = e.target[6].value
+        if(e.target[7].value != "") update_data["QTspim"] = e.target[7].value
+        Axios.post("http://localhost:4000/Resources/update",update_data).then((res)=>{
+            console.log(res)
+        })
+        this.render()
+    }
+
     render(){
         if(this.state.data.length == 0){
             return(
                 <div>
                     {this.state.Nav_bar}
                     <ul className="flex-container">
-                        <li id ="0" className="flex-item " onClick = {this.getRoom}>D201</li>
-                        <li id ="1" className="flex-item " onClick = {this.getRoom}>D202</li>
-                        <li id ="2" className="flex-item " onClick = {this.getRoom}>D203</li>
-                        <li id ="3" className="flex-item " onClick = {this.getRoom}>D204</li>
-                        <li id ="4" className="flex-item " onClick = {this.getRoom}>D205</li>
-                        <li id ="5" className="flex-item " onClick = {this.getRoom}>D206</li>
+                        <li id ="0" className="flex-item grow" onClick = {this.getRoom}>D201</li>
+                        <li id ="1" className="flex-item grow" onClick = {this.getRoom}>D202</li>
+                        <li id ="2" className="flex-item grow" onClick = {this.getRoom}>D203</li>
+                        <li id ="3" className="flex-item grow" onClick = {this.getRoom}>D204</li>
+                        <li id ="4" className="flex-item grow" onClick = {this.getRoom}>D205</li>
+                        <li id ="5" className="flex-item grow" onClick = {this.getRoom}>D206</li>
                     </ul>
                 </div>
             )
@@ -66,14 +87,14 @@ class Resources extends Component{
             <div>
                 {this.state.Nav_bar}
                 <ul className="flex-container">
-                    <li id ="0" className="flex-item " onClick = {this.getRoom}>D201</li>
-                    <li id ="1" className="flex-item " onClick = {this.getRoom}>D202</li>
-                    <li id ="2" className="flex-item " onClick = {this.getRoom}>D203</li>
-                    <li id ="3" className="flex-item " onClick = {this.getRoom}>D204</li>
-                    <li id ="4" className="flex-item " onClick = {this.getRoom}>D205</li>
-                    <li id ="5" className="flex-item " onClick = {this.getRoom}>D206</li>
+                    <li id ="0" className="flex-item grow" onClick = {this.getRoom}>D201</li>
+                    <li id ="1" className="flex-item grow" onClick = {this.getRoom}>D202</li>
+                    <li id ="2" className="flex-item grow" onClick = {this.getRoom}>D203</li>
+                    <li id ="3" className="flex-item grow" onClick = {this.getRoom}>D204</li>
+                    <li id ="4" className="flex-item grow" onClick = {this.getRoom}>D205</li>
+                    <li id ="5" className="flex-item grow" onClick = {this.getRoom}>D206</li>
                 </ul>
-                
+                <h1>{this.room_name}</h1>
                 <div className="table">
                     <div className="thead">
                         <div className="tr">
@@ -92,42 +113,34 @@ class Resources extends Component{
                         })
                     }
                 </div> 
-                <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                {this.edit}
 
                 <div className="modal fade" id="myModal" role="dialog">
-                    <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header" style={{"padding":"35px 50px"}}>
-                        <button type="button" className="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div className="modal-body" style={{"padding":"40px 50px"}}>
-                        <form role="form">
-                            <div className="form-group">
-                            <label for="usrname" className = "label_class"><span className="glyphicon glyphicon-user"></span> Systems</label>
-                            <input type="text" className="form-control" id="usrname" placeholder="Enter email"></input>
-                            </div>
-                            <div className="form-group">
-                            <label for="psw"><span className="glyphicon glyphicon-eye-open"></span> Password</label>
-                            <input type="text" className="form-control" id="psw" placeholder="Enter password"></input>
-                            </div>
-                            <button type="submit" className="btn btn-success btn-block"><span className="glyphicon glyphicon-off"></span> Login</button>
-                        </form>
-                        </div>
-                        <div className="modal-footer">
-                        <button type="submit" className="btn btn-danger btn-default pull-left" data-dismiss="modal"><span className="glyphicon glyphicon-remove"></span> Cancel</button>
-                        </div>
+                <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header" style={{"padding":"35px 50px"}}>
+                    <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
+                    <button type="button" className="close" data-dismiss="modal">&times;</button>
                     </div>
-                            {
-                            this.state.data.map((item,i)=>{
-                                return(
-                                    <form className="tr">
-                                    <div className="td" >{this.state.data[i].rsrc}</div>
-                                    <div className="td" >{this.state.data[i].qtity}</div>                            
-                                    </form>
+                    <div className="modal-body" style={{"padding":"40px 50px"}}>
+                    <form role="form" onSubmit ={this.send_data} >
+                        {
+                            (this.state.keys.map((item,i)=>{
+                                
+                                return (
+                                    <div className="form-group" key={i}>
+                                        <label for={item} className = "label_class" >{item}</label>
+                                        <input type="text" className="form-control" id={item} placeholder={this.state.data[this.state.room][this.state.keys[i]]}></input>
+                                    </div>
                                 )
-                            })
-                            }
+                            }))
+                        }
+
+                        <button type="submit" className="btn btn-primary ">Submit</button>
+                    </form>
                     </div>
+                </div>
+                </div>
                 </div>
             </div>
         );
