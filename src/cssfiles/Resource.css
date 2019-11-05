@@ -69,7 +69,7 @@
 }
 .td
 {
-  display:table-cell;
+  display:table-cell; 
   border:1px solid black;
   padding:1px;
 }
@@ -85,9 +85,6 @@
   color: black;
 }
 
-.form-control{
-  /* text-align :center */
-}
 
   
 

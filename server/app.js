@@ -11,6 +11,7 @@ const resourceModel = require('./models/Resource_model')
 const cookieParser = require('cookie-parser')
 const jwthandler = require("./config/token")
 const complaintModel = require('./models/Complaint_model')
+const lostItemModel = require('./models/LostItem_model')
 var bodyParser = require('body-parser'); //Parse data passed from post method and make it accessible
 
 const app = express();
@@ -82,8 +83,12 @@ app.post('/Complaints',(req,res)=>{
 })
 
 app.post('/Complaints/search',(req,res)=>{
-    // console.log(req.body)
-    res.send(req.body)
+    console.log(req.body)
+    complaintModel.find({Room_no : req.body.Room_no}).sort({Date_time : -1}).then((log)=>{
+        console.log(log)
+        res.send(log)
+    })
+    // res.send(null)
 })
 
 app.get('/Complaints/log',(req,res)=>{
@@ -160,6 +165,35 @@ app.post('/Resources/insert',(req,res)=>{
                 res.send(newResource)
     })
 })
+
+app.post('/LostItem',(req,res)=>{
+    console.log(req.body)
+    new lostItemModel({
+        Room_no : req.body.Room_no,
+        Date : Date(req.body.Date),
+        Item : req.body.Item,
+        Collected : false
+
+    }).save().then((newItem)=>{
+        console.log("Found a new Item")
+                console.log(newItem)
+                res.send(newItem)
+    })
+})
+
+app.get('/getItems',(req,res)=>{
+    lostItemModel.find({Collected :false}).sort({Date : -1}).then((items)=>{
+        res.send(items)
+    })
+})
+
+app.post('/returnedItem',(req,res)=>{
+    console.log(req.body)
+    lostItemModel.update({_id : req.body._id},{Collected : true}).then((updated)=>{
+        res.send(updated)
+    })
+})
+
 
 app.listen(4000, () => {
     console.log('app now listening for requests on port 4000');
