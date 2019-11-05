@@ -1,5 +1,5 @@
 
-..flex-container {
+.flex-container {
   padding: 0;
   margin: 0;
   margin-top:20px;
@@ -16,7 +16,7 @@
 }
 
 .flex-item {
-  background: rgb(234, 71, 255);
+  /* background: rgb(234, 71, 255); */
   background: skyblue;
   padding: 5px;
   width: 200px;
@@ -30,14 +30,17 @@
   font-size: 3em;
   text-align: center;
 }
-
-/* .grow { transition: all .2s ease-in-out; } */
-/* .grow:hover { transform: scale(1.1); } */
+/* .flex-item:active{ */
+  /* background:black */
+/* } */
+.grow { transition: all .2s ease-in-out; } */
+.grow:hover { transform: scale(1.1)}
 /* li:hover{
     background:yellow;
     height: 200px;
     line-height: 200px;
 } */
+
 
 
 .table
@@ -76,12 +79,14 @@
 }
 
 .label_class{
-  padding: 0px;
   
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: black;
 }
 
-.form{
-  display: inline;
+.form-control{
+  /* text-align :center */
 }
 
   
