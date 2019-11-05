@@ -4,8 +4,14 @@ const Schema = mongoose.Schema
 
 const resourceSchema = new Schema({
     Room_no : "",
-    PC_count : Number,
-    Projector : Number
+    Systems : Number,
+    Projector : Number,
+    Seats : Number,
+    Linux : Number,
+    Windows : Number,
+    Matlab : Number,
+    AutoCad : Number,
+    QTspim : Number
 })
 
 const resourceModel = mongoose.model('resources',resourceSchema) //coolaction name in your database
