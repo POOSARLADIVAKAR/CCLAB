@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './../cssfiles/History_Box.css';
+import '../cssfiles/History_Box.css';
 
 class History_Box extends Component
 {
@@ -7,19 +7,50 @@ class History_Box extends Component
     {
         super(props);
         this.state={
-            club: props.club,
-            room: props.room,
-            date: props.date
+            data:props.histData,
+            keys:Object.keys(props.histData)
         }
     }
 
     render(){
         return(
-            <div class id="histBox">
-                Hello
-                <div>{this.state.club}</div>
-                <div>{this.state.room}</div>
-                <div>{this.state.date}</div>
+            <div>
+                <div class="card">
+                    <div class="card-body" >
+                        <h4 class="card-title"><h1>{this.state.data[this.state.keys[0]]}</h1></h4>
+                        {/* <div className="table">
+                            {
+                                this.state.keys.map((item,index)=>
+                                {   console.log(item,index)
+                                    return(
+                                        <div className="tableRow" key={index}>
+                                            <div className="tableCell">{item}</div>
+                                            <div className="tableCell">{this.state.data[item]}</div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div> */}
+                        <div >
+                        {
+                        this.state.keys.map((item,index)=>
+                                {   console.log(item,index)
+                                    return(
+                                        <div className="container-History">
+                                                <div className="mdl-cell mdl-cell--12-col ">
+                                                    <div className="mdl-grid">
+                                                        <div className="mdl-cell mdl-cell--6-col field">{item}</div>
+                                                        <div className="mdl-cell mdl-cell--6-col data">{this.state.data[item]}</div>
+                                                    </div>
+                                                </div>
+                                        </div> 
+                                    )
+                                })
+                        }
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
         )
     }
@@ -27,3 +58,12 @@ class History_Box extends Component
 }
 
 export default History_Box;
+
+// <table className="table table-hover">
+//                                             <tbody>
+//                                             <tr key={index}>
+//                                                 <td>{item}</td>
+//                                                 <td>{this.state.data[item]}</td>
+//                                             </tr>
+//                                             </tbody>
+//                                         </table>

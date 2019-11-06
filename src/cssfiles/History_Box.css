@@ -1,5 +1,45 @@
-.#histBox div{
-    display: block;
-    font-size: 100px;
-    background-color: red;
+.tableRow{
+    /* display:table-row; */
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
+
+.tableCell{
+    display:table-cell;
+    border:1px solid black;
+    padding:1px;
+    width: 1%;
+}
+
+.table{
+    width: 90%;
+    margin-left: 5%;
+    border: 2px solid black;
+}
+
+.container-History {
+    border-radius: 5px;
+    background-color: #e7e5e5;
+    /* padding: 20px; */
+    /* margin-top: 100px; */
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .field {
+    font-weight: bold;
+    font-size: 19px
+  }
+  .data {
+    text-align: center;
+    font-size: 19px
+  }
+
+  .card{
+      display: block;
+      border-radius: 2%;
+  }

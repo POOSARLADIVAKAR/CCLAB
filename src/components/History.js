@@ -10,9 +10,17 @@ class History extends Component{
         super(props)
         this.state={
             // data: [club=["crux","ad astra","physics"],room=["D207","D208","D207B"],date=["11-10-19","12-10-19","13-10-19"]]
-            data:[  {room:"D208",club:"crux",date:"12-10-19"},
-                    {room:"D208",club:"crux",date:"12-10-19"},
-                    {room:"D208",club:"crux",date:"12-10-19"}
+            histData:[  {workshop:"Crux",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
+            {workshop:"CSIO coding programming",faculty:"Ramakrishna Ganeshan ",date:"11th Nov 19",time:"5-8PM"},
+            {workshop:"Atmos Events",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
+            {workshop:"Atmos Events",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
+            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
+            {workshop:"Evolve",faculty:"Pranav Rajagopalan",date:"16th Dec 19",time:"10AM-6PM"},
+            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
+            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
+            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
+            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
+            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"}
                  ]
         }
         
@@ -26,17 +34,41 @@ class History extends Component{
         }
     }
 
+    extraClasses=()=>
+    {
+        console.log("Extra Classes Clicked")
+    }
+
+    placements=()=>
+    {
+        console.log("placements Clicked")
+    }
+
+    workshops=()=>
+    {
+        console.log("workshops Clicked")
+    }
+
+    midsems=()=>
+    {
+        console.log("midsems Clicked")
+    }
+
+    compre=()=>
+    {
+        console.log("compre Clicked")
+    }
     render(){
         return(
-             <div>
+            <div>
                 <NavBar/>
                 <div className="parent"> 
                     <div className="tab">
-                        <button id="Classes" className="tablinks" >Classes</button>
-                        <button id="Extra Classes"className="tablinks" >Extra Classes</button>
-                        <button id="Placements" className="tablinks" >Placements</button>
-                        <button id="Events" className="tablinks" >Events</button>
-                        <button id="Non Campus" className="tablinks" >Non Campus</button>
+                        <button id="Extra Classes"className="tablinks" onClick={this.extraClasses} >Extra Classes</button>
+                        <button id="Placements" className="tablinks" onClick={this.placements} >Placements</button>
+                        <button id="Events" className="tablinks" onClick={this.workshops}>Workshops</button>
+                        <button id="Non Campus" className="tablinks" onClick={this.midsems} >MidSem Exams</button>
+                        <button id="Non Campus" className="tablinks" onClick={this.compre} >Compre Exams</button>
                     </div>
 
                     <div id="search_space" className="tabcontent">
@@ -46,17 +78,20 @@ class History extends Component{
                                 <i className="fa fa-search fa-2x"></i>
                             </button>
                         </div>
-                        <div className = "bottom-content" id="histClubs">
-                            {this.state.data.map((item)=>(
-                                <History_Box club={item.club} date={item.date} room={item.room} />
-                            ))}
-                        </div>
-
-                        {/* <Grid>
+                        <div className="bottom-content">
+                            {
+                                this.state.histData.map((item,index)=>{
+                                    return(
+                                        <div className="histBoxOuter">
+                                            <History_Box histData={item}/>
+                                        </div>
+                                    )
+                                })
+                            }
                             
-                        </Grid> */}
-
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         );

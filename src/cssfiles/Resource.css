@@ -50,7 +50,7 @@
   border-spacing:2px;
   width:50%;
   margin-left: 25%;
-  margin-top: 5%;
+  margin-top: 1%;
 }
 .thead
 {
@@ -73,10 +73,6 @@
   border:1px solid black;
   padding:1px;
 }
-.tr.editing .td INPUT
-{
-  width:100px;
-}
 
 .label_class{
   
@@ -85,42 +81,10 @@
   color: black;
 }
 
-.form-control{
-  /* text-align :center */
+#RoomSelected{
+  margin-top: 10%;
+  border: 3px double blue;
+  background-color: rgb(253, 253, 110);
+  margin-left: 45%;
+  margin-right: 45%;
 }
-
-  
-  .table
-  {
-    display:table;
-    border-collapse:separate;
-    border-spacing:2px;
-    width:50%;
-    margin-left: 25%;
-    margin-top: 5%;
-  }
-  .thead
-  {
-    display:table-header-group;
-    color:white;
-    font-weight:bold;
-    background-color:grey;
-  }
-  .tbody
-  {
-    display:table-row-group;
-  }
-  .tr
-  {
-    display:table-row;
-  }
-  .td
-  {
-    display:table-cell;
-    border:1px solid black;
-    padding:1px;
-  }
-  .tr.editing .td INPUT
-  {
-    width:100px;
-  }

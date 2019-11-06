@@ -1,5 +1,5 @@
-#histClubs
-{
-    display:inline-block;
-    background-color: red;
+.histBoxOuter{
+    width: 40%;
+    display: inline-block;
+    margin: 1%;
 }
