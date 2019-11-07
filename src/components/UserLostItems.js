@@ -9,6 +9,7 @@ import Nav_user from './Nav_user';
 import axios from 'axios';
 import LostItem_Box_user from './LostItem_Box_user.js'
 import { thisExpression } from '@babel/types';
+import '../cssfiles/UserLostItems.css'
 
 class UserLostItems extends Component
 {
@@ -39,11 +40,8 @@ class UserLostItems extends Component
         return (
             <div>
               <Nav_user/>
-              <div className="parent"> 
-                <div id="search_space" className="tabcontent">
-                    <div className = "searchBar"> {/*float top and bottom*/}   
-                    </div>
-                  <div id = "user_complaint_form">
+              <div className="">
+                  <div className="bottom-content-LostFound">
                       {
                           (this.state.data.length==0)?(<div><h1>NO ITEMS FOUND</h1></div>):
                           (this.state.data.map(data=>(
@@ -51,7 +49,6 @@ class UserLostItems extends Component
                            )))
                       }
                   </div>
-                </div>
               </div>
             </div>
           );
