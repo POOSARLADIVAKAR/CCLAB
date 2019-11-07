@@ -19,7 +19,6 @@ class Resources extends Component{
         this.room_name = "D201"
     }
     componentWillMount(){
-        console.log("IN home component")
         const token = window.localStorage.getItem("cclab-token")
         if((token=="")||(token==null)){
             this.props.history.push("/")

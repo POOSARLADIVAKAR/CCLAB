@@ -51,6 +51,9 @@ class NavBar extends Component{
                         <Nav.Link><NavLink to="History" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">History</span>
                         </NavLink></Nav.Link>
+                        <Nav.Link><NavLink to="LostItems" style={{"color": "rgb(255,255,255)"}}>
+                            <span className="navItems">Lost&Found</span>
+                        </NavLink></Nav.Link>
                         
                     </Nav>
                     <span className = "navigator" style={{"display": "in-line"}}>

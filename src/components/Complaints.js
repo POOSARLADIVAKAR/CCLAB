@@ -19,6 +19,12 @@ class Complaints extends Component{
       if((token=="")||(token==null)){
           this.props.history.push("/")
       }
+      else{
+        axios.get('http://localhost:4000/Complaints/log').then((res) => {
+          this.setState({data : res.data })
+          }
+        )
+      }
   }
   componentDidMount(){
   
@@ -44,10 +50,12 @@ class Complaints extends Component{
   }
 
   searchClicked = ()=>{
-    var search_string = document.getElementById("search_bar").value
+    var search_string = {}
+    search_string["Room_no"] = document.getElementById("search_bar").value
+    console.log(search_string)
     axios.post('http://localhost:4000/Complaints/search',search_string).then((res)=>{
-      // this.setState({data : res.data })
-      console.log(res.data)
+      this.setState({data : res.data })
+      // console.log(res.data)
     })
     document.getElementById("search_bar").value = ""
   }
@@ -66,7 +74,7 @@ class Complaints extends Component{
           <div id="search_space" className="tabcontent">
 
               <div className = "searchBar"> {/*float top and bottom*/}
-                    <input id = "search_bar" type="text" placeholder = "Search ..."/>
+                    <input id = "search_bar" type="text" placeholder = "Enter Room number ..."/>
                     <button type="submit" onClick = {this.searchClicked} >
                       <i className="fa fa-search fa-2x"></i>
                     </button>
@@ -90,7 +98,7 @@ class Complaints extends Component{
           <div id="search_space" className="tabcontent">
 
               <div className = "searchBar"> {/*float top and bottom*/}
-                    <input id = "search_bar" type="text" placeholder = "Search ..."/>
+                    <input id = "search_bar" type="text" placeholder = "Enter Room number..."/>
                     <button type="submit" onClick = {this.searchClicked}>
                       <i className="fa fa-search fa-2x"></i>
                     </button>

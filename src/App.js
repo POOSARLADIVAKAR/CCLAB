@@ -14,6 +14,8 @@ import Login from './components/Login';
 import Complaints from './components/Complaints'
 import History from './components/History';
 import UserComplaints from './components/UserComplaints'
+import LostItems from './components/LostItems'
+import UserLostItems from './components/UserLostItems'
 var jwt = require("jsonwebtoken");
 dotenv.config();
 
@@ -62,6 +64,8 @@ class App extends Component{
           <Route path='/Complaints' component={Complaints}/>
           <Route path='/History' component={History}/>
           <Route path='/UserComplaints' component={UserComplaints}/>
+          <Route path='/LostItems' component={LostItems}></Route>
+          <Route path='/UserLostItems' component={UserLostItems}/>
         </BrowserRouter>
       </div>
     );

@@ -15,8 +15,11 @@ class Nav_user extends Component{
     }
     componentWillMount(){ 
         const token = window.localStorage.getItem("cclab-token")
+        // console.log(token)
         if(token!=""&& token!=null){
           const decoded_token  = jwt.decode(token)
+        //   console.log("Decoded token in Navbar.js")
+        //   console.log(decoded_token)
           this.setState({Displayname :decoded_token.username, photo : decoded_token.photo})
         }
     }
@@ -27,6 +30,9 @@ class Nav_user extends Component{
     }
 
     render(){
+        // console.log("Inside Navbar")
+        // console.log(this.state.Displayname)
+        // console.log(this.state.photo)
         return (
             <Navbar  expand="lg"  variant = "light" style={{"backgroundColor":"rgb(33,150,243)"}} >
                 <Navbar.Brand>
@@ -43,6 +49,9 @@ class Nav_user extends Component{
                         </NavLink></Nav.Link>
                         <Nav.Link><NavLink to="UserComplaints" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">Complaints</span>
+                        </NavLink></Nav.Link>
+                        <Nav.Link><NavLink to="UserLostItems" style={{"color": "rgb(255,255,255)"}}>
+                            <span className="navItems">Lost&Found</span>
                         </NavLink></Nav.Link>
                     </Nav>
                     <span className = "navigator">

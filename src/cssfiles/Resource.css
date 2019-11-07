@@ -69,7 +69,7 @@
 }
 .td
 {
-  display:table-cell;
+  display:table-cell; 
   border:1px solid black;
   padding:1px;
 }
