@@ -21,6 +21,11 @@ class UserLostItems extends Component
     }
 
     componentWillMount(){
+      const token = window.localStorage.getItem("cclab-token")
+        if((token=="")||(token==null)){
+            this.props.history.push("/")
+        }
+        
         axios.get('http://localhost:4000/getItems').then((res)=>{ 
         //default database sends Collected = false items    
         this.setState({data : res.data },()=>{

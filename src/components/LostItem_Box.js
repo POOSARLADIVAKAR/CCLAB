@@ -32,7 +32,7 @@ class LostItem_Box extends Component{
                             <div className="mdl-cell mdl-cell--6-col field">Item</div>
                             <div className="mdl-cell mdl-cell--6-col data">{this.state.Item}</div>
                             {
-                                (this.state.Collected) ?  "" :<button onClick = {this.Collected} >Solve</button>
+                                (this.state.Collected) ?  "" :<button onClick = {this.Collected} >Collected</button>
                             } 
                         </div>
                     </div>
