@@ -170,7 +170,7 @@ app.post('/LostItem',(req,res)=>{
     console.log(req.body)
     new lostItemModel({
         Room_no : req.body.Room_no,
-        Date : Date(req.body.Date),
+        Date : new Date(req.body.Date),
         Item : req.body.Item,
         Collected : false
 

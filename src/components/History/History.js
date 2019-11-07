@@ -3,6 +3,7 @@ import NavBar from '../NavBar'
 import History_Box from './History_box'
 import {Grid,Row,Col} from 'react-bootstrap'
 import './../../cssfiles/History.css'
+import Axios from "axios";
 
 
 class History extends Component{
@@ -21,7 +22,8 @@ class History extends Component{
             {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
             {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
             {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"}
-                 ]
+                 ],
+            Data : []
         }
     }
     
@@ -35,22 +37,41 @@ class History extends Component{
 
     extraClasses= ()=> {
         console.log("Extra Classes Clicked")
+        Axios.get('http://localhost:4000/requests/extraClasses').then((res)=>{
+            console.log(res)
+            this.setState({Data:res.data})
+        })
     }
 
     placements= ()=>{
         console.log("placements Clicked")
+        Axios.get('http://localhost:4000/requests/placements').then((res)=>{
+            console.log(res)
+            this.setState({Data:res.data})
+        })
     }
 
     workshops= ()=>{
         console.log("workshops Clicked")
+        Axios.get('http://localhost:4000/requests/workshops').then((res)=>{
+            console.log(res)
+            this.setState({Data:res.data})
+        })
     }
-
     midsems= ()=>{
         console.log("midsems Clicked")
+        Axios.get('http://localhost:4000/requests/midsems').then((res)=>{
+            console.log(res)
+            this.setState({Data:res.data})
+        })
     }
 
     compre= ()=>{
         console.log("compre Clicked")
+        Axios.get('http://localhost:4000/requests/compre').then((res)=>{
+            console.log(res)
+            this.setState({Data:res.data})
+        })
     }
 
     render(){
@@ -59,11 +80,11 @@ class History extends Component{
                 <NavBar/>
                 <div className="parent"> 
                     <div className="tab">
-                        <button id="Classes" className="tablinks" >Classes</button>
-                        <button id="Extra Classes"className="tablinks" >Extra Classes</button>
-                        <button id="Placements" className="tablinks" >Placements</button>
-                        <button id="Events" className="tablinks" >Events</button>
-                        <button id="Non Campus" className="tablinks" >Non Campus</button>
+                        <button id="Classes" className="tablinks" onClick = {this.extraClasses}>Extra Classes</button>
+                        <button id="Extra Classes" className="tablinks" onClick = {this.placements}>Placements</button>
+                        <button id="Placements" className="tablinks" onClick = {this.workshops}>Workshops</button>
+                        <button id="Events" className="tablinks" onClick = {this.midsems}>Midsems</button>
+                        <button id="Non Campus" className="tablinks" onClick = {this.compre}>Compre</button>
                     </div>
 
                     <div id="search_space" className="tabcontent">
@@ -74,7 +95,6 @@ class History extends Component{
                             </button>
                         </div>
                         <div className = "bottom-content">
-                            {/*<Box/> Load component*/}
                             {
                                 this.state.histData.map((item,index)=>{
                                     return(

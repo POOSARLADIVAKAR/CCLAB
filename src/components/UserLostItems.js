@@ -43,7 +43,7 @@ class UserLostItems extends Component
                 <div id="search_space" className="tabcontent">
                     <div className = "searchBar"> {/*float top and bottom*/}   
                     </div>
-                  <div id = "user_complaint_form">
+                  <div >
                       {
                           (this.state.data.length==0)?(<div><h1>NO ITEMS FOUND</h1></div>):
                           (this.state.data.map(data=>(
