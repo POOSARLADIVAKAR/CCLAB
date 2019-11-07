@@ -30,16 +30,9 @@
   font-size: 3em;
   text-align: center;
 }
-/* .flex-item:active{ */
-  /* background:black */
-/* } */
+
 .grow { transition: all .2s ease-in-out; } */
 .grow:hover { transform: scale(1.1)}
-/* li:hover{
-    background:yellow;
-    height: 200px;
-    line-height: 200px;
-} */
 
 
 
