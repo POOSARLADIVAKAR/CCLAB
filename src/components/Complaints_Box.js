@@ -1,5 +1,6 @@
 import React,{ Component } from "react";
 import Complaints from "./Complaints";
+import './../cssfiles/Complaints.css'
 import Axios from 'axios'
 class Complaints_Box extends Component{
     constructor(props){
@@ -23,8 +24,8 @@ class Complaints_Box extends Component{
     render(){
         return(
             <div className="container">
-                <div className="row Complaints_Box">
-                    <div className="mdl-cell mdl-cell--12-col ">
+                <div className="row Complaints_Box" >
+                    <div className="mdl-cell mdl-cell--12-col " >
                         <div className="mdl-grid">
                             <div className="mdl-cell mdl-cell--6-col field">Email</div>
                             <div className="mdl-cell mdl-cell--6-col data">{this.state.Lodged_by}</div>

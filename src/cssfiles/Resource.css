@@ -85,6 +85,12 @@
   color: black;
 }
 
-
+#RoomSelected{
+  margin-top: 10%;
+  border: 3px double #d2d2e6;
+  background-color:rgb(208, 219, 223);
+  margin-left: 45%;
+  margin-right: 45%;
+}
   
 

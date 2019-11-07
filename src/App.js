@@ -11,7 +11,7 @@ import axios from 'axios';
 import dotenv from 'dotenv'; //dotenv is a module that loads variables from a .env file into process.env 
 import Login from './components/Login';
 import Complaints from './components/Complaints'
-import History from './components/History';
+import History from './components/History/History';
 import UserComplaints from './components/UserComplaints'
 import LostItems from './components/LostItems'
 import UserLostItems from './components/UserLostItems'

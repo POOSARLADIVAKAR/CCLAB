@@ -93,7 +93,7 @@ class Resources extends Component{
                     <li id ="4" className="flex-item grow" onClick = {this.getRoom}>D205</li>
                     <li id ="5" className="flex-item grow" onClick = {this.getRoom}>D206</li>
                 </ul>
-                <h1>{this.room_name}</h1>
+                <h1 id="RoomSelected">{this.room_name}</h1>
                 <div className="table">
                     <div className="thead">
                         <div className="tr">
