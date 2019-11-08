@@ -28,7 +28,7 @@ class History extends Component{
         Axios.get('http://localhost:4000/requests/extraClasses').then((res)=>{
             console.log(res)
             this.setState({histData:[]})
-            this.setState({histData:res.data})
+            // this.setState({histData:res.data})
         })
     }
 
@@ -51,7 +51,7 @@ class History extends Component{
     }
     midsems= ()=>{
         console.log("midsems Clicked")
-        Axios.get('http://localhost:4000/requests/midsems').then((res)=>{
+        Axios.get('http://localhost:4000/requests/midsem').then((res)=>{
             console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})

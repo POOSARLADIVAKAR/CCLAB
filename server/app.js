@@ -1,5 +1,6 @@
 var express = require('express');
 const authRoutes = require('./routes/auth-routes');
+const requestRoutes = require('./routes/request-routes');
 const keys = require('./config/keys');
 const passport=require('passport');
 const passportSetup = require('./config/passport-setup');
@@ -21,11 +22,10 @@ const app = express();
 //sudo service mongod stop
 
 
-
-
 app.use(cors());
 app.use(passport.initialize());
 app.use('/auth', authRoutes);
+app.use('/requests', requestRoutes);
 app.use(passport.session());
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
@@ -48,14 +48,7 @@ app.get('/',(req,res)=>{
     // res.redirect("http://localhost:4000/auth/google")
     res.send('in /')
 });
-// app.get('/query',(req,res)=>{
-//     console.log('in query')
-//     console.log(req)
-//     console.log(req.query.token)
-//     // // res.send(JSON.stringify(req.token))
-//     // res.send(req.query.token)
-//     res.send('in query')
-// })
+
 
 app.post('/Complaints',(req,res)=>{
     console.log(req.body)
@@ -88,12 +81,10 @@ app.post('/Complaints/search',(req,res)=>{
         console.log(log)
         res.send(log)
     })
-    // res.send(null)
 })
 
 app.get('/Complaints/log',(req,res)=>{
     complaintModel.find({Solved : false}).sort({Date_time : -1}).then((log)=>{
-        // console.log(log)
         res.send(log)
     })
     
@@ -101,14 +92,10 @@ app.get('/Complaints/log',(req,res)=>{
 
 app.get('/Complaints/solved',(req,res)=>{
     complaintModel.find({Solved : true}).sort({Date_time : -1}).then((solved)=>{
-        // console.log(solved)
         res.send(solved)
     })
 })
 app.post('/Complaints/update',(req,res)=>{
-    // console.log(req.body)
-    // console.log(req.body._id)
-    // res.send(req.body)
     console.log("Data received")
     complaintModel.update({_id: req.body.id},{Solved:true}  ).then((updated)=>{
         console.log(updated)    
@@ -117,13 +104,11 @@ app.post('/Complaints/update',(req,res)=>{
 })
 
 app.post('/Complaints/mycomplaints',(req,res)=>{
-    // console.log(req.body)
     complaintModel.find({Logged_user : req.body.email}).sort({Date_time : -1}).then((log)=>{
         console.log(log)
         console.log(JSON.stringify(log))
         res.send(JSON.stringify(log))
     })
-    // res.send("Successful request")
 })
 
 app.get('/Resources/getData',(req,res)=>{
@@ -141,11 +126,9 @@ app.post('/Resources/update',(req,res)=>{
     resourceModel.update({Room_no : req.body.Room_no},{...req.body}).then((updated)=>{
         res.send(updated)
     })
-    // res.send("updated successfuly")
 })
 
 app.post('/Resources/insert',(req,res)=>{
-    // send data through postman not used in application
     console.log(req.body)
     new resourceModel({
 
