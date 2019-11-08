@@ -12,7 +12,7 @@ import dotenv from 'dotenv'; //dotenv is a module that loads variables from a .e
 import Login from './components/Login';
 // import History from './components/History';
 import Complaints from './components/Complaints'
-import History from './components/History';
+import History from './components/History/History';
 import UserComplaints from './components/UserComplaints'
 import LostItems from './components/LostItems'
 import UserLostItems from './components/UserLostItems'

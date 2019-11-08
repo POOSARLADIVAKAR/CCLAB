@@ -30,16 +30,9 @@
   font-size: 3em;
   text-align: center;
 }
-/* .flex-item:active{ */
-  /* background:black */
-/* } */
+
 .grow { transition: all .2s ease-in-out; } */
 .grow:hover { transform: scale(1.1)}
-/* li:hover{
-    background:yellow;
-    height: 200px;
-    line-height: 200px;
-} */
 
 
 
@@ -83,8 +76,10 @@
 
 #RoomSelected{
   margin-top: 10%;
-  border: 3px double blue;
-  background-color: rgb(253, 253, 110);
+  border: 3px double #d2d2e6;
+  background-color:rgb(208, 219, 223);
   margin-left: 45%;
   margin-right: 45%;
 }
+  
+
