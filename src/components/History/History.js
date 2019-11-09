@@ -25,7 +25,7 @@ class History extends Component{
 
     extraClasses= ()=> {
         console.log("Extra Classes Clicked")
-        Axios.get('http://localhost:4000/requests/extraClasses').then((res)=>{
+        Axios.get('http://localhost:4000/requests/extraClasses/getitems').then((res)=>{
             console.log(res)
             this.setState({histData:[]})
             // this.setState({histData:res.data})
@@ -34,36 +34,36 @@ class History extends Component{
 
     placements= ()=>{
         console.log("placements Clicked")
-        Axios.get("http://localhost:4000/requests/placements").then((res)=>{
+        Axios.get("http://localhost:4000/requests/placements/getitems").then((res)=>{
             console.log(res)
             this.setState({histData:[]})
-            this.setState({histData:res.data})
+            // this.setState({histData:res.data})
         })
     }
 
     workshops= ()=>{
         console.log("workshops Clicked")
-        Axios.get('http://localhost:4000/requests/workshops').then((res)=>{
+        Axios.get('http://localhost:4000/requests/workshops/getitems').then((res)=>{
             console.log(res)
             this.setState({histData:[]})
-            this.setState({histData:res.data})
+            // this.setState({histData:res.data})
         })
     }
     midsems= ()=>{
         console.log("midsems Clicked")
-        Axios.get('http://localhost:4000/requests/midsem').then((res)=>{
+        Axios.get('http://localhost:4000/requests/midsem/getitems').then((res)=>{
             console.log(res)
             this.setState({histData:[]})
-            this.setState({histData:res.data})
+            // this.setState({histData:res.data})
         })
     }
 
     compre= ()=>{
         console.log("compre Clicked")
-        Axios.get('http://localhost:4000/requests/compre').then((res)=>{
+        Axios.get('http://localhost:4000/requests/compre/getitems').then((res)=>{
             console.log(res)
             this.setState({histData:[]})
-            this.setState({histData:res.data})
+            // this.setState({histData:res.data})
         })
     }
 
