@@ -15,7 +15,7 @@ class Home extends Component{
             isAdmin : false,
             EC_keys : ["Course No","Course Title","Class Rooms","Date","Time"],
             P_keys : [],
-            W_keys : ["Name of Workshop","Name of Faculty/Student","Class Rooms","Date","Time"],
+            W_keys : ["Name of Workshop","Name of Department/Club","Class Rooms","Date","Time"],
             M_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"],
             C_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"]
         }   
@@ -58,19 +58,18 @@ class Home extends Component{
         request["user_email"] = this.token.email
         request["username"] = this.token.username
         document.getElementById('ECform').reset()
-        //reload window
         Axios.post('http://localhost:4000/requests/extraClasses/insert',request).then((res)=>{
             console.log(res)
-            // this.setState({Data:res.data})
+            this.setState({Data:res.data})
         })
     }
 
     placements= (e) => {
         console.log("placements Clicked")
-        Axios.get('http://localhost:4000/requests/placements/insert').then((res)=>{
-            console.log(res)
+        // Axios.get('http://localhost:4000/requests/placements/insert').then((res)=>{
+            // console.log(res)
             // this.setState({Data:res.data})
-        })
+        // })
     }
 
     workshops= (e) => {
@@ -78,7 +77,7 @@ class Home extends Component{
         e.preventDefault()
         var request = {}
         request["Name of Workshop"] = e.target[0].value
-        request["Name of Faculty/Student"] = e.target[1].value
+        request["Name of Department/Club"] = e.target[1].value
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
@@ -95,7 +94,7 @@ class Home extends Component{
         document.getElementById('Wform').reset()
         Axios.post('http://localhost:4000/requests/workshops/insert',request).then((res)=>{
             console.log(res)
-            // this.setState({Data:res.data})
+            this.setState({Data:res.data})
         })
     }
 
@@ -120,7 +119,7 @@ class Home extends Component{
         document.getElementById('Mform').reset()
         Axios.post('http://localhost:4000/requests/midsem/insert',request).then((res)=>{
             console.log(res)
-            // this.setState({Data:res.data})
+            this.setState({Data:res.data})
         })
     }
 
@@ -145,7 +144,7 @@ class Home extends Component{
         document.getElementById('Cform').reset()
         Axios.post('http://localhost:4000/requests/compre/insert',request).then((res)=>{
             console.log(res)
-            // this.setState({Data:res.data})
+            this.setState({Data:res.data})
         })
     }
 
@@ -265,7 +264,7 @@ class Home extends Component{
                                                 {
                                                     (this.state.W_keys.map((item,i)=>{
                                                         console.log(item)
-                                                        if((item=="Name of Workshop")||(item=="Name of Faculty/Student")){
+                                                        if((item=="Name of Workshop")||(item=="Name of Department/Club")){
                                                             return (
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>

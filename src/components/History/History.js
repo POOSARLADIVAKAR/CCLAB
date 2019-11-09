@@ -28,7 +28,7 @@ class History extends Component{
         Axios.get('http://localhost:4000/requests/extraClasses/getitems').then((res)=>{
             console.log(res)
             this.setState({histData:[]})
-            // this.setState({histData:res.data})
+            this.setState({histData:res.data})
         })
     }
 
@@ -46,7 +46,7 @@ class History extends Component{
         Axios.get('http://localhost:4000/requests/workshops/getitems').then((res)=>{
             console.log(res)
             this.setState({histData:[]})
-            // this.setState({histData:res.data})
+            this.setState({histData:res.data})
         })
     }
     midsems= ()=>{
@@ -54,7 +54,7 @@ class History extends Component{
         Axios.get('http://localhost:4000/requests/midsem/getitems').then((res)=>{
             console.log(res)
             this.setState({histData:[]})
-            // this.setState({histData:res.data})
+            this.setState({histData:res.data})
         })
     }
 
@@ -63,7 +63,16 @@ class History extends Component{
         Axios.get('http://localhost:4000/requests/compre/getitems').then((res)=>{
             console.log(res)
             this.setState({histData:[]})
-            // this.setState({histData:res.data})
+            this.setState({histData:res.data})
+        })
+    }
+
+    requests = () =>{
+        console.log("requests clicked")
+        Axios.get('http://localhost:4000/requests/all').then((res)=>{
+            console.log(res)
+            this.setState({histData:[]})
+            this.setState({histData:res.data})
         })
     }
 
@@ -78,6 +87,7 @@ class History extends Component{
                         <button id="Placements" className="tablinks" onClick = {this.workshops}>Workshops</button>
                         <button id="Events" className="tablinks" onClick = {this.midsems}>Midsems</button>
                         <button id="Non Campus" className="tablinks" onClick = {this.compre}>Compre</button>
+                        <button id="Non Campus" className="tablinks" onClick = {this.requests}>Requests</button>
                     </div>
 
                     <div id="search_space" className="tabcontent">

@@ -9,8 +9,10 @@ const compreSchema = new Schema({
     Class_Rooms : Array,
     Date : Date,
     Time_Start : String,
-    Time_end : String
+    Time_end : String,
+    Granted : Boolean,
+    Belongs_to : String
 })
 
-const compreModel = mongoose.model('comre',compreSchema)
+const compreModel = mongoose.model('compre',compreSchema)
 module.exports = compreModel

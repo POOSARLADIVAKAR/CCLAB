@@ -9,7 +9,9 @@ const extraClassSchema = new Schema({
     Class_Rooms : Array,
     Date : Date,
     Time_Start : String,
-    Time_end : String
+    Time_end : String,
+    Granted : Boolean,
+    Belongs_to : String
 })
 
 const extraClassModel = mongoose.model('extraClass',extraClassSchema)
