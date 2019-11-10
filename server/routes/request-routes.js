@@ -217,7 +217,7 @@ app.put('/workshops/reject',(req,res)=>{
 })
 
 app.put('/midsem/reject',(req,res)=>{
-    Pmodel.findOneAndRemove({_id: ObjectID(req.body._id) }).then((deleted)=>{
+    Mmodel.findOneAndRemove({_id: ObjectID(req.body._id) }).then((deleted)=>{
         console.log("Going to delete")
         console.log(deleted)
         console.log("Already deleted")

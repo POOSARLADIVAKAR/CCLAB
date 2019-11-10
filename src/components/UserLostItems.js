@@ -9,6 +9,7 @@ import Nav_user from './Nav_user';
 import axios from 'axios';
 import LostItem_Box_user from './LostItem_Box_user.js'
 import { thisExpression } from '@babel/types';
+import '../cssfiles/UserLostItems.css'
 
 class UserLostItems extends Component
 {
@@ -36,14 +37,10 @@ class UserLostItems extends Component
     }
 
     render(){
-        return (
-            <div>
+          return (
+            <div style={{"height":"100vh"}}>
               <Nav_user/>
-              <div className="parent"> 
-                <div id="search_space" className="tabcontent">
-                    <div className = "searchBar"> {/*float top and bottom*/}   
-                    </div>
-                  <div >
+                  <div className="bottom-content-LostFound">
                       {
                           (this.state.data.length==0)?(<div><h1>NO ITEMS FOUND</h1></div>):
                           (this.state.data.map(data=>(
@@ -51,8 +48,6 @@ class UserLostItems extends Component
                            )))
                       }
                   </div>
-                </div>
-              </div>
             </div>
           );
     }
@@ -60,3 +55,7 @@ class UserLostItems extends Component
 }
 
 export default UserLostItems
+
+
+
+

@@ -162,9 +162,9 @@ class Home extends Component{
                 </ul>
                 {
                     (this.state.isAdmin === true)? "":
-                        <div class="dropdown">
-                            <button class="dropbtn">Request</button>
-                            <div class="dropdown-content">
+                        <div className="dropdown">
+                            <button className="dropbtn btn btn-primary" style={{"backgroundColor":"rgb(5, 200, 245)"}}>Request</button>
+                            <div className="dropdown-content">
                                 <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#ECmodal" style={{"width":"100%","backgroundColor":"#ccc"}} >Extra Classes</button>
                                 <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#Pmodal" style={{"width":"100%","backgroundColor":"#ccc"}}>Placements</button>
                                 <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#Wmodal" style={{"width":"100%","backgroundColor":"#ccc"}}>Workshops</button>
