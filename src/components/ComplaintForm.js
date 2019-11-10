@@ -29,6 +29,7 @@ class ComplaintForm extends Component
     }
 
     handleSubmit = (e)=>{
+        console.log("Clicked form")
         e.preventDefault();
         // console.log(e)
         this.setState({Room_no:e.target[0].value,System_no:e.target[1].value,Issue:e.target[2].value},(e)=>{
@@ -65,7 +66,7 @@ class ComplaintForm extends Component
                         <label for="fname">Room Number</label>
                         </div>
                         <div className="col-75">
-                        <input type="text" id="rno" name="firstname" placeholder="Room Number.."></input>
+                        <input type="text" id="rno" name="firstname" placeholder="Room Number.." required></input>
                         </div>
                     </div>
                     <div className="row">
@@ -73,7 +74,7 @@ class ComplaintForm extends Component
                         <label for="lname">System Number</label>
                         </div>
                         <div className="col-75">
-                        <input type="text" id="lname" name="lastname" placeholder="Sys no.."></input>
+                        <input type="text" id="lname" name="lastname" placeholder="Sys no.." required></input>
                         </div>
                     </div>
                     
@@ -82,7 +83,7 @@ class ComplaintForm extends Component
                         <label for="subject">Issue</label>
                         </div>
                         <div className="col-75">
-                        <textarea id="subject" name="subject" placeholder="..." style={{"height":"200px"}}></textarea>
+                        <textarea id="subject" name="subject" placeholder="..." style={{"height":"200px"}} required></textarea>
                         </div>
                     </div>
 

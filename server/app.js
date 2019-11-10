@@ -79,12 +79,14 @@ app.post('/Complaints/search',(req,res)=>{
     console.log(req.body)
     complaintModel.find({Room_no : req.body.Room_no}).sort({Date_time : -1}).then((log)=>{
         console.log(log)
+        // log.sort(function(a, b){return  (new Date(b.Date_time))-(new Date(a.Date_time)) });
         res.send(log)
     })
 })
 
 app.get('/Complaints/log',(req,res)=>{
     complaintModel.find({Solved : false}).sort({Date_time : -1}).then((log)=>{
+        // log.sort(function(a, b){return  (new Date(b.Date_time))-(new Date(a.Date_time)) });
         res.send(log)
     })
     
@@ -105,6 +107,8 @@ app.post('/Complaints/update',(req,res)=>{
 
 app.post('/Complaints/mycomplaints',(req,res)=>{
     complaintModel.find({Logged_user : req.body.email}).sort({Date_time : -1}).then((log)=>{
+        // items.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) }); 
+        //already working sorting
         console.log(log)
         console.log(JSON.stringify(log))
         res.send(JSON.stringify(log))
@@ -165,7 +169,8 @@ app.post('/LostItem',(req,res)=>{
 })
 
 app.get('/getItems',(req,res)=>{
-    lostItemModel.find({Collected :false}).sort({Date : -1}).then((items)=>{
+    lostItemModel.find({Collected :false}).then((items)=>{
+        items.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
         res.send(items)
     })
 })

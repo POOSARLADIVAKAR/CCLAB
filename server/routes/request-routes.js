@@ -101,6 +101,7 @@ app.post('/compre/insert',(req,res)=>{
 // send this to bookings page as history
 app.get('/extraClasses/getitems',(req,res)=>{
     ECmodel.find({Granted : true}).sort({Date : 1}).then((data)=>{
+        // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
         console.log(data)
         res.send(data)
     })
@@ -108,6 +109,7 @@ app.get('/extraClasses/getitems',(req,res)=>{
 
 app.get('/placements/getitems',(req,res)=>{
     Pmodel.find({Granted : true}).sort({Date : 1}).then((data)=>{
+        // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
         console.log(data)
         res.send(data)
     })
@@ -115,6 +117,7 @@ app.get('/placements/getitems',(req,res)=>{
 
 app.get('/workshops/getitems',(req,res)=>{
     Wmodel.find({Granted : true}).sort({Date : 1}).then((data)=>{
+        // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
         console.log(data)
         res.send(data)
     })
@@ -122,6 +125,7 @@ app.get('/workshops/getitems',(req,res)=>{
 
 app.get('/midsem/getitems',(req,res)=>{
     Mmodel.find({Granted : true}).sort({Date : 1}).then((data)=>{
+        // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
         console.log(data)
         res.send(data)
     })
@@ -129,6 +133,7 @@ app.get('/midsem/getitems',(req,res)=>{
 
 app.get('/compre/getitems',(req,res)=>{
     Cmodel.find({Granted : true}).sort({Date : 1}).then((data)=>{
+        // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
         console.log(data)
         res.send(data)
     })
@@ -154,6 +159,7 @@ app.get('/all',(req,res)=>{
                     // console.log(typeof(Cdata))
                     data = data.concat(Cdata)
                 }).then(()=>{
+                    // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
                     // console.log(data)
                     res.send(data)
                 })
