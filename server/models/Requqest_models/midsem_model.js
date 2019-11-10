@@ -11,7 +11,9 @@ const midsemSchema = new Schema({
     Time_Start : String,
     Time_end : String,
     Granted : Boolean,
-    Belongs_to : String
+    Belongs_to : String,
+    Rejected : Boolean,
+    Comment : String
 })
 
 const midsemModel = mongoose.model('midsem',midsemSchema)

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import '../../cssfiles/History_Box.css';
-import Axios from 'axios';
-import { copyFileSync } from 'fs';
 
-class History_Box extends Component
+
+class History_Box_User extends Component
 {
     constructor(props)
     {
@@ -16,46 +15,14 @@ class History_Box extends Component
         this.today = new Date()
         this.submit_time = new Date()
         this.string_date = ""
-        this.accept = ""
-        this.reject = <button>Finished</button>
     }
 
-    ///handleReject not working properly
-    handleReject = ()=>{
-        console.log("reject clicked")
-        console.log(this.state.data["Belongs_to"])
-        this.state.data["Comment"] = document.getElementById("Comment").value
-        console.log(document.getElementById("Comment").value)
-        console.log(this.state.data)
-        Axios.put("http://localhost:4000/requests/"+this.state.data["Belongs_to"]+"/reject",this.state.data).then((res)=>{
-            // console.log(res)
-            window.location.reload()
-        })
-    }
-
-    handleAccept = ()=>{
-        console.log("accept clicked")
-        console.log(this.state.data["Belongs_to"])
-        Axios.put("http://localhost:4000/requests/"+this.state.data["Belongs_to"]+"/update",this.state.data).then((res)=>{
-            console.log(res)
-            window.location.reload()
-        })
-    }
 
     render(){
         if(this.state.data.length!=0){
             this.submit_time = new Date(this.state.data["Date"])
             this.string_date = this.submit_time.getDate()+"-"+(this.submit_time.getMonth()+1)+"-"+this.submit_time.getFullYear()
             console.log(this.submit_time.getTime())
-            if(this.state.data["Granted"]==true){
-                if(this.today.getTime() < this.submit_time.getTime()){
-                    this.reject = <button onClick={this.handleReject}>Reject</button>
-                }
-            }
-            else{
-                this.accept = <button onClick={this.handleAccept} >Accept</button>
-                this.reject = <button onClick={this.handleReject} >Reject</button>
-            }
         }
         return(
             <div>
@@ -107,25 +74,18 @@ class History_Box extends Component
                             }
                         </div>
                         {
-                            (this.today.getTime() < this.submit_time.getTime())?
+                            (this.state.data["Rejected"]===true)?
                                 (
                                     <div className="container-History">
                                             <div className="mdl-cell mdl-cell--12-col ">
                                                 <div className="mdl-grid">
                                                     <div className="mdl-cell mdl-cell--6-col field">Comment</div>
-                                                    <div className="mdl-cell mdl-cell--6-col data"><input type="text" id="Comment"></input></div>
+                                                    <div className="mdl-cell mdl-cell--6-col data">{this.state.data["Comment"]}</div>
                                                 </div>
                                             </div>
                                     </div>
                                 )
                             :("")
-
-                        }
-                        {   
-                            <div className="mdl-grid">
-                                <div className="mdl-cell mdl-cell--6-col field">{this.accept}</div>
-                                <div className="mdl-cell mdl-cell--6-col data">{this.reject}</div>
-                            </div>
                         }
                     </div>
                 </div>
@@ -135,4 +95,4 @@ class History_Box extends Component
 
 }
 
-export default History_Box;
+export default History_Box_User;

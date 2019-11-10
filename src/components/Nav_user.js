@@ -50,6 +50,9 @@ class Nav_user extends Component{
                         <Nav.Link><NavLink to="UserComplaints" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">Complaints</span>
                         </NavLink></Nav.Link>
+                        <Nav.Link><NavLink to="UserHistory" style={{"color": "rgb(255,255,255)"}}>
+                            <span className="navItems">My Bookings</span>
+                        </NavLink></Nav.Link>
                         <Nav.Link><NavLink to="UserLostItems" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">Lost&Found</span>
                         </NavLink></Nav.Link>
