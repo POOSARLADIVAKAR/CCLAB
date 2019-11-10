@@ -56,7 +56,6 @@ app.post('/workshops/insert',(req,res)=>{
     }).save().then((newWrequest)=>{
         res.send(newWrequest)
     })
-    // res.send(req.body)
 })
 
 app.post('/midsem/insert',(req,res)=>{
@@ -75,7 +74,6 @@ app.post('/midsem/insert',(req,res)=>{
     }).save().then((newMrequest)=>{
         res.send(newMrequest)
     })
-    // res.send(req.body)
 })
 
 app.post('/compre/insert',(req,res)=>{
@@ -94,7 +92,6 @@ app.post('/compre/insert',(req,res)=>{
     }).save().then((newCrequest)=>{
       res.send(newCrequest)
     })
-    // res.send(req.body)
 })
 
 
@@ -107,7 +104,6 @@ app.get('/extraClasses/getitems',(req,res)=>{
         console.log(data)
         res.send(data)
     })
-    // res.send("in extraclasses")
 })
 
 app.get('/placements/getitems',(req,res)=>{
@@ -115,7 +111,6 @@ app.get('/placements/getitems',(req,res)=>{
         console.log(data)
         res.send(data)
     })
-    // res.send("in placements")
 })
 
 app.get('/workshops/getitems',(req,res)=>{
@@ -123,7 +118,6 @@ app.get('/workshops/getitems',(req,res)=>{
         console.log(data)
         res.send(data)
     })
-    // res.send("in workshops")
 })
 
 app.get('/midsem/getitems',(req,res)=>{
@@ -131,7 +125,6 @@ app.get('/midsem/getitems',(req,res)=>{
         console.log(data)
         res.send(data)
     })
-    // res.send("in midsem")
 })
 
 app.get('/compre/getitems',(req,res)=>{
@@ -139,7 +132,6 @@ app.get('/compre/getitems',(req,res)=>{
         console.log(data)
         res.send(data)
     })
-    // res.send("in compre")
 })
 
 //send this to requests tab or page with a accept and reject also button
@@ -147,22 +139,22 @@ app.get('/all',(req,res)=>{
     console.log("all requested")
     var data = new Array()
     ECmodel.find({Granted : false}).sort({Date : 1}).then((ECdata)=>{
-        console.log(typeof(ECdata))
+        // console.log(typeof(ECdata))
         data = data.concat(ECdata)
     }).then(()=>{
         Wmodel.find({Granted : false}).sort({Date : 1}).then((Wdata)=>{
-            console.log(typeof(Wdata))
+            // console.log(typeof(Wdata))
             data = data.concat(Wdata)
         }).then(()=>{
             Mmodel.find({Granted : false}).sort({Date : 1}).then((Mdata)=>{
-                console.log(typeof(Mdata))
+                // console.log(typeof(Mdata))
                 data = data.concat(Mdata)
             }).then(()=>{
                 Cmodel.find({Granted : false}).sort({Date : 1}).then((Cdata)=>{
-                    console.log(typeof(Cdata))
+                    // console.log(typeof(Cdata))
                     data = data.concat(Cdata)
                 }).then(()=>{
-                    console.log(data)
+                    // console.log(data)
                     res.send(data)
                 })
             })
@@ -195,7 +187,6 @@ app.put('/midsem/update',(req,res)=>{
     })
 })
 
-
 app.put('/compre/update',(req,res)=>{
     req.body.Granted = true
     Cmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
@@ -204,33 +195,42 @@ app.put('/compre/update',(req,res)=>{
     })
 })
 
-app.delete('/extraClasses/reject',(req,res)=>{
-    console.log(req.body)
-    // ECmodel.findOneAndRemove({_id: ObjectID(req.body._id) }).then((deleted)=>{
-    //     console.log(deleted)
-    //     res.send("Deleted Successfully")
-    // })
-    res.send("Response received")
+app.put('/extraClasses/reject',(req,res)=>{
+    console.log("Extraclasses reject")
+    // console.log(req.body)
+    ECmodel.findOneAndRemove({_id: ObjectID(req.body._id) }).then((deleted)=>{
+        console.log("Going to delete")
+        console.log(deleted)
+        console.log("Already deleted")
+        res.send("Deleted Successfully")
+    })
+    // res.send("Response received")
 })
 
-app.delete('/workshops/reject',(req,res)=>{
+app.put('/workshops/reject',(req,res)=>{
     Wmodel.findOneAndRemove({_id: ObjectID(req.body._id) }).then((deleted)=>{
+        console.log("Going to delete")
         console.log(deleted)
+        console.log("Already deleted")
         res.send("Deleted Successfully")
     })
 })
 
-app.delete('/midsem/reject',(req,res)=>{
+app.put('/midsem/reject',(req,res)=>{
     Pmodel.findOneAndRemove({_id: ObjectID(req.body._id) }).then((deleted)=>{
+        console.log("Going to delete")
         console.log(deleted)
+        console.log("Already deleted")
         res.send("Deleted Successfully")
     })
 })
 
 
-app.delete('/compre/reject',(req,res)=>{
+app.put('/compre/reject',(req,res)=>{
     Cmodel.findOneAndRemove({_id: ObjectID(req.body._id) }).then((deleted)=>{
+        console.log("Going to delete")
         console.log(deleted)
+        console.log("Already deleted")
         res.send("Deleted Successfully")
     })
 })

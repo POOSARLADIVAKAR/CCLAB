@@ -20,13 +20,14 @@ class History_Box extends Component
         this.reject = <button>Finished</button>
     }
 
+    ///handleReject not working properly
     handleReject = ()=>{
         console.log("reject clicked")
         console.log(this.state.data["Belongs_to"])
-        Axios.delete("http://localhost:4000/requests/"+this.state.data["Belongs_to"]+"/reject",this.state.data).then((res)=>{
-            console.log(res)
+        Axios.put("http://localhost:4000/requests/"+this.state.data["Belongs_to"]+"/reject",this.state.data).then((res)=>{
+            // console.log(res)
+            window.location.reload()
         })
-        this.render()
     }
 
     handleAccept = ()=>{
@@ -34,8 +35,8 @@ class History_Box extends Component
         console.log(this.state.data["Belongs_to"])
         Axios.put("http://localhost:4000/requests/"+this.state.data["Belongs_to"]+"/update",this.state.data).then((res)=>{
             console.log(res)
+            window.location.reload()
         })
-        this.render()
     }
 
     render(){
@@ -49,16 +50,15 @@ class History_Box extends Component
                 }
             }
             else{
-                this.accept = <button onClick={this.handleAccept}>Accept</button>
-                this.reject = <button onClick={this.handleReject}>Reject</button>
+                this.accept = <button onClick={this.handleAccept} >Accept</button>
+                this.reject = <button onClick={this.handleReject} >Reject</button>
             }
-            // console.log(this.today.getTime())
-            // console.log(this.today.getTime() < this.submit_time.getTime())
         }
         return(
             <div>
                 <div className="card">
                     <div className="card-body" >
+                        <h2>{this.state.data["Belongs_to"].toUpperCase()}</h2>
                         <div >
                         {console.log("History box called")}
                         {   
@@ -69,7 +69,7 @@ class History_Box extends Component
                                                 <div className="container-History" key={index}>
                                                         <div className="mdl-cell mdl-cell--12-col ">
                                                             <div className="mdl-grid">
-                                                                <div className="mdl-cell mdl-cell--6-col field">{item}</div>
+                                                                <div className="mdl-cell mdl-cell--6-col field">{item.replace(/[_]/g," ")}</div>
                                                                 <div className="mdl-cell mdl-cell--6-col data">{this.state.data[item]}</div>
                                                             </div>
                                                         </div>
@@ -81,7 +81,7 @@ class History_Box extends Component
                                                 <div className="container-History" key={index}>
                                                         <div className="mdl-cell mdl-cell--12-col ">
                                                             <div className="mdl-grid">
-                                                                <div className="mdl-cell mdl-cell--6-col field">{item}</div>
+                                                                <div className="mdl-cell mdl-cell--6-col field">{item.replace(/[_]/g," ")}</div>
                                                                 <div className="mdl-cell mdl-cell--6-col data">{this.state.data[item].map((room,index)=>{return room+" "})}</div>
                                                             </div>
                                                         </div>
@@ -93,7 +93,7 @@ class History_Box extends Component
                                                 <div className="container-History" key={index}>
                                                         <div className="mdl-cell mdl-cell--12-col ">
                                                             <div className="mdl-grid">
-                                                                <div className="mdl-cell mdl-cell--6-col field">{item}</div>
+                                                                <div className="mdl-cell mdl-cell--6-col field">{item.replace(/[_]/g," ")}</div>
                                                                 <div className="mdl-cell mdl-cell--6-col data">{this.string_date}</div>
                                                             </div>
                                                         </div>
@@ -103,18 +103,11 @@ class History_Box extends Component
                                     })
                             }
                         </div>
-                        {
-                            // (this.state.data["Date"].getTime() < this.today.getTime())? (console.log(true)):(console.log(false))
-                            console.log(this.submit_time)
-                        }
-                        {
-                            console.log(this.today)
-                        }
-                        {
-                            this.accept
-                        }
-                        {
-                            this.reject
+                        {   
+                            <div className="mdl-grid">
+                                <div className="mdl-cell mdl-cell--6-col field">{this.accept}</div>
+                                <div className="mdl-cell mdl-cell--6-col data">{this.reject}</div>
+                            </div>
                         }
                     </div>
                 </div>
