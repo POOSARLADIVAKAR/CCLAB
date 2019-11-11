@@ -63,7 +63,7 @@ class History_Box extends Component
                     <div className="card-body" >
                         <h2>{this.state.data["Belongs_to"].toUpperCase()}</h2>
                         <div >
-                        {console.log("History box called")}
+                        {/* {console.log("History box called")} */}
                         {   
                             this.state.keys.map((item,index)=>
                                     {   //console.log(item,index)

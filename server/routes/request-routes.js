@@ -299,4 +299,67 @@ app.post('/mybookings',(req,res)=>{
     })
 })
 
+app.post('/extraClasses/search',(req,res)=>{
+    console.log(req.body)
+    console.log("called")
+    ECmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
+        res.send(searchResult)
+    })
+})
+
+app.post('/placements/search',(req,res)=>{
+    console.log(req.body)
+    console.log("called")
+    Pmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
+        res.send(searchResult)
+    })
+})
+
+app.post('/workshops/search',(req,res)=>{
+    console.log(req.body)
+    console.log("called")
+    Wmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
+        res.send(searchResult)
+    })
+})
+
+app.post('/midsems/search',(req,res)=>{
+    console.log(req.body)
+    console.log("called")
+    Mmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
+        res.send(searchResult)
+    })
+})
+
+app.post('/compre/search',(req,res)=>{
+    console.log(req.body)
+    console.log("called")
+    Cmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
+        res.send(searchResult)
+    })
+})
+
+app.post('/newRequests/search',(req,res)=>{
+    console.log("search in all requests")
+    console.log(req.body)
+    console.log("called")
+    var arr= new Array()
+    ECmodel.find({Rejected: false,Granted:false,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((ecData)=>{
+        arr=arr.concat(ecData)
+        Wmodel.find({Rejected: false,Granted:false,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((wData)=>{
+            arr=arr.concat(wData)
+            Mmodel.find({Rejected: false,Granted:false,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((mData)=>{
+                arr=arr.concat(mData)
+                Cmodel.find({Rejected: false,Granted:false,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((cData)=>{
+                    arr=arr.concat(cData)
+                }).then(()=>{
+                    console.log("gathered data")
+                    console.log(arr)
+                    res.send(arr)
+                })
+            })
+        })
+    })
+})
+
 module.exports = app;

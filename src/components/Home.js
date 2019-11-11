@@ -33,7 +33,7 @@ class Home extends Component{
             const decode_token = jwt.decode(token)
             // console.log("in resources page")
             // console.log(decode_token)
-            if(decode_token.email == "f20170225@hyderabad.bits-pilani.ac.in"){
+            if(decode_token.email == "f20170209@hyderabad.bits-pilani.ac.in"){
                 this.setState({Nav_bar : <NavBar/>, isAdmin : true})
             }
         }
@@ -154,8 +154,8 @@ class Home extends Component{
                 {this.state.Nav_bar}
                 <ul className="flex-container">
                     <li className="flex-item grow">D208</li>
-                    <li className="flex-item grow">D208</li>
-                    <li className="flex-item grow">D208</li>
+                    <li className="flex-item grow">D207</li>
+                    <li className="flex-item grow">D209</li>
                     <li className="flex-item grow">D208</li>
                     <li className="flex-item grow">D208</li>
                     <li className="flex-item grow">D208</li>
