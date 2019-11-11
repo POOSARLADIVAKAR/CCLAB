@@ -21,7 +21,7 @@ class LostItem_Box_user extends Component{
                                 <div className="mdl-grid">
                                     <div className="mdl-cell mdl-cell--6-col field">Room.No</div>
                                     <div className="mdl-cell mdl-cell--6-col data">{this.state.Room_no}</div>
-                            </div>
+                        </div>
                         </div>
                         <div className="mdl-cell mdl-cell--12-col eachRow">
                                 <div className="mdl-grid">

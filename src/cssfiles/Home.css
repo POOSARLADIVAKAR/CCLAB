@@ -87,5 +87,37 @@
     background-color: #3e8e41;
   }
   
-  
+.ComplaintField{
+  /* display: inline-block; */
+  float: left;
+width: 25%;
+margin-top: 6px;
+}  
+
+.ComplaintValue{
+  float: left;
+width: 75%;
+margin-top: 6px;
+}
+
+.ComplaintRow{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.ComplaintDate{
+  float: left;
+width: 50%;
+margin-top: 6px;
+/* text-align: right; */
+}
+
+.ComplaintDateInput{
+  float: right;
+width: 50%;
+margin-top: 6px;
+text-align: left;
+}
 

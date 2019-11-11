@@ -14,8 +14,8 @@ class Home extends Component{
             EC_keys : ["Course No","Course Title","Class Rooms","Date","Time"],
             P_keys : [],
             W_keys : ["Name of Workshop","Name of faculty/Student","Date","Time"],
-            M_keys : [],
-            C_keys : []
+            M_keys : ["Faculty","Course Code","Date of Examination","Venue of Exam","Time","Date"],
+            C_keys : ["Faculty","Course Code","Date of Examination","Venue of Exam","Time","Date"]
         }   
     }
     
@@ -98,7 +98,7 @@ class Home extends Component{
                 <div class="dropdown">
                     <button class="dropbtn">Request</button>
                     <div class="dropdown-content">
-                        <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#ECmodal" style={{"width":"100%","backgroundColor":"#ccc"}} >Extra Classes</button>
+                        <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#ECmodal" style={{"width":"100%","backgroundColor":"#ccc"}} data-backdrop="static" >Extra Classes</button>
                         <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style={{"width":"100%","backgroundColor":"#ccc"}}>Placements</button>
                         <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style={{"width":"100%","backgroundColor":"#ccc"}}>Workshops</button>
                         <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style={{"width":"100%","backgroundColor":"#ccc"}}>Midsem</button>
@@ -106,7 +106,7 @@ class Home extends Component{
                     </div>
 
                     <div className="modal fade" id="ECmodal" role="dialog">
-                        <div className="modal-dialog">
+                        <div className="modal-dialog modal-lg">
                             <div className="modal-content">
                                 <div className="modal-header" style={{"padding":"35px 50px"}}>
                                     <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
@@ -120,9 +120,9 @@ class Home extends Component{
                                                 if((item!="Date")&&(item!="Time"))
                                                 {
                                                     return (
-                                                        <div className="form-group" key={i}>
-                                                            <label for={item} className = "label_class" >{item}</label>
-                                                            <input type="text" className="form-control" id={item} placeholder={"Enter"}></input>
+                                                        <div className="form-group ComplaintRow" key={i}>
+                                                            <div className="ComplaintField"><label for={item} className = "label_class" >{item}</label></div>
+                                                            <div className="ComplaintValue"><input type="text" className="form-control" id={item} placeholder={"Enter"}></input></div>
                                                         </div>
                                                     )
                                                     {/*ADD multiple box for room boking in form */}
@@ -130,9 +130,11 @@ class Home extends Component{
                                                 else if(item=="Date"){
                                                     return (
                                                         <div className="form-group" key={i}>
-                                                            <label for={item} className = "label_class" >{item}</label>
-                                                            <div >
-                                                                <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}}></input>
+                                                            <div className="ComplaintDate">
+                                                                <label for={item} className = "label_class" >{item}</label>
+                                                            </div>
+                                                            <div className="ComplaintDateInput">
+                                                                <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"left","marginLeft":""}}></input>
                                                             </div>
                                                         </div>
                                                     )
