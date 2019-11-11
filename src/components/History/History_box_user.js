@@ -85,7 +85,23 @@ class History_Box_User extends Component
                                             </div>
                                     </div>
                                 )
-                            :("")
+                            :((this.state.data["Granted"]==true)?(<div className="container-History">
+                            <div className="mdl-cell mdl-cell--12-col ">
+                                <div className="mdl-grid">
+                                    <div className="mdl-cell mdl-cell--6-col field">Comment</div>
+                                    <div className="mdl-cell mdl-cell--6-col data">Accepted! Check in Time Table</div>
+                                </div>
+                            </div>
+                    </div>):(
+                        <div className="container-History">
+                                            <div className="mdl-cell mdl-cell--12-col ">
+                                                <div className="mdl-grid">
+                                                    <div className="mdl-cell mdl-cell--6-col field">Comment</div>
+                                                    <div className="mdl-cell mdl-cell--6-col data">Request is Pending</div>
+                                                </div>
+                                            </div>
+                                    </div>
+                    ))
                         }
                     </div>
                 </div>

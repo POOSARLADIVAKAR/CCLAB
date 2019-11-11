@@ -44,7 +44,7 @@ class Complaints_Box extends Component{
                             <div className="mdl-cell mdl-cell--6-col field">System.No</div>
                             <div className="mdl-cell mdl-cell--6-col data">{this.state.System_no}</div>
                             {
-                                (this.state.Solved) ?  "" :<button onClick = {this.solved} >Solve</button>
+                                (this.state.Solved) ?  "" :<button onClick = {this.solved} >Resolved</button>
                             } 
                         </div>
                     </div>

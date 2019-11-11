@@ -290,7 +290,7 @@ app.post('/mybookings',(req,res)=>{
                     // console.log(typeof(Cdata))
                     data = data.concat(Cdata)
                 }).then(()=>{
-                    // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
+                    data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
                     console.log(data)
                     res.send(data)
                 })

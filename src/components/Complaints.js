@@ -66,8 +66,8 @@ class Complaints extends Component{
         <div className="parent"> 
 
           <div className="tab">
-              <button id = "Log"  onClick={this.logClicked} className="tablinks" >Log</button>
-              <button id = "Solved" onClick={this.solvedClicked} className="tablinks" >Solved</button>
+              <button id = "Log"  onClick={this.logClicked} className="tablinks" >Complaints</button>
+              <button id = "Solved" onClick={this.solvedClicked} className="tablinks" >ReSolved</button>
           </div>
 
           <div id="search_space" className="tabcontent">
@@ -90,8 +90,8 @@ class Complaints extends Component{
         <NavBar/>
         <div className="parent"> 
           <div className="tab">
-              <button id = "Log"  onClick={this.logClicked} className="tablinks" >Log</button>
-              <button id = "Solved"  onClick={this.solvedClicked} className="tablinks" >Solved</button>
+              <button id = "Log"  onClick={this.logClicked} className="tablinks" >Complaints</button>
+              <button id = "Solved"  onClick={this.solvedClicked} className="tablinks" >Resolved</button>
           </div>
 
           <div id="search_space" className="tabcontent">
