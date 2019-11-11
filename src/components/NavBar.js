@@ -49,7 +49,7 @@ class NavBar extends Component{
                             <span className="navItems" >Complaints</span>
                         </NavLink></Nav.Link>
                         <Nav.Link><NavLink to="History" style={{"color": "rgb(255,255,255)"}}>
-                            <span className="navItems">History</span>
+                            <span className="navItems">Bookings</span>
                         </NavLink></Nav.Link>
                         <Nav.Link><NavLink to="LostItems" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">Lost&Found</span>

@@ -53,7 +53,7 @@ class LostItemForm extends Component
                         <label for="fname">Room Number</label>
                         </div>
                         <div className="col-75">
-                        <input type="text" id="rno" name="firstname" placeholder="Room Number.."></input>
+                        <input type="text" id="rno" name="firstname" placeholder="Room Number.." required></input>
                         </div>
                     </div>
                     <div className="row">
@@ -61,7 +61,7 @@ class LostItemForm extends Component
                         <label for="lname">Date</label>
                         </div>
                         <div className="col-75">
-                        <input type="text" id="lname" name="lastname" placeholder="Date .."></input>
+                        <input type="text" id="lname" name="lastname" placeholder="Date .." required></input>
                         </div>
                     </div>
                     
@@ -70,7 +70,7 @@ class LostItemForm extends Component
                         <label for="subject">Item</label>
                         </div>
                         <div className="col-75">
-                        <textarea id="subject" name="subject" placeholder="..." style={{"height":"200px"}}></textarea>
+                        <textarea id="subject" name="subject" placeholder="..." style={{"height":"200px"}} required></textarea>
                         </div>
                     </div>
 

@@ -50,6 +50,7 @@ class Resources extends Component{
         })   
     }
     send_data = (e) =>{
+        console.log("Submit_data clicked")
         let update_data = this.state.data[this.state.room]
         console.log(update_data)
         if(e.target[0].value != "") update_data["Systems"] = e.target[0].value

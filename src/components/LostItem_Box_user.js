@@ -12,21 +12,27 @@ class LostItem_Box_user extends Component{
             Date : this.props.props.Date,
             Item : this.props.props.Item,
         }
+        this.submit_time = new Date()
+        this.date_string = ""
     }
     render(){
         console.log("LostItem_Box_user called")
+        if(this.state.Date!=undefined){
+            this.submit_time = new Date(this.state.Date)
+            this.date_string = this.submit_time.getDate()+"-"+(this.submit_time.getMonth()+1)+"-"+this.submit_time.getFullYear()
+        }
         return(
                 <div id="itemBox">
                         <div className="mdl-cell mdl-cell--12-col eachRow">
                                 <div className="mdl-grid">
                                     <div className="mdl-cell mdl-cell--6-col field">Room.No</div>
                                     <div className="mdl-cell mdl-cell--6-col data">{this.state.Room_no}</div>
-                        </div>
+                            </div>
                         </div>
                         <div className="mdl-cell mdl-cell--12-col eachRow">
                                 <div className="mdl-grid">
                                     <div className="mdl-cell mdl-cell--6-col field">Date</div>
-                                    <div className="mdl-cell mdl-cell--6-col data">{this.state.Date}</div>
+                                    <div className="mdl-cell mdl-cell--6-col data">{this.date_string}</div>
                                 </div>
                         </div>
                         <div className="mdl-cell mdl-cell--12-col eachRow">
@@ -41,3 +47,6 @@ class LostItem_Box_user extends Component{
 }
 
 export default LostItem_Box_user;
+
+
+

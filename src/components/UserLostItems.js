@@ -37,10 +37,9 @@ class UserLostItems extends Component
     }
 
     render(){
-        return (
-            <div>
+          return (
+            <div style={{"height":"100vh"}}>
               <Nav_user/>
-              <div className="">
                   <div className="bottom-content-LostFound">
                       {
                           (this.state.data.length==0)?(<div><h1>NO ITEMS FOUND</h1></div>):
@@ -49,7 +48,6 @@ class UserLostItems extends Component
                            )))
                       }
                   </div>
-              </div>
             </div>
           );
     }
@@ -57,3 +55,7 @@ class UserLostItems extends Component
 }
 
 export default UserLostItems
+
+
+
+

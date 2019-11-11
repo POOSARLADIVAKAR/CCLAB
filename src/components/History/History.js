@@ -10,19 +10,7 @@ class History extends Component{
     constructor(props){
         super(props)
         this.state={
-            // data: [club=["crux","ad astra","physics"],room=["D207","D208","D207B"],date=["11-10-19","12-10-19","13-10-19"]]
-            histData:[  {workshop:"Crux",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
-            {workshop:"CSIO coding programming",faculty:"Ramakrishna Ganeshan ",date:"11th Nov 19",time:"5-8PM"},
-            {workshop:"Atmos Events",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
-            {workshop:"Atmos Events",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
-            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
-            {workshop:"Evolve",faculty:"Pranav Rajagopalan",date:"16th Dec 19",time:"10AM-6PM"},
-            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
-            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
-            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
-            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"},
-            {workshop:"NSS",faculty:"Pranav Rajagopalan",date:"11th Nov 19",time:"5-8PM"}
-                 ],
+            histData:[],
             Data : []
         }
     }
@@ -37,40 +25,54 @@ class History extends Component{
 
     extraClasses= ()=> {
         console.log("Extra Classes Clicked")
-        Axios.get('http://localhost:4000/requests/extraClasses').then((res)=>{
+        Axios.get('http://localhost:4000/requests/extraClasses/getitems').then((res)=>{
             console.log(res)
-            this.setState({Data:res.data})
+            this.setState({histData:[]})
+            this.setState({histData:res.data})
         })
     }
 
     placements= ()=>{
         console.log("placements Clicked")
-        Axios.get('http://localhost:4000/requests/placements').then((res)=>{
+        Axios.get("http://localhost:4000/requests/placements/getitems").then((res)=>{
             console.log(res)
-            this.setState({Data:res.data})
+            this.setState({histData:[]})
+            // this.setState({histData:res.data})
         })
     }
 
     workshops= ()=>{
         console.log("workshops Clicked")
-        Axios.get('http://localhost:4000/requests/workshops').then((res)=>{
+        Axios.get('http://localhost:4000/requests/workshops/getitems').then((res)=>{
             console.log(res)
-            this.setState({Data:res.data})
+            this.setState({histData:[]})
+            this.setState({histData:res.data})
         })
     }
     midsems= ()=>{
         console.log("midsems Clicked")
-        Axios.get('http://localhost:4000/requests/midsems').then((res)=>{
+        Axios.get('http://localhost:4000/requests/midsem/getitems').then((res)=>{
             console.log(res)
-            this.setState({Data:res.data})
+            this.setState({histData:[]})
+            this.setState({histData:res.data})
         })
     }
 
     compre= ()=>{
         console.log("compre Clicked")
-        Axios.get('http://localhost:4000/requests/compre').then((res)=>{
+        Axios.get('http://localhost:4000/requests/compre/getitems').then((res)=>{
             console.log(res)
-            this.setState({Data:res.data})
+            this.setState({histData:[]})
+            this.setState({histData:res.data})
+        })
+    }
+
+    requests = () =>{
+        console.log("requests clicked")
+        Axios.get('http://localhost:4000/requests/all').then((res)=>{
+            console.log(res)
+            this.setState({histData:[]})
+            this.setState({histData:res.data})
         })
     }
 
@@ -85,6 +87,7 @@ class History extends Component{
                         <button id="Placements" className="tablinks" onClick = {this.workshops}>Workshops</button>
                         <button id="Events" className="tablinks" onClick = {this.midsems}>Midsems</button>
                         <button id="Non Campus" className="tablinks" onClick = {this.compre}>Compre</button>
+                        <button id="Non Campus" className="tablinks" onClick = {this.requests}>Requests</button>
                     </div>
 
                     <div id="search_space" className="tabcontent">
@@ -98,7 +101,7 @@ class History extends Component{
                             {
                                 this.state.histData.map((item,index)=>{
                                     return(
-                                        <div className="histBoxOuter">
+                                        <div className="histBoxOuter" key={index}>
                                             <History_Box histData={item}/>
                                         </div>
                                     )
