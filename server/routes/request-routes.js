@@ -270,28 +270,71 @@ app.put('/compre/reject',(req,res)=>{
 })
 
 
-app.post('/mybookings',(req,res)=>{
+app.post('/mybookings/accepted',(req,res)=>{
     console.log(req.body)
-    // res.send(req.body)
     var data = new Array()
-    ECmodel.find({User_email : req.body.email}).sort({Date : 1}).then((ECdata)=>{
-        // console.log(typeof(ECdata))
+    ECmodel.find({User_email : req.body.email,Granted:true}).sort({Date : 1}).then((ECdata)=>{
         data = data.concat(ECdata)
     }).then(()=>{
-        Wmodel.find({User_email : req.body.email}).sort({Date : 1}).then((Wdata)=>{
-            // console.log(typeof(Wdata))
+        Wmodel.find({User_email : req.body.email,Granted:true}).sort({Date : 1}).then((Wdata)=>{
             data = data.concat(Wdata)
         }).then(()=>{
-            Mmodel.find({User_email : req.body.email}).sort({Date : 1}).then((Mdata)=>{
-                // console.log(typeof(Mdata))
+            Mmodel.find({User_email : req.body.email,Granted:true}).sort({Date : 1}).then((Mdata)=>{
                 data = data.concat(Mdata)
             }).then(()=>{
-                Cmodel.find({User_email : req.body.email}).sort({Date : 1}).then((Cdata)=>{
-                    // console.log(typeof(Cdata))
+                Cmodel.find({User_email : req.body.email,Granted:true}).sort({Date : 1}).then((Cdata)=>{
                     data = data.concat(Cdata)
                 }).then(()=>{
-                    // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
                     console.log(data)
+                    data.sort((a,b) => (a.Date < b.Date) ? 1 : ((b.Date < a.Date) ? -1 : 0)); 
+                    res.send(data)
+                })
+            })
+        })
+    })
+})
+
+app.post('/mybookings/pending',(req,res)=>{
+    console.log(req.body)
+    var data = new Array()
+    ECmodel.find({User_email : req.body.email,Granted:false,Rejected:false}).sort({Date : 1}).then((ECdata)=>{
+        data = data.concat(ECdata)
+    }).then(()=>{
+        Wmodel.find({User_email : req.body.email,Granted:false,Rejected:false}).sort({Date : 1}).then((Wdata)=>{
+            data = data.concat(Wdata)
+        }).then(()=>{
+            Mmodel.find({User_email : req.body.email,Granted:false,Rejected:false}).sort({Date : 1}).then((Mdata)=>{
+                data = data.concat(Mdata)
+            }).then(()=>{
+                Cmodel.find({User_email : req.body.email,Granted:false,Rejected:false}).sort({Date : 1}).then((Cdata)=>{
+                    data = data.concat(Cdata)
+                }).then(()=>{
+                    console.log(data)
+                    data.sort((a,b) => (a.Date < b.Date) ? 1 : ((b.Date < a.Date) ? -1 : 0)); 
+                    res.send(data)
+                })
+            })
+        })
+    })
+})
+
+app.post('/mybookings/rejected',(req,res)=>{
+    console.log(req.body)
+    var data = new Array()
+    ECmodel.find({User_email : req.body.email,Rejected:true}).sort({Date : 1}).then((ECdata)=>{
+        data = data.concat(ECdata)
+    }).then(()=>{
+        Wmodel.find({User_email : req.body.email,Rejected:true}).sort({Date : 1}).then((Wdata)=>{
+            data = data.concat(Wdata)
+        }).then(()=>{
+            Mmodel.find({User_email : req.body.email,Rejected:true}).sort({Date : 1}).then((Mdata)=>{
+                data = data.concat(Mdata)
+            }).then(()=>{
+                Cmodel.find({User_email : req.body.email,Rejected:true}).sort({Date : 1}).then((Cdata)=>{
+                    data = data.concat(Cdata)
+                }).then(()=>{
+                    console.log(data)
+                    data.sort((a,b) => (a.Date < b.Date) ? 1 : ((b.Date < a.Date) ? -1 : 0)); 
                     res.send(data)
                 })
             })
