@@ -29,7 +29,7 @@ class UserHistory extends Component
         }
     }
 
-    acceptClicked=()=>{
+    acceptClicked = ()=>{
         console.log(this.user)
         axios.post('http://localhost:4000/requests/mybookings/accepted',this.user).then((res)=>{ 
         this.setState({data:[]})
@@ -40,7 +40,7 @@ class UserHistory extends Component
         })
     }
 
-    pendingClicked=()=>{
+    pendingClicked = ()=>{
         console.log(this.user)
         axios.post('http://localhost:4000/requests/mybookings/pending',this.user).then((res)=>{ 
         this.setState({data:[]})        
@@ -51,7 +51,7 @@ class UserHistory extends Component
         })
     }
 
-    rejectClicked=()=>{
+    rejectClicked = ()=>{
         console.log(this.user)
         axios.post('http://localhost:4000/requests/mybookings/rejected',this.user).then((res)=>{ 
         this.setState({data:[]})        
@@ -59,6 +59,18 @@ class UserHistory extends Component
             console.log(this.state.data)
         })
         console.log(res)
+        })
+    }
+
+    searchClicked = (e)=>{
+        console.log("hiiiiiiiiiiii")
+        console.log(e.target.value)
+        let search_obj={}
+        search_obj["search_string"]=document.getElementById("searchInput").value
+        search_obj["data"]=this.state.data
+        axios.post('http://localhost:4000/requests/mybookings/search',search_obj).then((res)=>{
+            this.setState({data:[]})        
+            this.setState({data : res.data })  
         })
     }
 
@@ -75,7 +87,7 @@ class UserHistory extends Component
                     <div id="search_space" className="tabcontent">
 
                         <div className = "searchBar"> {/*float top and bottom*/}
-                            <input id = "search_bar" type="text" placeholder = "Enter Room number ..."/>
+                            <input id = "search_bar" type="text" id="searchInput" placeholder = "Enter"/>
                             <button type="submit" onClick = {this.searchClicked} >
                             <i className="fa fa-search fa-2x"></i>
                             </button>

@@ -342,6 +342,21 @@ app.post('/mybookings/rejected',(req,res)=>{
     })
 })
 
+app.post('/mybookings/search',(req,res)=>{
+    console.log("hii 8888888888888888888888")
+    console.log(req.body)
+    let str=req.body["search_string"]
+    console.log(str)
+    currCards=req.body["data"]
+    updatedCards = currCards.filter(function(item){
+        return item["Course_Title"].toLowerCase().search(
+          str.toLowerCase()) !== -1;
+      })
+      console.log("updated cardssssssssssssssss")
+      console.log(updatedCards)
+    res.send(updatedCards)
+})
+
 app.post('/extraClasses/search',(req,res)=>{
     console.log(req.body)
     console.log("called")
