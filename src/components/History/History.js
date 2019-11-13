@@ -11,7 +11,8 @@ class History extends Component{
         super(props)
         this.state={
             histData:[],
-            Data : []
+            Data : [],
+            tab: "extraClasses"
         }
     }
     
@@ -29,6 +30,7 @@ class History extends Component{
             console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
+            this.setState({tab:"extraClasses"})
         })
     }
 
@@ -38,6 +40,7 @@ class History extends Component{
             console.log(res)
             this.setState({histData:[]})
             // this.setState({histData:res.data})
+            this.setState({tab:"placements"})
         })
     }
 
@@ -47,6 +50,7 @@ class History extends Component{
             console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
+            this.setState({tab:"workshops"})
         })
     }
     midsems= ()=>{
@@ -55,6 +59,7 @@ class History extends Component{
             console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
+            this.setState({tab:"midsems"})
         })
     }
 
@@ -64,6 +69,7 @@ class History extends Component{
             console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
+            this.setState({tab:"compre"})
         })
     }
 
@@ -75,6 +81,22 @@ class History extends Component{
             this.setState({histData:res.data})
         })
     }
+
+    searchClicked = ()=>{
+        console.log("search clicked")
+        var search_string = {}
+        search_string["Room_no"] = document.getElementById("searchInput").value
+        // search_string= document.getElementById("searchInput").value
+        console.log(search_string)
+        console.log('http://localhost:4000/requests/'+this.state.tab+'/search')
+        document.getElementById("searchInput").value = ""
+        Axios.post('http://localhost:4000/requests/'+this.state.tab+'/search',search_string).then((res)=>{
+            this.setState({histData:[]})
+            this.setState({histData : res.data })
+          // console.log(res.data)
+        })
+      }
+
 
     render(){
         return(
@@ -92,8 +114,8 @@ class History extends Component{
 
                     <div id="search_space" className="tabcontent">
                         <div className = "searchBar"> {/*float top and bottom*/}
-                            <input type="text" placeholder = "Search ..."/>
-                            <button type="submit">
+                            <input type="text" id="searchInput" placeholder = "Search ..."/>
+                            <button type="submit" onClick={this.searchClicked}>
                                 <i className="fa fa-search fa-2x"></i>
                             </button>
                         </div>

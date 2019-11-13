@@ -270,33 +270,155 @@ app.put('/compre/reject',(req,res)=>{
 })
 
 
-app.post('/mybookings',(req,res)=>{
+
+
+app.post('/mybookings/accepted',(req,res)=>{
     console.log(req.body)
-    // res.send(req.body)
     var data = new Array()
-    ECmodel.find({User_email : req.body.email}).sort({Date : 1}).then((ECdata)=>{
-        // console.log(typeof(ECdata))
+    ECmodel.find({User_email : req.body.email,Granted:true}).sort({Date : 1}).then((ECdata)=>{
         data = data.concat(ECdata)
     }).then(()=>{
-        Wmodel.find({User_email : req.body.email}).sort({Date : 1}).then((Wdata)=>{
-            // console.log(typeof(Wdata))
+        Wmodel.find({User_email : req.body.email,Granted:true}).sort({Date : 1}).then((Wdata)=>{
             data = data.concat(Wdata)
         }).then(()=>{
-            Mmodel.find({User_email : req.body.email}).sort({Date : 1}).then((Mdata)=>{
-                // console.log(typeof(Mdata))
+            Mmodel.find({User_email : req.body.email,Granted:true}).sort({Date : 1}).then((Mdata)=>{
                 data = data.concat(Mdata)
             }).then(()=>{
-                Cmodel.find({User_email : req.body.email}).sort({Date : 1}).then((Cdata)=>{
-                    // console.log(typeof(Cdata))
+                Cmodel.find({User_email : req.body.email,Granted:true}).sort({Date : 1}).then((Cdata)=>{
                     data = data.concat(Cdata)
                 }).then(()=>{
-                    data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
                     console.log(data)
+                    data.sort((a,b) => (a.Date < b.Date) ? 1 : ((b.Date < a.Date) ? -1 : 0)); 
                     res.send(data)
                 })
             })
         })
     })
 })
+
+app.post('/mybookings/pending',(req,res)=>{
+    console.log(req.body)
+    var data = new Array()
+    ECmodel.find({User_email : req.body.email,Granted:false,Rejected:false}).sort({Date : 1}).then((ECdata)=>{
+        data = data.concat(ECdata)
+    }).then(()=>{
+        Wmodel.find({User_email : req.body.email,Granted:false,Rejected:false}).sort({Date : 1}).then((Wdata)=>{
+            data = data.concat(Wdata)
+        }).then(()=>{
+            Mmodel.find({User_email : req.body.email,Granted:false,Rejected:false}).sort({Date : 1}).then((Mdata)=>{
+                data = data.concat(Mdata)
+            }).then(()=>{
+                Cmodel.find({User_email : req.body.email,Granted:false,Rejected:false}).sort({Date : 1}).then((Cdata)=>{
+                    data = data.concat(Cdata)
+                }).then(()=>{
+                    console.log(data)
+                    data.sort((a,b) => (a.Date < b.Date) ? 1 : ((b.Date < a.Date) ? -1 : 0)); 
+                    res.send(data)
+                })
+            })
+        })
+    })
+})
+
+app.post('/mybookings/rejected',(req,res)=>{
+    console.log(req.body)
+    var data = new Array()
+    ECmodel.find({User_email : req.body.email,Rejected:true}).sort({Date : 1}).then((ECdata)=>{
+        data = data.concat(ECdata)
+    }).then(()=>{
+        Wmodel.find({User_email : req.body.email,Rejected:true}).sort({Date : 1}).then((Wdata)=>{
+            data = data.concat(Wdata)
+        }).then(()=>{
+            Mmodel.find({User_email : req.body.email,Rejected:true}).sort({Date : 1}).then((Mdata)=>{
+                data = data.concat(Mdata)
+            }).then(()=>{
+                Cmodel.find({User_email : req.body.email,Rejected:true}).sort({Date : 1}).then((Cdata)=>{
+                    data = data.concat(Cdata)
+                }).then(()=>{
+                    console.log(data)
+                    data.sort((a,b) => (a.Date < b.Date) ? 1 : ((b.Date < a.Date) ? -1 : 0)); 
+                    res.send(data)
+                })
+            })
+        })
+    })
+})
+
+app.post('/mybookings/search',(req,res)=>{
+    console.log(req.body)
+    let str=req.body["search_string"]
+    console.log(str)
+    currCards=req.body["data"]
+    updatedCards = currCards.filter(function(item){
+        console.log(item["Belongs_to"].toLowerCase())
+        return (item["Belongs_to"].toLowerCase() === str)
+      })
+      console.log(updatedCards)
+    res.send(updatedCards)
+})
+
+app.post('/extraClasses/search',(req,res)=>{
+    console.log(req.body)
+    console.log("called")
+    ECmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
+        res.send(searchResult)
+    })
+})
+
+app.post('/placements/search',(req,res)=>{
+    console.log(req.body)
+    console.log("called")
+    Pmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
+        res.send(searchResult)
+    })
+})
+
+app.post('/workshops/search',(req,res)=>{
+    console.log(req.body)
+    console.log("called")
+    Wmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
+        res.send(searchResult)
+    })
+})
+
+app.post('/midsems/search',(req,res)=>{
+    console.log(req.body)
+    console.log("called")
+    Mmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
+        res.send(searchResult)
+    })
+})
+
+app.post('/compre/search',(req,res)=>{
+    console.log(req.body)
+    console.log("called")
+    Cmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
+        res.send(searchResult)
+    })
+})
+
+app.post('/newRequests/search',(req,res)=>{
+    console.log("search in all requests")
+    console.log(req.body)
+    console.log("called")
+    var arr= new Array()
+    ECmodel.find({Rejected: false,Granted:false,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((ecData)=>{
+        arr=arr.concat(ecData)
+        Wmodel.find({Rejected: false,Granted:false,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((wData)=>{
+            arr=arr.concat(wData)
+            Mmodel.find({Rejected: false,Granted:false,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((mData)=>{
+                arr=arr.concat(mData)
+                Cmodel.find({Rejected: false,Granted:false,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((cData)=>{
+                    arr=arr.concat(cData)
+                }).then(()=>{
+                    console.log("gathered data")
+                    console.log(arr)
+                    res.send(arr)
+                })
+            })
+        })
+    })
+})
+
 
 module.exports = app;
