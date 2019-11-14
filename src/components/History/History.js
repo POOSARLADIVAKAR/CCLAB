@@ -90,13 +90,14 @@ class History extends Component{
         // search_string= document.getElementById("searchInput").value
         console.log(search_string)
         console.log('http://localhost:4000/requests/'+this.state.tab+'/search')
+        document.getElementById("searchInput").value = ""
         Axios.post('http://localhost:4000/requests/'+this.state.tab+'/search',search_string).then((res)=>{
             this.setState({histData:[]})
             this.setState({histData : res.data })
           // console.log(res.data)
         })
-        document.getElementById("searchInput").value = ""
       }
+
 
     render(){
         return(

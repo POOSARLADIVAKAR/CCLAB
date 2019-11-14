@@ -270,6 +270,8 @@ app.put('/compre/reject',(req,res)=>{
 })
 
 
+
+
 app.post('/mybookings/accepted',(req,res)=>{
     console.log(req.body)
     var data = new Array()
@@ -343,7 +345,6 @@ app.post('/mybookings/rejected',(req,res)=>{
 })
 
 app.post('/mybookings/search',(req,res)=>{
-    console.log("hii 8888888888888888888888")
     console.log(req.body)
     let str=req.body["search_string"]
     console.log(str)
@@ -434,5 +435,6 @@ app.post('/newRequests/search',(req,res)=>{
         })
     })
 })
+
 
 module.exports = app;
