@@ -349,9 +349,24 @@ app.post('/mybookings/search',(req,res)=>{
     console.log(str)
     currCards=req.body["data"]
     updatedCards = currCards.filter(function(item){
-        return item["Course_Title"].toLowerCase().search(
-          str.toLowerCase()) !== -1;
-      })
+        if(item["Belongs_to"]==="extraClasses")
+        {
+            return item["Course_Title"].toLowerCase().search(str.toLowerCase()) !== -1;
+        }
+        else if(item["Belongs_to"]==="workshops")
+        {
+            return item["Name_of_Workshop"].toLowerCase().search(str.toLowerCase()) !== -1;
+        }
+        else if(item["Belongs_to"]==="midsems")
+        {
+            return item["Course_Title"].toLowerCase().search(str.toLowerCase()) !== -1;
+        }
+        else if(item["Belongs_to"]==="compre")
+        {
+            return item["Course_Title"].toLowerCase().search(str.toLowerCase()) !== -1;
+        }
+        })
+        
       console.log("updated cardssssssssssssssss")
       console.log(updatedCards)
     res.send(updatedCards)
