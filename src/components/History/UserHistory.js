@@ -63,32 +63,19 @@ class UserHistory extends Component
     }
 
     searchClicked = (e)=>{
-<<<<<<< HEAD
-        console.log("hiiiiiiiiiiii")
-        console.log(e.target.value)
-        let search_obj={}
-        search_obj["search_string"]=document.getElementById("searchInput").value
-        search_obj["data"]=this.state.data
-=======
         let search_obj={}
         search_obj["search_string"]=document.getElementById("searchInput").value
         search_obj["data"]=this.state.data
         console.log(search_obj)
->>>>>>> 608a3bd99f90289a99fb35ad79ea3e2b4d77aeec
         axios.post('http://localhost:4000/requests/mybookings/search',search_obj).then((res)=>{
             this.setState({data:[]})        
             this.setState({data : res.data })  
         })
-<<<<<<< HEAD
-    }
-
-=======
         document.getElementById("searchInput").value = ""
     }
 
 
 
->>>>>>> 608a3bd99f90289a99fb35ad79ea3e2b4d77aeec
     render(){
           return (
             <div style={{"height":"100vh"}}>
