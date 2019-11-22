@@ -10,13 +10,13 @@ class Resources extends Component{
     constructor(props){
         super(props)
         this.state = { Nav_bar : <Nav_user/> , 
-            keys : ["Systems","Seats","Projector","Linux","Windows","Matlab","AutoCad","QTspim"] ,
+            keys : ["Systems","Projector","Operating_systems","Softwares"],
             data: [],
             room : 0
             
         }
         this.edit = ""
-        this.room_name = "D201"
+        this.room_name = "D208A"
     }
     componentWillMount(){
         const token = window.localStorage.getItem("cclab-token")
@@ -50,19 +50,18 @@ class Resources extends Component{
         })   
     }
     send_data = (e) =>{
+        e.preventDefault()
         console.log("Submit_data clicked")
         let update_data = this.state.data[this.state.room]
         console.log(update_data)
         if(e.target[0].value != "") update_data["Systems"] = e.target[0].value
-        if(e.target[1].value != "") update_data["Seats"] = e.target[1].value
-        if(e.target[2].value != "") update_data["Projector"] = e.target[2].value
-        if(e.target[3].value != "") update_data["Linux"] = e.target[3].value
-        if(e.target[4].value != "") update_data["Windows"] = e.target[4].value
-        if(e.target[5].value != "") update_data["AutoCad"] = e.target[5].value
-        if(e.target[6].value != "") update_data["Matlab"] = e.target[6].value
-        if(e.target[7].value != "") update_data["QTspim"] = e.target[7].value
+        if(e.target[1].value != "") update_data["Projector"] = e.target[1].value
+        if(e.target[2].value != "") update_data["Operating_systems"] = e.target[2].value
+        if(e.target[3].value != "") update_data["Softwares"] = e.target[3].value
+        console.log(update_data)
         Axios.post("http://localhost:4000/Resources/update",update_data).then((res)=>{
-            console.log(res)
+            this.setState({data : res.data },()=>{
+            })
         })
         this.render()
     }
@@ -73,12 +72,12 @@ class Resources extends Component{
                 <div>
                     {this.state.Nav_bar}
                     <ul className="flex-container">
-                        <li id ="0" className="flex-item grow" onClick = {this.getRoom}>D201</li>
-                        <li id ="1" className="flex-item grow" onClick = {this.getRoom}>D202</li>
-                        <li id ="2" className="flex-item grow" onClick = {this.getRoom}>D203</li>
-                        <li id ="3" className="flex-item grow" onClick = {this.getRoom}>D204</li>
-                        <li id ="4" className="flex-item grow" onClick = {this.getRoom}>D205</li>
-                        <li id ="5" className="flex-item grow" onClick = {this.getRoom}>D206</li>
+                        <li id ="0" className="flex-item grow" onClick = {this.getRoom}>D208A</li>
+                        <li id ="1" className="flex-item grow" onClick = {this.getRoom}>D208B</li>
+                        <li id ="2" className="flex-item grow" onClick = {this.getRoom}>D208C</li>
+                        <li id ="3" className="flex-item grow" onClick = {this.getRoom}>D311</li>
+                        <li id ="4" className="flex-item grow" onClick = {this.getRoom}>D312</li>
+                        <li id ="5" className="flex-item grow" onClick = {this.getRoom}>D313</li>
                     </ul>
                 </div>
             )
@@ -87,12 +86,12 @@ class Resources extends Component{
             <div>
                 {this.state.Nav_bar}
                 <ul className="flex-container">
-                    <li id ="0" className="flex-item grow" onClick = {this.getRoom}>D201</li>
-                    <li id ="1" className="flex-item grow" onClick = {this.getRoom}>D202</li>
-                    <li id ="2" className="flex-item grow" onClick = {this.getRoom}>D203</li>
-                    <li id ="3" className="flex-item grow" onClick = {this.getRoom}>D204</li>
-                    <li id ="4" className="flex-item grow" onClick = {this.getRoom}>D205</li>
-                    <li id ="5" className="flex-item grow" onClick = {this.getRoom}>D206</li>
+                    <li id ="0" className="flex-item grow" onClick = {this.getRoom}>D208A</li>
+                    <li id ="1" className="flex-item grow" onClick = {this.getRoom}>D208B</li>
+                    <li id ="2" className="flex-item grow" onClick = {this.getRoom}>D208C</li>
+                    <li id ="3" className="flex-item grow" onClick = {this.getRoom}>D311</li>
+                    <li id ="4" className="flex-item grow" onClick = {this.getRoom}>D312</li>
+                    <li id ="5" className="flex-item grow" onClick = {this.getRoom}>D313</li>
                 </ul>
                 <h1 id="RoomSelected">{this.room_name}</h1>
                 <div className="table">
@@ -104,10 +103,19 @@ class Resources extends Component{
                     </div>
                     {   
                         this.state.keys.map((item,i)=>{
+                            if(item=="Operating_systems")
+                            {
+                                return(
+                                <div className="tr" key ={i}>
+                                    <div className="td" ><span className="textCell">Operating Systems</span></div>
+                                    <div className="td" ><span className="textCell">{this.state.data[this.state.room][item]}</span></div>
+                                </div>
+                            )    
+                            }
                             return(
                                 <div className="tr" key ={i}>
-                                    <div className="td" >{item}</div>
-                                    <div className="td" >{this.state.data[this.state.room][item]}</div>                            
+                                    <div className="td" ><span className="textCell">{item}</span></div>
+                                    <div className="td" ><span className="textCell">{this.state.data[this.state.room][item]}</span></div>
                                 </div>
                             )
                         })
@@ -119,24 +127,32 @@ class Resources extends Component{
                 <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header" style={{"padding":"35px 50px"}}>
-                    <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
+                    <h1 style={{"color":"rgb(52, 177, 235)"}}>Update Resources</h1>
                     <button type="button" className="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div className="modal-body" style={{"padding":"40px 50px"}}>
                     <form role="form" onSubmit ={this.send_data} >
                         {
                             (this.state.keys.map((item,i)=>{
-                                
+                                if(item=="Operating_systems")
+                                {
+                                    return (
+                                    <div className="form-group" key={i}>
+                                        <label for={item} className = "label_class" >Operating Systems</label>
+                                        <input type="text" className="form-control" id={item} defaultValue={this.state.data[this.state.room][this.state.keys[i]]}></input>
+                                    </div>
+                                )    
+                                }
                                 return (
                                     <div className="form-group" key={i}>
                                         <label for={item} className = "label_class" >{item}</label>
-                                        <input type="text" className="form-control" id={item} placeholder={this.state.data[this.state.room][this.state.keys[i]]}></input>
+                                        <input type="text" className="form-control" id={item} defaultValue={this.state.data[this.state.room][this.state.keys[i]]}></input>
                                     </div>
                                 )
                             }))
                         }
 
-                        <button type="submit" className="btn btn-primary ">Submit</button>
+                        <button type="submit" className="btn btn-primary ">Make Changes</button>
                     </form>
                     </div>
                 </div>

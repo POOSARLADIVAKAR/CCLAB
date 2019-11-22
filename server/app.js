@@ -128,7 +128,10 @@ app.post('/Resources/update',(req,res)=>{
     })
 
     resourceModel.update({Room_no : req.body.Room_no},{...req.body}).then((updated)=>{
-        res.send(updated)
+        //res.send(updated)
+        resourceModel.find({}).then((data)=>{
+            res.send(JSON.stringify(data))
+        })
     })
 })
 
@@ -139,12 +142,8 @@ app.post('/Resources/insert',(req,res)=>{
         Room_no : req.body.Room_no,
         Systems : req.body.Systems,
         Projector : req.body.Projector,
-        Seats : req.body.Seats,
-        Linux : req.body.Linux,
-        Windows : req.body.Windows,
-        Matlab : req.body.Matlab,
-        AutoCad : req.body.AutoCad,
-        QTspim : req.body.QTspim
+        Operating_systems : req.body.Operating_systems,
+        Softwares : req.body.Softwares
 
     }).save().then((newResource)=>{
         console.log("Newly created Resource")

@@ -57,6 +57,8 @@ class History_Box extends Component
                 this.reject = <button onClick={this.handleReject} >Reject</button>
             }
         }
+        console.log("checking the data")
+        console.log(this.state.data)
         return(
             <div>
                 <div className="card">
@@ -67,7 +69,7 @@ class History_Box extends Component
                         {   
                             this.state.keys.map((item,index)=>
                                     {   //console.log(item,index)
-                                        if((item!="_id")&&(item!="__v")&&(item!="Granted"&&(item!="Class_Rooms")&&(item!="Date")&&(item!="Belongs_to")&&(item!="Rejected")&&(item!="Comment")&&(item!="User_email"))){
+                                        if((item!="_id")&&(item!="__v")&&(item!="Granted"&&(item!="Class_Rooms")&&(item!="Date")&&(item!="Belongs_to")&&(item!="Rejected")&&(item!="Comment"))){
                                             return(
                                                 <div className="container-History" key={index}>
                                                         <div className="mdl-cell mdl-cell--12-col ">

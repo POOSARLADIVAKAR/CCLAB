@@ -63,8 +63,15 @@
 .td
 {
   display:table-cell; 
+  width: 50%;
   border:1px solid black;
   padding:1px;
+  vertical-align: middle;
+}
+
+.textCell{
+  vertical-align: middle;
+  font-size: large;
 }
 
 .label_class{

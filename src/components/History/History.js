@@ -115,7 +115,7 @@ class History extends Component{
 
                     <div id="search_space" className="tabcontent">
                         <div className = "searchBar"> {/*float top and bottom*/}
-                            <input type="text" id="searchInput" placeholder = "Search ..."/>
+                            <input type="text" id="searchInput" placeholder = "Enter Room No to search"/>
                             <button type="submit" onClick={this.searchClicked}>
                                 <i className="fa fa-search fa-2x"></i>
                             </button>

@@ -273,6 +273,7 @@ app.put('/compre/reject',(req,res)=>{
 
 
 app.post('/mybookings/accepted',(req,res)=>{
+    console.log(("**********************"))
     console.log(req.body)
     var data = new Array()
     ECmodel.find({User_email : req.body.email,Granted:true}).sort({Date : 1}).then((ECdata)=>{
