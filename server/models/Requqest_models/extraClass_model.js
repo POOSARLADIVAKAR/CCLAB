@@ -13,7 +13,8 @@ const extraClassSchema = new Schema({
     Granted : Boolean,
     Belongs_to : String,
     Rejected : Boolean,
-    Comment : String
+    Comment : String,
+    PhoneNo : Number
 })
 
 const extraClassModel = mongoose.model('extraClass',extraClassSchema)

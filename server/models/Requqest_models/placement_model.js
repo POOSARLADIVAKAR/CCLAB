@@ -13,7 +13,8 @@ const placementSchema = new Schema({
     Granted : Boolean,
     Belongs_to : String,
     Rejected : Boolean,
-    Comment : String
+    Comment : String,
+    PhoneNo : Number
 })
 
 const placementModel = mongoose.model('placement',placementSchema)

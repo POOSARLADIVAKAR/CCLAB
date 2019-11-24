@@ -13,11 +13,11 @@ class Home extends Component{
         super(props)
         this.state = { Nav_bar : <Nav_user/>,
             isAdmin : false,
-            EC_keys : ["Course No","Course Title","Class Rooms","Date","Time"],
+            EC_keys : ["Course No","Course Title","Class Rooms","Date","Time","Phone No"],
             P_keys : [],
-            W_keys : ["Name of Workshop","Name of Department/Club","Class Rooms","Date","Time"],
-            M_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"],
-            C_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"],
+            W_keys : ["Name of Workshop","Name of Department/Club","Class Rooms","Date","Time","Phone No"],
+            M_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time","Phone No"],
+            C_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time","Phone No"],
             roomSelected : 0,
             calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=aXBwYm01Y2w2NTB0cDdib3QxaWM4aXFpcmNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK&amp;showCalendars=1&amp;showTabs=1&amp;showDate=1&amp;showNav=1&amp;showTitle=1" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe>
         }   
@@ -50,6 +50,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
+        request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -83,6 +84,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
+        request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -109,6 +111,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
+        request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -134,6 +137,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
+        request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -198,7 +202,7 @@ class Home extends Component{
                                 <div className="modal-dialog ">
                                     <div className="modal-content">
                                         <div className="modal-header" style={{"padding":"35px 50px"}}>
-                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
+                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>Extra Class</h1>
                                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                                         </div>
                                         <div className="modal-body" style={{"padding":"40px 50px"}}>
@@ -210,7 +214,7 @@ class Home extends Component{
                                                             return (
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
-                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} ></input>
+                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required></input>
                                                                 </div>
                                                             )
                                                         }
@@ -249,7 +253,7 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
                                                                     <div >
-                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}}></input>
+                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                     </div>
                                                                 </div>
                                                             )
@@ -259,9 +263,19 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label><br></br>
                                                                     <span style = {{"display":"inline"}}>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}}></input>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}}></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
                                                                     </span>
+                                                                </div>
+                                                            )
+                                                        }
+                                                        else if(item=="Phone No"){
+                                                            return (
+                                                                <div className="form-group" key={i}>
+                                                                    <label for={item} className = "label_class" >{item}</label>
+                                                                    <div >
+                                                                        <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                                    </div>
                                                                 </div>
                                                             )
                                                         }
@@ -279,7 +293,7 @@ class Home extends Component{
                                 <div className="modal-dialog ">
                                     <div className="modal-content">
                                         <div className="modal-header" style={{"padding":"35px 50px"}}>
-                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
+                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>Workshop</h1>
                                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                                         </div>
                                         <div className="modal-body" style={{"padding":"40px 50px"}}>
@@ -291,7 +305,7 @@ class Home extends Component{
                                                             return (
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
-                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} ></input>
+                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required ></input>
                                                                 </div>
                                                             )
                                                         }
@@ -330,7 +344,7 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
                                                                     <div >
-                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}}></input>
+                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                     </div>
                                                                 </div>
                                                             )
@@ -340,9 +354,19 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label><br></br>
                                                                     <span style = {{"display":"inline"}}>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}}></input>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}}></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
                                                                     </span>
+                                                                </div>
+                                                            )
+                                                        }
+                                                        else if(item=="Phone No"){
+                                                            return (
+                                                                <div className="form-group" key={i}>
+                                                                    <label for={item} className = "label_class" >{item}</label>
+                                                                    <div >
+                                                                        <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                                    </div>
                                                                 </div>
                                                             )
                                                         }
@@ -359,7 +383,7 @@ class Home extends Component{
                                 <div className="modal-dialog ">
                                     <div className="modal-content">
                                         <div className="modal-header" style={{"padding":"35px 50px"}}>
-                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
+                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>Midsem</h1>
                                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                                         </div>
                                         <div className="modal-body" style={{"padding":"40px 50px"}}>
@@ -371,7 +395,7 @@ class Home extends Component{
                                                             return (
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
-                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} ></input>
+                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required></input>
                                                                 </div>
                                                             )
                                                         }
@@ -410,7 +434,7 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
                                                                     <div >
-                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}}></input>
+                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                     </div>
                                                                 </div>
                                                             )
@@ -420,9 +444,19 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label><br></br>
                                                                     <span style = {{"display":"inline"}}>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}}></input>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}}></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
                                                                     </span>
+                                                                </div>
+                                                            )
+                                                        }
+                                                        else if(item=="Phone No"){
+                                                            return (
+                                                                <div className="form-group" key={i}>
+                                                                    <label for={item} className = "label_class" >{item}</label>
+                                                                    <div >
+                                                                        <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                                    </div>
                                                                 </div>
                                                             )
                                                         }
@@ -439,7 +473,7 @@ class Home extends Component{
                             <div className="modal-dialog ">
                                 <div className="modal-content">
                                     <div className="modal-header" style={{"padding":"35px 50px"}}>
-                                        <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
+                                        <h1 style={{"color":"rgb(52, 177, 235)"}}>Compre</h1>
                                         <button type="button" className="close" data-dismiss="modal">&times;</button>
                                     </div>
                                     <div className="modal-body" style={{"padding":"40px 50px"}}>
@@ -451,7 +485,7 @@ class Home extends Component{
                                                         return (
                                                             <div className="form-group" key={i}>
                                                                 <label for={item} className = "label_class" >{item}</label>
-                                                                <input type="text" className="form-control" id={item} placeholder={"Enter "+item} ></input>
+                                                                <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required></input>
                                                             </div>
                                                         )
                                                     }
@@ -490,7 +524,7 @@ class Home extends Component{
                                                             <div className="form-group" key={i}>
                                                                 <label for={item} className = "label_class" >{item}</label>
                                                                 <div >
-                                                                    <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}}></input>
+                                                                    <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                 </div>
                                                             </div>
                                                         )
@@ -500,12 +534,22 @@ class Home extends Component{
                                                             <div className="form-group" key={i}>
                                                                 <label for={item} className = "label_class" >{item}</label><br></br>
                                                                 <span style = {{"display":"inline"}}>
-                                                                    <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}}></input>
-                                                                    <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}}></input>
+                                                                    <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
+                                                                    <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
                                                                 </span>
                                                             </div>
                                                         )
                                                     }
+                                                    else if(item=="Phone No"){
+                                                            return (
+                                                                <div className="form-group" key={i}>
+                                                                    <label for={item} className = "label_class" >{item}</label>
+                                                                    <div >
+                                                                        <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                        }
                                                 }))
                                             }
                                             <button type="submit" className="btn btn-primary ">Submit</button>
