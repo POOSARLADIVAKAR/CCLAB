@@ -17,7 +17,9 @@ class Home extends Component{
             P_keys : [],
             W_keys : ["Name of Workshop","Name of Department/Club","Class Rooms","Date","Time"],
             M_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"],
-            C_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"]
+            C_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"],
+            roomSelected : 0,
+            calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=aXBwYm01Y2w2NTB0cDdib3QxaWM4aXFpcmNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK&amp;showCalendars=1&amp;showTabs=1&amp;showDate=1&amp;showNav=1&amp;showTitle=1" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe>
         }   
         this.token = {}
     }
@@ -148,23 +150,44 @@ class Home extends Component{
         })
     }
 
+    getCalendar = (e)=>{
+        console.log("in get calendar method")
+        let room=e.target.id
+        if(room==="D208A")
+            this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=aXBwYm01Y2w2NTB0cDdib3QxaWM4aXFpcmNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK&amp;showCalendars=1&amp;showTabs=1&amp;showDate=1&amp;showNav=1&amp;showTitle=1" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+        else if(room==="D208B")
+            this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%234285F4&amp;ctz=Asia%2FKolkata&amp;src=b3FsM3BodjllcnZzYm1mZW5oaG1uNWRibW9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23743500&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+        else if(room==="D208C")
+            this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=ODVla25tMjl2b2VhYXVsbXVkcDlrcDB1YjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23336699&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+        else if(room==="D311")
+            this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=azFzM2lhZWZtZGxsc2hnaDE4NGNqM24xZmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23D6AE00&amp;showTz=0&amp;mode=WEEK&amp;showTitle=1" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+        else if(room==="D312")
+            this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=b20yNXJnN2E4M2c3bDRvMTNuaDBkaWJ2M2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+        else if(room==="D313")
+            this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=MWM5ajUyNjNoazF1OXB1cWM0cnUxbnVsNmtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23871111&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+
+    }
+
     render(){
         return (
             <div>
                 {this.state.Nav_bar}
                 <ul className="flex-container">
-                    <li className="flex-item grow">D208</li>
-                    <li className="flex-item grow">D208</li>
-                    <li className="flex-item grow">D208</li>
-                    <li className="flex-item grow">D208</li>
-                    <li className="flex-item grow">D208</li>
-                    <li className="flex-item grow">D208</li>
+                    <li id="D208A" className="flex-item grow" onClick={this.getCalendar}>D208A</li>
+                    <li id="D208B" className="flex-item grow" onClick={this.getCalendar}>D208B</li>
+                    <li id="D208C" className="flex-item grow" onClick={this.getCalendar}>D208C</li>
+                    <li id="D311" className="flex-item grow" onClick={this.getCalendar}>D311</li>
+                    <li id="D312" className="flex-item grow" onClick={this.getCalendar}>D312</li>
+                    <li id="D313" className="flex-item grow" onClick={this.getCalendar}>D313</li>
                 </ul>
                 {
+                    this.state.calendar
+                }
+                {
                     (this.state.isAdmin === true)? "":
-                        <div className="dropdown">
+                        <div className="dropup">
                             <button className="dropbtn btn btn-primary" style={{"backgroundColor":"rgb(5, 200, 245)"}}>Request</button>
-                            <div className="dropdown-content">
+                            <div className="dropup-content">
                                 <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#ECmodal" style={{"width":"100%","backgroundColor":"#ccc"}} >Extra Classes</button>
                                 <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#Pmodal" style={{"width":"100%","backgroundColor":"#ccc"}}>Placements</button>
                                 <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#Wmodal" style={{"width":"100%","backgroundColor":"#ccc"}}>Workshops</button>
