@@ -67,7 +67,7 @@ class History_Box extends Component
                         {   
                             this.state.keys.map((item,index)=>
                                     {   //console.log(item,index)
-                                        if((item!="_id")&&(item!="__v")&&(item!="Granted"&&(item!="Class_Rooms")&&(item!="Date")&&(item!="Belongs_to")&&(item!="Rejected")&&(item!="Comment")&&(item!="User_email"))){
+                                        if((item!="_id")&&(item!="__v")&&(item!="Granted"&&(item!="Class_Rooms")&&(item!="Date")&&(item!="Belongs_to")&&(item!="Rejected")&&(item!="Comment"))){ //removed &&(item!="User_email")
                                             return(
                                                 <div className="container-History" key={index}>
                                                         <div className="mdl-cell mdl-cell--12-col ">

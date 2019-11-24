@@ -117,7 +117,7 @@ class Home extends Component{
             }
         }
         request["user_email"] = this.token.email
-        request["Faculty Name"] = this.token.username
+        request["username"] = this.token.username
         document.getElementById('Mform').reset()
         Axios.post('http://localhost:4000/requests/midsem/insert',request).then((res)=>{
             console.log(res)
@@ -142,7 +142,7 @@ class Home extends Component{
             }
         }
         request["user_email"] = this.token.email
-        request["Faculty Name"] = this.token.username
+        request["username"] = this.token.username
         document.getElementById('Cform').reset()
         Axios.post('http://localhost:4000/requests/compre/insert',request).then((res)=>{
             console.log(res)
