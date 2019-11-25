@@ -5,6 +5,7 @@ const Pmodel = require('./../models/Requqest_models/placement_model')
 const Wmodel = require('./../models/Requqest_models/workshop_model')
 const Mmodel = require('./../models/Requqest_models/midsem_model')
 const Cmodel = require('./../models/Requqest_models/compre_model')
+const sendEmail = require('./../sendEmail')
 
 const bodyParser = require('body-parser');
 var ObjectID = require('mongodb').ObjectID;
@@ -163,8 +164,8 @@ app.get('/all',(req,res)=>{
                     // console.log(typeof(Cdata))
                     data = data.concat(Cdata)
                 }).then(()=>{
-                    // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
-                    // console.log(data)
+                    data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
+                    console.log(data)
                     res.send(data)
                 })
             })
@@ -215,6 +216,7 @@ app.put('/extraClasses/reject',(req,res)=>{
     //     res.send("Deleted Successfully")
     // })
     // res.send("Response received")
+    sendEmail('f20170225@hyderabad.bits-pilani.ac.in', 'Test subject', 'Test message');
     req.body.Rejected = true
     req.body.Granted = false
     ECmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
@@ -247,6 +249,7 @@ app.put('/midsem/reject',(req,res)=>{
     // })
     req.body.Rejected = true
     req.body.Granted = false
+    sendEmail(req.body.User_email, 'Rejected Request', req.body.Comment);
     Mmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
         console.log(updated)
         res.send(updated)

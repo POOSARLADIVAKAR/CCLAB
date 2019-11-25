@@ -39,18 +39,13 @@ class Resources extends Component{
 
     }
     getRoom = (e)=>{
-        // console.log(e.target.id)
-        // console.log(e.target.className)
         console.log(document.getElementById(e.target.id).textContent)
         this.room_name = document.getElementById(e.target.id).textContent
-        // console.log(document.getElementById(e.target.id))
-        // document.getElementById(e.target.id).style.background = "black"
         this.setState({room: Number(e.target.id)},()=>{
             this.render()
         })   
     }
     send_data = (e) =>{
-        e.preventDefault()
         console.log("Submit_data clicked")
         let update_data = this.state.data[this.state.room]
         console.log(update_data)
@@ -58,10 +53,8 @@ class Resources extends Component{
         if(e.target[1].value != "") update_data["Projector"] = e.target[1].value
         if(e.target[2].value != "") update_data["Operating_systems"] = e.target[2].value
         if(e.target[3].value != "") update_data["Softwares"] = e.target[3].value
-        console.log(update_data)
         Axios.post("http://localhost:4000/Resources/update",update_data).then((res)=>{
-            this.setState({data : res.data },()=>{
-            })
+            console.log(res)
         })
         this.render()
     }
@@ -97,8 +90,8 @@ class Resources extends Component{
                 <div className="table">
                     <div className="thead">
                         <div className="tr">
-                            <div className="td">Resource</div>
-                            <div className="td">Quantity</div>
+                            <div className="td"><span className="textCell">Resource</span></div>
+                            <div className="td"><span className="textCell">Quantity</span></div>
                         </div>
                     </div>
                     {   
@@ -113,10 +106,10 @@ class Resources extends Component{
                             )    
                             }
                             return(
-                                <div className="tr" key ={i}>
+                                <form className="tr" key ={i}>
                                     <div className="td" ><span className="textCell">{item}</span></div>
-                                    <div className="td" ><span className="textCell">{this.state.data[this.state.room][item]}</span></div>
-                                </div>
+                                    <div className="td" ><span className="textCell">{this.state.data[this.state.room][item]}</span></div>                            
+                                </form>
                             )
                         })
                     }
@@ -127,7 +120,7 @@ class Resources extends Component{
                 <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header" style={{"padding":"35px 50px"}}>
-                    <h1 style={{"color":"rgb(52, 177, 235)"}}>Update Resources</h1>
+                    <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
                     <button type="button" className="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div className="modal-body" style={{"padding":"40px 50px"}}>
@@ -138,21 +131,21 @@ class Resources extends Component{
                                 {
                                     return (
                                     <div className="form-group" key={i}>
-                                        <label for={item} className = "label_class" >Operating Systems</label>
-                                        <input type="text" className="form-control" id={item} defaultValue={this.state.data[this.state.room][this.state.keys[i]]}></input>
+                                        <label className = "label_class" >Operating Systems</label>
+                                        <input type="text" className="form-control" id={item} placeholder={this.state.data[this.state.room][item]}></input>
                                     </div>
                                 )    
                                 }
                                 return (
                                     <div className="form-group" key={i}>
                                         <label for={item} className = "label_class" >{item}</label>
-                                        <input type="text" className="form-control" id={item} defaultValue={this.state.data[this.state.room][this.state.keys[i]]}></input>
+                                        <input type="text" className="form-control" id={item} placeholder={this.state.data[this.state.room][this.state.keys[i]]}></input>
                                     </div>
                                 )
                             }))
                         }
 
-                        <button type="submit" className="btn btn-primary ">Make Changes</button>
+                        <button type="submit" className="btn btn-primary ">Submit</button>
                     </form>
                     </div>
                 </div>
@@ -164,6 +157,8 @@ class Resources extends Component{
 }
 
 export default Resources;
+
+
 
 
 

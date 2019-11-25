@@ -24,8 +24,10 @@ class History_Box extends Component
     handleReject = ()=>{
         console.log("reject clicked")
         console.log(this.state.data["Belongs_to"])
-        this.state.data["Comment"] = document.getElementById("Comment").value
-        console.log(document.getElementById("Comment").value)
+        if(this.today.getTime() < this.submit_time.getTime()){
+            this.state.data["Comment"] = document.getElementById("Comment").value
+            console.log(document.getElementById("Comment").value)
+        }
         console.log(this.state.data)
         Axios.put("http://localhost:4000/requests/"+this.state.data["Belongs_to"]+"/reject",this.state.data).then((res)=>{
             // console.log(res)

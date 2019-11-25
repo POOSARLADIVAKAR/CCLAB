@@ -117,7 +117,8 @@ class Home extends Component{
             }
         }
         request["user_email"] = this.token.email
-        request["Faculty Name"] = this.token.username
+        request["username"] = this.token.username
+        console.log(this.token.username)
         document.getElementById('Mform').reset()
         Axios.post('http://localhost:4000/requests/midsem/insert',request).then((res)=>{
             // console.log(res)
@@ -142,7 +143,7 @@ class Home extends Component{
             }
         }
         request["user_email"] = this.token.email
-        request["Faculty Name"] = this.token.username
+        request["username"] = this.token.username
         document.getElementById('Cform').reset()
         Axios.post('http://localhost:4000/requests/compre/insert',request).then((res)=>{
             // console.log(res)
@@ -160,7 +161,7 @@ class Home extends Component{
         else if(room==="D208C")
             this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=ODVla25tMjl2b2VhYXVsbXVkcDlrcDB1YjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23336699&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D311")
-            this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=azFzM2lhZWZtZGxsc2hnaDE4NGNqM24xZmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23D6AE00&amp;showTz=0&amp;mode=WEEK&amp;showTitle=1" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+    this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=azFzM2lhZWZtZGxsc2hnaDE4NGNqM24xZmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2330487E&amp;mode=WEEK&amp;showTz=0" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D312")
             this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=b20yNXJnN2E4M2c3bDRvMTNuaDBkaWJ2M2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D313")

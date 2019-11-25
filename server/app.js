@@ -128,7 +128,6 @@ app.post('/Resources/update',(req,res)=>{
     })
 
     resourceModel.update({Room_no : req.body.Room_no},{...req.body}).then((updated)=>{
-        //res.send(updated)
         resourceModel.find({}).then((data)=>{
             res.send(JSON.stringify(data))
         })

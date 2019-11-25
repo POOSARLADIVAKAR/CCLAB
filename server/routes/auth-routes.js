@@ -18,6 +18,10 @@ router.get('/google/redirect', passport.authenticate('google',{ failureRedirect:
     const user = {username : req.user.username , email : req.user.email , photo : req.user.photo}
     const user_token = jwthandler.generate_token(user);
     console.log(user_token)
+    var bitsMail = /bits-pilani.ac.in/;
+    if(!bitsMail.test(user.email)){
+        res.redirect('http://localhost:3000');
+    }
     res.redirect('http://localhost:3000/?user-token='+user_token);    
     // res.send(req.user);
 });
