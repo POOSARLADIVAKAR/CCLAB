@@ -13,6 +13,7 @@ const cookieParser = require('cookie-parser')
 const jwthandler = require("./config/token")
 const complaintModel = require('./models/Complaint_model')
 const lostItemModel = require('./models/LostItem_model')
+const sendEmail = require('./sendEmail')
 var bodyParser = require('body-parser'); //Parse data passed from post method and make it accessible
 
 const app = express();
@@ -98,7 +99,8 @@ app.get('/Complaints/solved',(req,res)=>{
     })
 })
 app.post('/Complaints/update',(req,res)=>{
-    console.log("Data received")
+    // console.log("Data received")
+    sendEmail(req.body.User_email, 'CC-Lab Complaint Resolved', "Your complaint has been resolved");
     complaintModel.update({_id: req.body.id},{Solved:true}  ).then((updated)=>{
         console.log(updated)    
     })

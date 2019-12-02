@@ -201,7 +201,7 @@ class Home extends Component{
                                 <div className="modal-dialog ">
                                     <div className="modal-content">
                                         <div className="modal-header" style={{"padding":"35px 50px"}}>
-                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
+                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>Extra Classes</h1>
                                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                                         </div>
                                         <div className="modal-body" style={{"padding":"40px 50px"}}>
@@ -222,15 +222,15 @@ class Home extends Component{
                                                                 <div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline1"></input>
-                                                                        <label className="custom-control-label 1" for="defaultInline1">D201A</label>
+                                                                        <label className="custom-control-label 1" for="defaultInline1">D208A</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline2"></input>
-                                                                        <label className="custom-control-label 2" for="defaultInline2">D201B</label>
+                                                                        <label className="custom-control-label 2" for="defaultInline2">D208B</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline3"></input>
-                                                                        <label className="custom-control-label 3" for="defaultInline3">D201C</label>
+                                                                        <label className="custom-control-label 3" for="defaultInline3">D208C</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline4"></input>
@@ -282,7 +282,7 @@ class Home extends Component{
                                 <div className="modal-dialog ">
                                     <div className="modal-content">
                                         <div className="modal-header" style={{"padding":"35px 50px"}}>
-                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
+                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>Workshop</h1>
                                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                                         </div>
                                         <div className="modal-body" style={{"padding":"40px 50px"}}>
@@ -303,15 +303,15 @@ class Home extends Component{
                                                                 <div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline19"></input>
-                                                                        <label className="custom-control-label 1" for="defaultInline19">D201A</label>
+                                                                        <label className="custom-control-label 1" for="defaultInline19">D208A</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline20"></input>
-                                                                        <label className="custom-control-label 2" for="defaultInline20">D201B</label>
+                                                                        <label className="custom-control-label 2" for="defaultInline20">D208B</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline21"></input>
-                                                                        <label className="custom-control-label 3" for="defaultInline21">D201C</label>
+                                                                        <label className="custom-control-label 3" for="defaultInline21">D208C</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline22"></input>
@@ -362,7 +362,7 @@ class Home extends Component{
                                 <div className="modal-dialog ">
                                     <div className="modal-content">
                                         <div className="modal-header" style={{"padding":"35px 50px"}}>
-                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
+                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>Midsem</h1>
                                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                                         </div>
                                         <div className="modal-body" style={{"padding":"40px 50px"}}>
@@ -383,15 +383,15 @@ class Home extends Component{
                                                                 <div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline7"></input>
-                                                                        <label className="custom-control-label 1" for="defaultInline7">D201A</label>
+                                                                        <label className="custom-control-label 1" for="defaultInline7">D208A</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline8"></input>
-                                                                        <label className="custom-control-label 2" for="defaultInline8">D201B</label>
+                                                                        <label className="custom-control-label 2" for="defaultInline8">D208B</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline9"></input>
-                                                                        <label className="custom-control-label 3" for="defaultInline9">D201C</label>
+                                                                        <label className="custom-control-label 3" for="defaultInline9">D208C</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline10"></input>
@@ -442,7 +442,7 @@ class Home extends Component{
                             <div className="modal-dialog ">
                                 <div className="modal-content">
                                     <div className="modal-header" style={{"padding":"35px 50px"}}>
-                                        <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
+                                        <h1 style={{"color":"rgb(52, 177, 235)"}}>Compre</h1>
                                         <button type="button" className="close" data-dismiss="modal">&times;</button>
                                     </div>
                                     <div className="modal-body" style={{"padding":"40px 50px"}}>

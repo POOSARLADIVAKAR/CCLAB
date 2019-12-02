@@ -176,6 +176,7 @@ app.get('/all',(req,res)=>{
 
 app.put('/extraClasses/update',(req,res)=>{
     req.body.Granted = true
+    sendEmail(req.body.User_email, 'CC-Lab Request Accepted', "Your Request for ExtraClasses has been Accepted");
     ECmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
         console.log(updated)
         res.send(updated)
@@ -184,6 +185,7 @@ app.put('/extraClasses/update',(req,res)=>{
 
 app.put('/workshops/update',(req,res)=>{
     req.body.Granted = true
+    sendEmail(req.body.User_email, 'CC-Lab Request Accepted', "Your Request for Workshop has been Accepted");
     Wmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
         console.log(updated)
         res.send(updated)
@@ -192,6 +194,7 @@ app.put('/workshops/update',(req,res)=>{
 
 app.put('/midsem/update',(req,res)=>{
     req.body.Granted = true
+    sendEmail(req.body.User_email, 'CC-Lab Request Accepted', "Your Request for Midsem has been Accepted");
     Mmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
         console.log(updated)
         res.send(updated)
@@ -200,6 +203,7 @@ app.put('/midsem/update',(req,res)=>{
 
 app.put('/compre/update',(req,res)=>{
     req.body.Granted = true
+    sendEmail(req.body.User_email, 'CC-Lab Request Accepted', "Your Request for Compre has been Accepted");
     Cmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
         console.log(updated)
         res.send(updated)
@@ -216,7 +220,7 @@ app.put('/extraClasses/reject',(req,res)=>{
     //     res.send("Deleted Successfully")
     // })
     // res.send("Response received")
-    sendEmail('f20170225@hyderabad.bits-pilani.ac.in', 'Test subject', 'Test message');
+    sendEmail(req.body.User_email, 'CC-Lab Request Rejected', req.body.Comment);    
     req.body.Rejected = true
     req.body.Granted = false
     ECmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
@@ -234,6 +238,7 @@ app.put('/workshops/reject',(req,res)=>{
     // })
     req.body.Rejected = true
     req.body.Granted = false
+    sendEmail(req.body.User_email, 'CC-Lab Request Rejected', req.body.Comment);
     Wmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
         console.log(updated)
         res.send(updated)
@@ -249,7 +254,7 @@ app.put('/midsem/reject',(req,res)=>{
     // })
     req.body.Rejected = true
     req.body.Granted = false
-    sendEmail(req.body.User_email, 'Rejected Request', req.body.Comment);
+    sendEmail(req.body.User_email, 'CC-Lab Request Rejected', req.body.Comment);
     Mmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
         console.log(updated)
         res.send(updated)
@@ -266,6 +271,7 @@ app.put('/compre/reject',(req,res)=>{
     // })
     req.body.Rejected = true
     req.body.Granted = false
+    sendEmail(req.body.User_email, 'CC-Lab Request Rejected', req.body.Comment);
     Cmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
         console.log(updated)
         res.send(updated)

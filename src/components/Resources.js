@@ -120,7 +120,7 @@ class Resources extends Component{
                 <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header" style={{"padding":"35px 50px"}}>
-                    <h1 style={{"color":"rgb(52, 177, 235)"}}>EDIT FORM</h1>
+                    <h1 style={{"color":"rgb(52, 177, 235)"}}>{this.room_name}</h1>
                     <button type="button" className="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div className="modal-body" style={{"padding":"40px 50px"}}>

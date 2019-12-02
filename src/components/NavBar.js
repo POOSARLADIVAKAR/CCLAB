@@ -34,7 +34,7 @@ class NavBar extends Component{
         return (
             <Navbar  expand="lg"  variant = "light" style={{"backgroundColor":"rgb(33,150,243)"}} >
                 <Navbar.Brand>
-                    <span className="brandText" style={{"fontSize":"20px"}} >CC-LAB</span>
+                    <span className="brandText" style={{"fontSize":"25px"},{"verticalAlign":"center"}} >CC-LAB</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
