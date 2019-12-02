@@ -6,12 +6,8 @@ const resourceSchema = new Schema({
     Room_no : "",
     Systems : Number,
     Projector : Number,
-    Seats : Number,
-    Linux : Number,
-    Windows : Number,
-    Matlab : Number,
-    AutoCad : Number,
-    QTspim : Number
+    Operating_systems : String,
+    Softwares : String
 })
 
 const resourceModel = mongoose.model('resources',resourceSchema) //coolaction name in your database

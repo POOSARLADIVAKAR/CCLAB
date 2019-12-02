@@ -9,6 +9,7 @@ import Complaints_Box from './Complaints_Box'
 class Complaints extends Component{
   constructor(props){
       super(props) 
+      console.log(props)
       this.state = { data : []} 
   }
 

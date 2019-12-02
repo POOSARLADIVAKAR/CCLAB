@@ -17,9 +17,9 @@ class Login extends Component{
     }
     componentWillMount(){
       var URL_parsed = parser(window.location.href)
-      console.log(URL_parsed)
+      // console.log(URL_parsed)
       const equal_to = URL_parsed.query.indexOf("=")
-      console.log(URL_parsed.query.substr(equal_to+1))
+      // console.log(URL_parsed.query.substr(equal_to+1))
       if(URL_parsed.query.substr(equal_to+1)!=""){
           window.localStorage.setItem("cclab-token",URL_parsed.query.substr(equal_to+1))
           this.props.history.push("./Home")

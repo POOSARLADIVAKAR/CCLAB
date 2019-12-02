@@ -1,0 +1,13 @@
+.eachComplaintRow{
+    border-radius: 5px;
+    background-color: #e7e5e5;
+}
+
+#itemBox{
+    border-radius: 5px;
+    background-color: white;
+    width: 30%;
+    margin: 1%;
+    display: inline-block;
+    padding: 0.5%;
+}

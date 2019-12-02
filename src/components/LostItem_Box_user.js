@@ -2,7 +2,6 @@ import React,{ Component } from "react";
 import Complaints from "./Complaints";
 import Axios from 'axios'
 import '../cssfiles/LostItem_Box_User.css'
-
 //this page is for user views al un collected elements
 class LostItem_Box_user extends Component{
     constructor(props){

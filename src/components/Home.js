@@ -15,11 +15,11 @@ class Home extends Component{
             isAdmin : false,
             EC_keys : ["Course No","Course Title","Class Rooms","Date","Time","Phone No"],
             P_keys : [],
-            W_keys : ["Name of Workshop","Name of Department/Club","Class Rooms","Date","Time","Phone No"],
-            M_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time","Phone No"],
-            C_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time","Phone No"],
-            roomSelected : 0,
-            calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=aXBwYm01Y2w2NTB0cDdib3QxaWM4aXFpcmNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK&amp;showCalendars=1&amp;showTabs=1&amp;showDate=1&amp;showNav=1&amp;showTitle=1" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe>
+            W_keys : ["Name of Workshop","Name of Department/Club","Class Rooms","Date","Time"],
+            M_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"],
+            C_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"],
+            roomSelected:0,
+            calendar:<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=aXBwYm01Y2w2NTB0cDdib3QxaWM4aXFpcmNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK&amp;showCalendars=1&amp;showTabs=1&amp;showDate=1&amp;showNav=1&amp;showTitle=1" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe>
         }   
         this.token = {}
     }
@@ -35,7 +35,7 @@ class Home extends Component{
             const decode_token = jwt.decode(token)
             // console.log("in resources page")
             // console.log(decode_token)
-            if(decode_token.email == "f20170225@hyderabad.bits-pilani.ac.in"){
+            if(decode_token.email == "f20170209@hyderabad.bits-pilani.ac.in"){
                 this.setState({Nav_bar : <NavBar/>, isAdmin : true})
             }
         }
@@ -62,7 +62,7 @@ class Home extends Component{
         request["username"] = this.token.username
         document.getElementById('ECform').reset()
         Axios.post('http://localhost:4000/requests/extraClasses/insert',request).then((res)=>{
-            console.log(res)
+            // console.log(res)
             this.setState({Data:res.data})
         })
     }
@@ -97,7 +97,7 @@ class Home extends Component{
         
         document.getElementById('Wform').reset()
         Axios.post('http://localhost:4000/requests/workshops/insert',request).then((res)=>{
-            console.log(res)
+            // console.log(res)
             this.setState({Data:res.data})
         })
     }
@@ -121,9 +121,10 @@ class Home extends Component{
         }
         request["user_email"] = this.token.email
         request["username"] = this.token.username
+        console.log(this.token.username)
         document.getElementById('Mform').reset()
         Axios.post('http://localhost:4000/requests/midsem/insert',request).then((res)=>{
-            console.log(res)
+            // console.log(res)
             this.setState({Data:res.data})
         })
     }
@@ -149,7 +150,7 @@ class Home extends Component{
         request["username"] = this.token.username
         document.getElementById('Cform').reset()
         Axios.post('http://localhost:4000/requests/compre/insert',request).then((res)=>{
-            console.log(res)
+            // console.log(res)
             this.setState({Data:res.data})
         })
     }
@@ -164,7 +165,7 @@ class Home extends Component{
         else if(room==="D208C")
             this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=ODVla25tMjl2b2VhYXVsbXVkcDlrcDB1YjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23336699&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D311")
-            this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=azFzM2lhZWZtZGxsc2hnaDE4NGNqM24xZmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23D6AE00&amp;showTz=0&amp;mode=WEEK&amp;showTitle=1" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+            this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=azFzM2lhZWZtZGxsc2hnaDE4NGNqM24xZmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2330487E&amp;mode=WEEK&amp;showTz=0" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D312")
             this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=b20yNXJnN2E4M2c3bDRvMTNuaDBkaWJ2M2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D313")
@@ -198,18 +199,19 @@ class Home extends Component{
                                 <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#Mmodal" style={{"width":"100%","backgroundColor":"#ccc"}}>Midsem</button>
                                 <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#Cmodal" style={{"width":"100%","backgroundColor":"#ccc"}}>Compre</button>
                             </div>
+                            
                             <div className="modal fade" id="ECmodal" role="dialog">
                                 <div className="modal-dialog ">
                                     <div className="modal-content">
                                         <div className="modal-header" style={{"padding":"35px 50px"}}>
-                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>Extra Class</h1>
+                                            <h1 style={{"color":"rgb(52, 177, 235)"}}>Extra Classes</h1>
                                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                                         </div>
                                         <div className="modal-body" style={{"padding":"40px 50px"}}>
                                             <form role="form" onSubmit ={this.extraClasses} id="ECform">
                                                 {
                                                     (this.state.EC_keys.map((item,i)=>{
-                                                        console.log(item)
+                                                        {/* console.log(item) */}
                                                         if((item=="Course No")||(item=="Course Title")){
                                                             return (
                                                                 <div className="form-group" key={i}>
@@ -223,15 +225,15 @@ class Home extends Component{
                                                                 <div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline1"></input>
-                                                                        <label className="custom-control-label 1" for="defaultInline1">D201A</label>
+                                                                        <label className="custom-control-label 1" for="defaultInline1">D208A</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline2"></input>
-                                                                        <label className="custom-control-label 2" for="defaultInline2">D201B</label>
+                                                                        <label className="custom-control-label 2" for="defaultInline2">D208B</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline3"></input>
-                                                                        <label className="custom-control-label 3" for="defaultInline3">D201C</label>
+                                                                        <label className="custom-control-label 3" for="defaultInline3">D208C</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline4"></input>
@@ -300,7 +302,7 @@ class Home extends Component{
                                             <form role="form" onSubmit ={this.workshops} id="Wform">
                                                 {
                                                     (this.state.W_keys.map((item,i)=>{
-                                                        console.log(item)
+                                                        {/* console.log(item) */}
                                                         if((item=="Name of Workshop")||(item=="Name of Department/Club")){
                                                             return (
                                                                 <div className="form-group" key={i}>
@@ -314,15 +316,15 @@ class Home extends Component{
                                                                 <div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline19"></input>
-                                                                        <label className="custom-control-label 1" for="defaultInline19">D201A</label>
+                                                                        <label className="custom-control-label 1" for="defaultInline19">D208A</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline20"></input>
-                                                                        <label className="custom-control-label 2" for="defaultInline20">D201B</label>
+                                                                        <label className="custom-control-label 2" for="defaultInline20">D208B</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline21"></input>
-                                                                        <label className="custom-control-label 3" for="defaultInline21">D201C</label>
+                                                                        <label className="custom-control-label 3" for="defaultInline21">D208C</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline22"></input>
@@ -390,7 +392,7 @@ class Home extends Component{
                                             <form role="form" onSubmit ={this.midsems} id="Mform">
                                                 {
                                                     (this.state.M_keys.map((item,i)=>{
-                                                        console.log(item)
+                                                        {/* console.log(item) */}
                                                         if((item=="Course No")||(item=="Course Title")){
                                                             return (
                                                                 <div className="form-group" key={i}>
@@ -404,15 +406,15 @@ class Home extends Component{
                                                                 <div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline7"></input>
-                                                                        <label className="custom-control-label 1" for="defaultInline7">D201A</label>
+                                                                        <label className="custom-control-label 1" for="defaultInline7">D208A</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline8"></input>
-                                                                        <label className="custom-control-label 2" for="defaultInline8">D201B</label>
+                                                                        <label className="custom-control-label 2" for="defaultInline8">D208B</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline9"></input>
-                                                                        <label className="custom-control-label 3" for="defaultInline9">D201C</label>
+                                                                        <label className="custom-control-label 3" for="defaultInline9">D208C</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline10"></input>
@@ -480,7 +482,7 @@ class Home extends Component{
                                         <form role="form" onSubmit ={this.compre} id="Cform">
                                             {
                                                 (this.state.C_keys.map((item,i)=>{
-                                                    console.log(item)
+                                                    {/* console.log(item) */}
                                                     if((item=="Course No")||(item=="Course Title")){
                                                         return (
                                                             <div className="form-group" key={i}>

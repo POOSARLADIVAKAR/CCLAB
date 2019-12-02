@@ -43,7 +43,7 @@
   border-spacing:2px;
   width:50%;
   margin-left: 25%;
-  margin-top: 5%;
+  margin-top: 1%;
 }
 .thead
 {
@@ -63,12 +63,15 @@
 .td
 {
   display:table-cell; 
+  width: 50%;
   border:1px solid black;
   padding:1px;
+  vertical-align: middle;
 }
-.tr.editing .td INPUT
-{
-  width:100px;
+
+.textCell{
+  vertical-align: middle;
+  font-size: large;
 }
 
 .label_class{

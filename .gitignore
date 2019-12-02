@@ -1,5 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+<<<<<<< HEAD
+# package.json
+# package-lock.json
+=======
 /src/components/Complaints.js
+>>>>>>> b45b1d9a0c5bfd7faa7baf8aec073ca37bf27323
 # dependencies
 /node_modules
 /.pnp
@@ -10,7 +15,7 @@
 
 # production
 /build
-
+.json
 # misc
 .DS_Store
 .env.local
@@ -19,5 +24,6 @@
 .env.production.local
 
 npm-debug.log*
+
 yarn-debug.log*
 yarn-error.log*

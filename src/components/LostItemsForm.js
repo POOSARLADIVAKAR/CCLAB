@@ -15,7 +15,7 @@ class LostItemForm extends Component
         }
     }
 
-    sendComplaint = (item) => {
+    sendLostItem = (item) => {
         // console.log(item)
         Axios.post('/LostItem',item).then((res)=>{
             console.log("item sent successfully")
@@ -33,7 +33,7 @@ class LostItemForm extends Component
         // console.log(e)
         this.setState({Room_no:e.target[0].value,Date:e.target[1].value,Item:e.target[2].value},(e)=>{
             // console.log(this.state)
-            this.sendComplaint({
+            this.sendLostItem({
                 Room_no:this.state.Room_no,
                 Date: this.state.Date,
                 Item: this.state.Item
@@ -61,7 +61,7 @@ class LostItemForm extends Component
                         <label for="lname">Date</label>
                         </div>
                         <div className="col-75">
-                        <input type="text" id="lname" name="lastname" placeholder="Date .." required></input>
+                        <input type="text" id="lname" name="lastname" placeholder="YYYY-MM-DD" required></input>
                         </div>
                     </div>
                     
