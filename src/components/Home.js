@@ -13,7 +13,7 @@ class Home extends Component{
         super(props)
         this.state = { Nav_bar : <Nav_user/>,
             isAdmin : false,
-            EC_keys : ["Course No","Course Title","Class Rooms","Date","Time"],
+            EC_keys : ["Course No","Course Title","Class Rooms","Date","Time","Phone No"],
             P_keys : [],
             W_keys : ["Name of Workshop","Name of Department/Club","Class Rooms","Date","Time"],
             M_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"],
@@ -50,6 +50,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
+        // request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -83,6 +84,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
+        // request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -109,6 +111,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
+        // request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -135,6 +138,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
+        // request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -161,7 +165,7 @@ class Home extends Component{
         else if(room==="D208C")
             this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=ODVla25tMjl2b2VhYXVsbXVkcDlrcDB1YjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23336699&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D311")
-    this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=azFzM2lhZWZtZGxsc2hnaDE4NGNqM24xZmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2330487E&amp;mode=WEEK&amp;showTz=0" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+            this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=azFzM2lhZWZtZGxsc2hnaDE4NGNqM24xZmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2330487E&amp;mode=WEEK&amp;showTz=0" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D312")
             this.setState({calendar : <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=b20yNXJnN2E4M2c3bDRvMTNuaDBkaWJ2M2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D313")
@@ -184,7 +188,6 @@ class Home extends Component{
                 {
                     this.state.calendar
                 }
-
                 {
                     (this.state.isAdmin === true)? "":
                         <div className="dropup">
@@ -213,7 +216,7 @@ class Home extends Component{
                                                             return (
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
-                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} ></input>
+                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required></input>
                                                                 </div>
                                                             )
                                                         }
@@ -252,7 +255,7 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
                                                                     <div >
-                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}}></input>
+                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                     </div>
                                                                 </div>
                                                             )
@@ -262,12 +265,22 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label><br></br>
                                                                     <span style = {{"display":"inline"}}>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}}></input>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}}></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
                                                                     </span>
                                                                 </div>
                                                             )
                                                         }
+                                                        // else if(item=="Phone No"){
+                                                        //     return (
+                                                        //         <div className="form-group" key={i}>
+                                                        //             <label for={item} className = "label_class" >{item}</label>
+                                                        //             <div >
+                                                        //                 <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                        //             </div>
+                                                        //         </div>
+                                                        //     )
+                                                        // }
                                                     }))
                                                 }
 
@@ -294,7 +307,7 @@ class Home extends Component{
                                                             return (
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
-                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} ></input>
+                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required ></input>
                                                                 </div>
                                                             )
                                                         }
@@ -333,7 +346,7 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
                                                                     <div >
-                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}}></input>
+                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                     </div>
                                                                 </div>
                                                             )
@@ -343,12 +356,22 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label><br></br>
                                                                     <span style = {{"display":"inline"}}>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}}></input>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}}></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
                                                                     </span>
                                                                 </div>
                                                             )
                                                         }
+                                                        // else if(item=="Phone No"){
+                                                        //     return (
+                                                        //         <div className="form-group" key={i}>
+                                                        //             <label for={item} className = "label_class" >{item}</label>
+                                                        //             <div >
+                                                        //                 <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                        //             </div>
+                                                        //         </div>
+                                                        //     )
+                                                        // }
                                                     }))
                                                 }
                                                 <button type="submit" className="btn btn-primary ">Submit</button>
@@ -374,7 +397,7 @@ class Home extends Component{
                                                             return (
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
-                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} ></input>
+                                                                    <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required></input>
                                                                 </div>
                                                             )
                                                         }
@@ -413,7 +436,7 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label>
                                                                     <div >
-                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}}></input>
+                                                                        <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                     </div>
                                                                 </div>
                                                             )
@@ -423,12 +446,22 @@ class Home extends Component{
                                                                 <div className="form-group" key={i}>
                                                                     <label for={item} className = "label_class" >{item}</label><br></br>
                                                                     <span style = {{"display":"inline"}}>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}}></input>
-                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}}></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
+                                                                        <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
                                                                     </span>
                                                                 </div>
                                                             )
                                                         }
+                                                        // else if(item=="Phone No"){
+                                                        //     return (
+                                                        //         <div className="form-group" key={i}>
+                                                        //             <label for={item} className = "label_class" >{item}</label>
+                                                        //             <div >
+                                                        //                 <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                        //             </div>
+                                                        //         </div>
+                                                        //     )
+                                                        // }
                                                     }))
                                                 }
                                                 <button type="submit" className="btn btn-primary ">Submit</button>
@@ -454,7 +487,7 @@ class Home extends Component{
                                                         return (
                                                             <div className="form-group" key={i}>
                                                                 <label for={item} className = "label_class" >{item}</label>
-                                                                <input type="text" className="form-control" id={item} placeholder={"Enter "+item} ></input>
+                                                                <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required></input>
                                                             </div>
                                                         )
                                                     }
@@ -493,7 +526,7 @@ class Home extends Component{
                                                             <div className="form-group" key={i}>
                                                                 <label for={item} className = "label_class" >{item}</label>
                                                                 <div >
-                                                                    <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}}></input>
+                                                                    <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                 </div>
                                                             </div>
                                                         )
@@ -503,12 +536,22 @@ class Home extends Component{
                                                             <div className="form-group" key={i}>
                                                                 <label for={item} className = "label_class" >{item}</label><br></br>
                                                                 <span style = {{"display":"inline"}}>
-                                                                    <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}}></input>
-                                                                    <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}}></input>
+                                                                    <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
+                                                                    <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
                                                                 </span>
                                                             </div>
                                                         )
                                                     }
+                                                    // else if(item=="Phone No"){
+                                                    //         return (
+                                                    //             <div className="form-group" key={i}>
+                                                    //                 <label for={item} className = "label_class" >{item}</label>
+                                                    //                 <div >
+                                                    //                     <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                    //                 </div>
+                                                    //             </div>
+                                                    //         )
+                                                    //     }
                                                 }))
                                             }
                                             <button type="submit" className="btn btn-primary ">Submit</button>

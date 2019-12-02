@@ -26,7 +26,8 @@ app.post('/extraClasses/insert',(req,res)=>{
         Time_end : req.body[`Time End`],
         Granted : false,
         Belongs_to : "extraClasses",
-        Rejected :false
+        Rejected :false,
+        // PhoneNo : req.body[`Phone No`]
     }).save().then((newECrequest)=>{
         res.send(newECrequest)
     })
@@ -55,7 +56,8 @@ app.post('/workshops/insert',(req,res)=>{
         Time_end : req.body[`Time End`],
         Granted : false,
         Belongs_to : "workshops",
-        Rejected :false
+        Rejected :false,
+        // PhoneNo : req.body[`Phone No`]
     }).save().then((newWrequest)=>{
         res.send(newWrequest)
     })
@@ -74,7 +76,8 @@ app.post('/midsem/insert',(req,res)=>{
         Time_end : req.body[`Time End`],
         Granted : false,
         Belongs_to : "midsem",
-        Rejected :false
+        Rejected :false,
+        // PhoneNo : req.body[`Phone No`]
     }).save().then((newMrequest)=>{
         res.send(newMrequest)
     })
@@ -93,7 +96,8 @@ app.post('/compre/insert',(req,res)=>{
         Time_end : req.body[`Time End`],
         Granted : false,
         Belongs_to : "compre",
-        Rejected :false
+        Rejected :false,
+        // PhoneNo : req.body[`Phone No`]
     }).save().then((newCrequest)=>{
       res.send(newCrequest)
     })
