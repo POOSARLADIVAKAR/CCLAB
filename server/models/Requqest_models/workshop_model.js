@@ -14,7 +14,7 @@ const workshopSchema = new Schema({
     Belongs_to : String,
     Rejected : Boolean,
     Comment : String,
-    PhoneNo : Number
+    // PhoneNo : Number
 })
 
 const workshopModel = mongoose.model('workshop',workshopSchema)

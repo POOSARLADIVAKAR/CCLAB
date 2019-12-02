@@ -14,7 +14,7 @@ const placementSchema = new Schema({
     Belongs_to : String,
     Rejected : Boolean,
     Comment : String,
-    PhoneNo : Number
+    // PhoneNo : Number
 })
 
 const placementModel = mongoose.model('placement',placementSchema)

@@ -14,7 +14,7 @@ const midsemSchema = new Schema({
     Belongs_to : String,
     Rejected : Boolean,
     Comment : String,
-    PhoneNo : Number
+    // PhoneNo : Number
 })
 
 const midsemModel = mongoose.model('midsem',midsemSchema)

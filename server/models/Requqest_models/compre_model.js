@@ -14,7 +14,7 @@ const compreSchema = new Schema({
     Belongs_to : String,
     Rejected : Boolean,
     Comment : String,
-    PhoneNo : Number
+    // PhoneNo : Number
 })
 
 const compreModel = mongoose.model('compre',compreSchema)

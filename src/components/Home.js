@@ -50,7 +50,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
-        request["Phone No"] = e.target[11].value
+        // request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -84,7 +84,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
-        request["Phone No"] = e.target[11].value
+        // request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -111,7 +111,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
-        request["Phone No"] = e.target[11].value
+        // request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -137,7 +137,7 @@ class Home extends Component{
         request["Date"] = e.target[8].value
         request["Time Start"] = e.target[9].value
         request["Time End"] = e.target[10].value
-        request["Phone No"] = e.target[11].value
+        // request["Phone No"] = e.target[11].value
         request["Class Rooms"] = []
         var class_rooms = ["D201A","D201B","D201C","D311","D312","D313"]
         for(let i =1;i<=6;i++){
@@ -269,16 +269,16 @@ class Home extends Component{
                                                                 </div>
                                                             )
                                                         }
-                                                        else if(item=="Phone No"){
-                                                            return (
-                                                                <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label>
-                                                                    <div >
-                                                                        <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
-                                                                    </div>
-                                                                </div>
-                                                            )
-                                                        }
+                                                        // else if(item=="Phone No"){
+                                                        //     return (
+                                                        //         <div className="form-group" key={i}>
+                                                        //             <label for={item} className = "label_class" >{item}</label>
+                                                        //             <div >
+                                                        //                 <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                        //             </div>
+                                                        //         </div>
+                                                        //     )
+                                                        // }
                                                     }))
                                                 }
 
@@ -360,16 +360,16 @@ class Home extends Component{
                                                                 </div>
                                                             )
                                                         }
-                                                        else if(item=="Phone No"){
-                                                            return (
-                                                                <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label>
-                                                                    <div >
-                                                                        <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
-                                                                    </div>
-                                                                </div>
-                                                            )
-                                                        }
+                                                        // else if(item=="Phone No"){
+                                                        //     return (
+                                                        //         <div className="form-group" key={i}>
+                                                        //             <label for={item} className = "label_class" >{item}</label>
+                                                        //             <div >
+                                                        //                 <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                        //             </div>
+                                                        //         </div>
+                                                        //     )
+                                                        // }
                                                     }))
                                                 }
                                                 <button type="submit" className="btn btn-primary ">Submit</button>
@@ -450,16 +450,16 @@ class Home extends Component{
                                                                 </div>
                                                             )
                                                         }
-                                                        else if(item=="Phone No"){
-                                                            return (
-                                                                <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label>
-                                                                    <div >
-                                                                        <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
-                                                                    </div>
-                                                                </div>
-                                                            )
-                                                        }
+                                                        // else if(item=="Phone No"){
+                                                        //     return (
+                                                        //         <div className="form-group" key={i}>
+                                                        //             <label for={item} className = "label_class" >{item}</label>
+                                                        //             <div >
+                                                        //                 <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                        //             </div>
+                                                        //         </div>
+                                                        //     )
+                                                        // }
                                                     }))
                                                 }
                                                 <button type="submit" className="btn btn-primary ">Submit</button>
@@ -540,16 +540,16 @@ class Home extends Component{
                                                             </div>
                                                         )
                                                     }
-                                                    else if(item=="Phone No"){
-                                                            return (
-                                                                <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label>
-                                                                    <div >
-                                                                        <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
-                                                                    </div>
-                                                                </div>
-                                                            )
-                                                        }
+                                                    // else if(item=="Phone No"){
+                                                    //         return (
+                                                    //             <div className="form-group" key={i}>
+                                                    //                 <label for={item} className = "label_class" >{item}</label>
+                                                    //                 <div >
+                                                    //                     <input type="text" className="form-control" id={item} placeholder={"Enter "+item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"} }></input>
+                                                    //                 </div>
+                                                    //             </div>
+                                                    //         )
+                                                    //     }
                                                 }))
                                             }
                                             <button type="submit" className="btn btn-primary ">Submit</button>

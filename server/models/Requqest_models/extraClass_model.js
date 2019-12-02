@@ -14,7 +14,7 @@ const extraClassSchema = new Schema({
     Belongs_to : String,
     Rejected : Boolean,
     Comment : String,
-    PhoneNo : Number
+    // PhoneNo : Number
 })
 
 const extraClassModel = mongoose.model('extraClass',extraClassSchema)
