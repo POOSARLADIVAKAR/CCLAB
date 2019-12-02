@@ -35,6 +35,7 @@ class Login extends Component{
       }
       else{
         this.Button = <a href="http://localhost:4000/auth/google">
+                      {/*<a href="http://172.16.34.215:4000/auth/google">*/}
                         <Button  variant="primary" className="center" style = {{"fontSize":"20px"}}>Login with Bits Mail</Button>
                       </a>
       }

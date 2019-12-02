@@ -61,7 +61,8 @@ class Home extends Component{
         request["user_email"] = this.token.email
         request["username"] = this.token.username
         document.getElementById('ECform').reset()
-        Axios.post('http://localhost:4000/requests/extraClasses/insert',request).then((res)=>{
+        Axios.post('/requests/extraClasses/insert',request).then((res)=>{
+        // Axios.post('http://localhost:4000/requests/extraClasses/insert',request).then((res)=>{
             // console.log(res)
             this.setState({Data:res.data})
         })
@@ -96,7 +97,8 @@ class Home extends Component{
         request["username"] = this.token.username
         
         document.getElementById('Wform').reset()
-        Axios.post('http://localhost:4000/requests/workshops/insert',request).then((res)=>{
+        Axios.post('/requests/workshops/insert',request).then((res)=>{
+        // Axios.post('http://localhost:4000/requests/workshops/insert',request).then((res)=>{
             // console.log(res)
             this.setState({Data:res.data})
         })
@@ -123,7 +125,8 @@ class Home extends Component{
         request["username"] = this.token.username
         console.log(this.token.username)
         document.getElementById('Mform').reset()
-        Axios.post('http://localhost:4000/requests/midsem/insert',request).then((res)=>{
+        Axios.post('/requests/midsem/insert',request).then((res)=>{
+        // Axios.post('http://localhost:4000/requests/midsem/insert',request).then((res)=>{
             // console.log(res)
             this.setState({Data:res.data})
         })
@@ -149,7 +152,8 @@ class Home extends Component{
         request["user_email"] = this.token.email
         request["username"] = this.token.username
         document.getElementById('Cform').reset()
-        Axios.post('http://localhost:4000/requests/compre/insert',request).then((res)=>{
+        Axios.post('/requests/compre/insert',request).then((res)=>{
+        // Axios.post('http://localhost:4000/requests/compre/insert',request).then((res)=>{
             // console.log(res)
             this.setState({Data:res.data})
         })
