@@ -14,6 +14,11 @@ class Login extends Component{
       this.token_exists = false;
       this.Button = ""
     }
+    
+    alreadyPresent = ()=>{
+      this.props.history.push("./Home")
+    }
+
     UNSAFE_componentWillMount(){
       var URL_parsed = parser(window.location.href)
       // console.log(URL_parsed)
@@ -23,14 +28,16 @@ class Login extends Component{
           window.localStorage.setItem("cclab-token",URL_parsed.query.substr(equal_to+1))
           this.props.history.push("./Home")
       }
-
+      
       const local_token = window.localStorage.getItem("cclab-token");
       if ((local_token!=="" )&& (local_token!==null)){
         // console.log(local_token)
         this.token_exists = true;
-        this.Button = <a href="./Home">
-                        <Button  variant="primary" className="center" style = {{"fontSize":"20px"}}>Login with Bits Mail</Button>
-                      </a>
+        // this.Button = <a href="./Home">
+        //                 <Button variant="primary" className="center" style = {{"fontSize":"20px"}}>Login with Bits Mail</Button>
+        //               </a>
+        this.Button =  <Button onClick={this.alreadyPresent} variant="primary" className="center" style = {{"fontSize":"20px"}}>Login with Bits Mail</Button>
+
       }
       else{
         // this.Button = <a href="http://localhost:4000/auth/google">
