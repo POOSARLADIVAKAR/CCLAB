@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import Nav_user from './../Nav_user';
+import NavUser from './../Nav_user';
 import axios from 'axios';
 import './../../cssfiles/History.css'
-import History_Box_User from './History_box_user'
+import HistoryBoxUser from './History_box_user'
 var jwt = require("jsonwebtoken");
 
 class UserHistory extends Component
@@ -17,67 +17,65 @@ class UserHistory extends Component
         this.user = {}
     }
 
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         const token = window.localStorage.getItem("cclab-token")
-        if((token=="")||(token==null)){
+        if((token==="")||(token===null)){
             this.props.history.push("/")
         }
         else{
             const decoded_token  = jwt.decode(token)
             this.user["email"] = decoded_token.email
             this.user["name"] = decoded_token.username
-            console.log(this.user)
+            // console.log(this.user)
         }
     }
 
     acceptClicked = ()=>{
-        console.log("accept clickeddd")
-        console.log("###########################")
-        console.log(this.user)
+        // console.log("accept clickeddd")
+        // console.log(this.user)
         axios.post('http://localhost:4000/requests/mybookings/accepted',this.user).then((res)=>{ 
         this.setState({data:[]})
         this.setState({data : res.data },()=>{
-            console.log(this.state.data)
+            // console.log(this.state.data)
         })
         this.setState({backUpData:[]})
         this.setState({backUpData:res.data})
-        console.log(res)
+        // console.log(res)
         })
     }
 
     pendingClicked = ()=>{
-        console.log("###########################")
-        console.log(this.user)
+        // console.log(this.user)
         axios.post('http://localhost:4000/requests/mybookings/pending',this.user).then((res)=>{ 
         this.setState({data:[]})        
         this.setState({data : res.data },()=>{
-            console.log(this.state.data)
+            // console.log(this.state.data)
         })
         this.setState({backUpData:[]})
         this.setState({backUpData:res.data})
-        console.log(res)
+        // console.log(res)
         })
     }
 
     rejectClicked = ()=>{
-        console.log(this.user)
+        // console.log(this.user)
         axios.post('http://localhost:4000/requests/mybookings/rejected',this.user).then((res)=>{ 
         this.setState({data:[]})        
         this.setState({data : res.data },()=>{
-            console.log(this.state.data)
+            // console.log(this.state.data)
         })
         this.setState({backUpData:[]})
         this.setState({backUpData:res.data})
-        console.log(res)
+        // console.log(res)
         })
     }
 
     searchClicked = ()=>{
-        console.log("in search Clicked function")
+        // console.log("in search Clicked function")
         let search_obj={}
         search_obj["search_string"]=document.getElementById("searchInput").value
         search_obj["data"]=this.state.backUpData
-        console.log(search_obj)
+        // console.log(search_obj)
         axios.post('http://localhost:4000/requests/mybookings/search',search_obj).then((res)=>{
             this.setState({data:[]})        
             this.setState({data : res.data })
@@ -90,7 +88,7 @@ class UserHistory extends Component
     render(){
           return (
             <div style={{"height":"100vh"}}>
-              <Nav_user/>
+              <NavUser/>
                 <div className="parent"> 
                     <div className="tab">
                         <button id = "accepted"  onClick={this.acceptClicked} className="tablinks" >Accepted</button>
@@ -100,7 +98,7 @@ class UserHistory extends Component
                     <div id="search_space" className="tabcontent">
 
                         <div className = "searchBar"> {/*float top and bottom*/}
-                            <input id = "search_bar" type="text" id="searchInput" onChange={this.searchClicked} placeholder = "Enter Course Title to search"/>
+                            <input type="text" id="searchInput" onChange={this.searchClicked} placeholder = "Enter Course Title to search"/>
                             <button type="submit" onClick = {this.searchClicked} >
                             <i className="fa fa-search fa-2x"></i>
                             </button>
@@ -108,10 +106,10 @@ class UserHistory extends Component
 
                         <div className = "bottom-content">
                             {
-                                (this.state.data.length==0)?(<div><h1>NO BOOKINGS FOUND</h1></div>):
+                                (this.state.data.length===0)?(<div><h1>NO BOOKINGS FOUND</h1></div>):
                                 (this.state.data.map((data,index)=>(
                                         <div className="histBoxOuter" key={index}>
-                                            <History_Box_User histData={data} key={index}/>
+                                            <HistoryBoxUser histData={data} key={index}/>
                                         </div>    
                                 )))
                             }

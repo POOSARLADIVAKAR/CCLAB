@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Nav, NavDropdown, Button, Navbar} from 'react-bootstrap' ;
+import { Nav, Navbar} from 'react-bootstrap' ;
 import {NavLink} from 'react-router-dom';
 import "./../cssfiles/Navbar.css"
 
@@ -13,10 +13,10 @@ class Nav_user extends Component{
         }
         
     }
-    componentWillMount(){ 
+    UNSAFE_componentWillMount(){ 
         const token = window.localStorage.getItem("cclab-token")
         // console.log(token)
-        if(token!=""&& token!=null){
+        if(token!==""&& token!==null){
           const decoded_token  = jwt.decode(token)
         //   console.log("Decoded token in Navbar.js")
         //   console.log(decoded_token)
@@ -59,7 +59,7 @@ class Nav_user extends Component{
                     </Nav>
                     <span className = "navigator">
                         <span className="navItems">{this.state.Displayname}</span>
-                        <img className = "img" src={this.state.photo}></img>                    
+                        <img className = "img" alt="" src={this.state.photo}></img>                    
                     </span>
                     <i className="fa fa-power-off fa-2x " style={{"padding-left":"20px","color":"#ddd"}} onClick={this.logOut}></i>            
                 </Navbar.Collapse>

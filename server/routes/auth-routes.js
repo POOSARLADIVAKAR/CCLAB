@@ -11,13 +11,13 @@ router.get('/google', passport.authenticate('google', { scope: [
 },{ failureRedirect: '/' }));
 
 router.get('/google/redirect', passport.authenticate('google',{ failureRedirect: '/' }), (req, res) => {
-    console.log('called in redirect '); 
+    // console.log('called in redirect '); 
     // console.log(req)
     // const user_string_json = JSON.stringify(req.user)
     
     const user = {username : req.user.username , email : req.user.email , photo : req.user.photo}
     const user_token = jwthandler.generate_token(user);
-    console.log(user_token)
+    // console.log(user_token)
     var bitsMail = /bits-pilani.ac.in/;
     if(!bitsMail.test(user.email)){
         res.redirect('http://localhost:3000');

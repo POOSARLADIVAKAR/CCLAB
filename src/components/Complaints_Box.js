@@ -1,5 +1,4 @@
 import React,{ Component } from "react";
-import Complaints from "./Complaints";
 import './../cssfiles/Complaints.css'
 import Axios from 'axios'
 class Complaints_Box extends Component{
@@ -24,7 +23,7 @@ class Complaints_Box extends Component{
         })
     }
     render(){
-        if(this.state.Date!=undefined){
+        if(this.state.Date!==undefined){
             this.submit_time = new Date(this.state.Date)
             this.date_string = this.submit_time.getDate()+"-"+(this.submit_time.getMonth()+1)+"-"+this.submit_time.getFullYear()
         }

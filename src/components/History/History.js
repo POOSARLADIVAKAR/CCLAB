@@ -1,7 +1,6 @@
 import  React,{ Component } from "react";
 import NavBar from '../NavBar'
-import History_Box from './History_box'
-import {Grid,Row,Col} from 'react-bootstrap'
+import HistoryBox from './History_box'
 import './../../cssfiles/History.css'
 import Axios from "axios";
 
@@ -16,18 +15,17 @@ class History extends Component{
         }
     }
     
-    componentWillMount(){
-        console.log("IN home component")
+    UNSAFE_componentWillMount(){
         const token = window.localStorage.getItem("cclab-token")
-        if((token=="")||(token==null)){
+        if((token==="")||(token===null)){
             this.props.history.push("/")
         }
     }
 
     extraClasses= (e)=> {
-        console.log("Extra Classes Clicked")
+        // console.log("Extra Classes Clicked")
         Axios.get('http://localhost:4000/requests/extraClasses/getitems').then((res)=>{
-            console.log(res)
+            // console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
             this.setState({tab:"extraClasses"})
@@ -35,9 +33,9 @@ class History extends Component{
     }
 
     placements= (e)=>{
-        console.log("placements Clicked")
+        // console.log("placements Clicked")
         Axios.get("http://localhost:4000/requests/placements/getitems").then((res)=>{
-            console.log(res)
+            // console.log(res)
             this.setState({histData:[]})
             // this.setState({histData:res.data})
             this.setState({tab:"placements"})
@@ -45,18 +43,18 @@ class History extends Component{
     }
 
     workshops= (e)=>{
-        console.log("workshops Clicked")
+        // console.log("workshops Clicked")
         Axios.get('http://localhost:4000/requests/workshops/getitems').then((res)=>{
-            console.log(res)
+            // console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
             this.setState({tab:"workshops"})
         })
     }
     midsems= (e)=>{
-        console.log("midsems Clicked")
+        // console.log("midsems Clicked")
         Axios.get('http://localhost:4000/requests/midsem/getitems').then((res)=>{
-            console.log(res)
+            // console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
             this.setState({tab:"midsems"})
@@ -64,9 +62,9 @@ class History extends Component{
     }
 
     compre= (e)=>{
-        console.log("compre Clicked")
+        // console.log("compre Clicked")
         Axios.get('http://localhost:4000/requests/compre/getitems').then((res)=>{
-            console.log(res)
+            // console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
             this.setState({tab:"compre"})
@@ -74,9 +72,9 @@ class History extends Component{
     }
 
     requests = (e) =>{
-        console.log("requests clicked")
+        // console.log("requests clicked")
         Axios.get('http://localhost:4000/requests/all').then((res)=>{
-            console.log(res)
+            // console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
             this.setState({tab:"newRequests"})
@@ -84,17 +82,14 @@ class History extends Component{
     }
 
     searchClicked = ()=>{
-        console.log("search clicked")
+        // console.log("search clicked")
         var search_string = {}
         search_string["Room_no"] = document.getElementById("searchInput").value
-        // search_string= document.getElementById("searchInput").value
-        console.log(search_string)
-        console.log('http://localhost:4000/requests/'+this.state.tab+'/search')
         document.getElementById("searchInput").value = ""
         Axios.post('http://localhost:4000/requests/'+this.state.tab+'/search',search_string).then((res)=>{
             this.setState({histData:[]})
             this.setState({histData : res.data })
-          // console.log(res.data)
+        //   console.log(res.data)
         })
       }
 
@@ -125,7 +120,7 @@ class History extends Component{
                                 this.state.histData.map((item,index)=>{
                                     return(
                                         <div className="histBoxOuter" key={index}>
-                                            <History_Box histData={item}/>
+                                            <HistoryBox histData={item}/>
                                         </div>
                                     )
                                 })

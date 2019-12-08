@@ -1,22 +1,20 @@
 import React, {Component} from 'react'
 import NavBar from './NavBar'
-import {Nav} from 'react-bootstrap'
 import axios from 'axios'
-import M from 'materialize-css';
 import './../cssfiles/Complaints.css'
-import Complaints_Box from './Complaints_Box'
+import ComplaintsBox from './Complaints_Box'
 
 class Complaints extends Component{
   constructor(props){
       super(props) 
-      console.log(props)
+      // console.log(props)
       this.state = { data : []} 
   }
 
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
       // console.log("IN home component")
       const token = window.localStorage.getItem("cclab-token")
-      if((token=="")||(token==null)){
+      if((token==="")||(token===null)){
           this.props.history.push("/")
       }
       else{
@@ -52,7 +50,7 @@ class Complaints extends Component{
   searchClicked = ()=>{
     var search_string = {}
     search_string["Room_no"] = document.getElementById("search_bar").value
-    console.log(search_string)
+    // console.log(search_string)
     axios.post('http://localhost:4000/Complaints/search',search_string).then((res)=>{
       this.setState({data : res.data })
       // console.log(res.data)
@@ -61,7 +59,7 @@ class Complaints extends Component{
   }
 
   render(){
-    if(this.state.data.length == 0){
+    if(this.state.data.length === 0){
       return (<div>
         <NavBar/>
         <div className="parent"> 
@@ -108,7 +106,7 @@ class Complaints extends Component{
                   {/*<Box/> Load component*/}
                   {
                     this.state.data.map(data=>(
-                        <Complaints_Box props={data} key={data._id}/>
+                        <ComplaintsBox props={data} key={data._id}/>
                     ))
                   }
             </div>

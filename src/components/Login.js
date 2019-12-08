@@ -18,7 +18,7 @@ class Login extends Component{
       this.token_exists = false;
       this.Button = ""
     }
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
       var URL_parsed = parser(window.location.href)
       // console.log(URL_parsed)
       const equal_to = URL_parsed.query.indexOf("=")
@@ -29,7 +29,7 @@ class Login extends Component{
       }
 
       const local_token = window.localStorage.getItem("cclab-token");
-      if ((local_token!="" )&& (local_token!=null)){
+      if ((local_token!=="" )&& (local_token!==null)){
         // console.log(local_token)
         this.token_exists = true;
         this.Button = <a href="./Home">
