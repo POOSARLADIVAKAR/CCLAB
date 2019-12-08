@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Nav, Navbar} from 'react-bootstrap' ;
 import {Link} from 'react-router-dom';
 import "./../cssfiles/Navbar.css"
+import Pagination from 'react-bootstrap'
 
 const jwt = require('jsonwebtoken')
 class NavBar extends Component{

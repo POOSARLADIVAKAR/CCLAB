@@ -16,7 +16,7 @@ class Login extends Component{
       // console.log(URL_parsed)
       const equal_to = URL_parsed.query.indexOf("=")
       // console.log(URL_parsed.query.substr(equal_to+1))
-      if(URL_parsed.query.substr(equal_to+1)!==""){
+      if(URL_parsed.query.substr(equal_to+1)!=""){
           window.localStorage.setItem("cclab-token",URL_parsed.query.substr(equal_to+1))
           this.props.history.push("./Home")
       }
@@ -31,6 +31,7 @@ class Login extends Component{
       }
       else{
         this.Button = <a href="http://localhost:4000/auth/google">
+                      {/*<a href="http://172.16.34.215:4000/auth/google">*/}
                         <Button  variant="primary" className="center" style = {{"fontSize":"20px"}}>Login with Bits Mail</Button>
                       </a>
       }
