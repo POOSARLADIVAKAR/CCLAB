@@ -5,7 +5,10 @@ import ReactDOM from 'react-dom';
 import App from './../App';
 import axios from 'axios';
 import { parse } from '@babel/parser';
+import { GoogleLogin } from 'react-google-login';
+const jwthandler = require("./../config/token")
 var parser = require("url-parse") 
+
 
 class Login extends Component{
 
@@ -31,30 +34,57 @@ class Login extends Component{
         this.token_exists = true;
         this.Button = <a href="./Home">
                         <Button  variant="primary" className="center" style = {{"fontSize":"20px"}}>Login with Bits Mail</Button>
-                      </a>  
+                      </a>
       }
       else{
-        this.Button = <a href="http://localhost:4000/auth/google">
-                      {/*<a href="http://172.16.34.215:4000/auth/google">*/}
-                        <Button  variant="primary" className="center" style = {{"fontSize":"20px"}}>Login with Bits Mail</Button>
-                      </a>
+        // this.Button = <a href="http://localhost:4000/auth/google">
+        //               {/*<a href="http://172.16.34.215:4000/auth/google">*/}
+        //                 <Button  variant="primary" className="center" style = {{"fontSize":"20px"}}>Login with Bits Mail</Button>
+        //               </a>
+        this.Button = <div>
+            <GoogleLogin
+            clientId="1001879371780-aj1qsmeog20nhr8d719hffcn9n8kia4e.apps.googleusercontent.com"
+            buttonText="Login"
+            onSuccess={this.responseGoogle}
+            onFailure={this.responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
+          {document.getElementById('googleButton')}
+        </div>
       }
     }
     componentDidMount(){
-      // var URL_parsed = parser(window.location.href)
-      // console.log(URL_parsed)
-      // var decoded_json = (decodeURI(URL_parsed.query)).substr(1)
-      // console.log(decoded_json)
+      console.log("Called Did mount")
+    }
 
-      // if(decoded_json!= ""){
-      //   var json_obj = JSON.parse(decoded_json)
-      //   console.log(json_obj)
-      // } 
-      console.log("Component has mounted"+JSON.stringify(this.props))
+    responseGoogle = (response) => {
+      console.log(response);
+      const user = {username : response.profileObj.givenName , email : response.profileObj.email , photo : response.profileObj.imageUrl}
+      const user_token = jwthandler.generate_token(user);
+      console.log(user_token)
+      var bitsMail = /bits-pilani.ac.in/;
+      if(!bitsMail.test(user.email)){
+          // res.redirect('http://localhost:3000');
+          console.log("Not present")
+          this.props.history.push("./")
+      }
+      else{
+        this.props.history.push('./?user-token='+user_token)
+      }
+      // res.redirect('http://localhost:3000/?user-token='+user_token);
+      this.render()
     }
 
     render() {
-        // console.log('Called after ComponentWillMount')
+        console.log('Called again')
+        var URL_parsed = parser(window.location.href)
+        const equal_to = URL_parsed.query.indexOf("=")
+        if(URL_parsed.query.substr(equal_to+1)!=""){
+
+          console.log("This is called here")
+            window.localStorage.setItem("cclab-token",URL_parsed.query.substr(equal_to+1))
+            this.props.history.push("./Home") 
+        }
         return (
           <div className='Login-component'>
             <div className="center-div">
