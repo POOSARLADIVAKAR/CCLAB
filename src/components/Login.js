@@ -1,10 +1,6 @@
 import React, { Component} from 'react'
 import './../cssfiles/Login.css'
 import {Button} from 'react-bootstrap';
-import ReactDOM from 'react-dom';
-import App from './../App';
-import axios from 'axios';
-import { parse } from '@babel/parser';
 import { GoogleLogin } from 'react-google-login';
 const jwthandler = require("./../config/token")
 var parser = require("url-parse") 
@@ -18,23 +14,30 @@ class Login extends Component{
       this.token_exists = false;
       this.Button = ""
     }
+    
+    alreadyPresent = ()=>{
+      this.props.history.push("./Home")
+    }
+
     UNSAFE_componentWillMount(){
       var URL_parsed = parser(window.location.href)
       // console.log(URL_parsed)
       const equal_to = URL_parsed.query.indexOf("=")
       // console.log(URL_parsed.query.substr(equal_to+1))
-      if(URL_parsed.query.substr(equal_to+1)!=""){
+      if(URL_parsed.query.substr(equal_to+1)!==""){
           window.localStorage.setItem("cclab-token",URL_parsed.query.substr(equal_to+1))
           this.props.history.push("./Home")
       }
-
+      
       const local_token = window.localStorage.getItem("cclab-token");
       if ((local_token!=="" )&& (local_token!==null)){
         // console.log(local_token)
         this.token_exists = true;
-        this.Button = <a href="./Home">
-                        <Button  variant="primary" className="center" style = {{"fontSize":"20px"}}>Login with Bits Mail</Button>
-                      </a>
+        // this.Button = <a href="./Home">
+        //                 <Button variant="primary" className="center" style = {{"fontSize":"20px"}}>Login with Bits Mail</Button>
+        //               </a>
+        this.Button =  <Button onClick={this.alreadyPresent} variant="primary" className="center" style = {{"fontSize":"20px"}}>Login with Bits Mail</Button>
+
       }
       else{
         // this.Button = <a href="http://localhost:4000/auth/google">
@@ -58,7 +61,7 @@ class Login extends Component{
     }
 
     responseGoogle = (response) => {
-      console.log(response);
+      // console.log(response);
       const user = {username : response.profileObj.givenName , email : response.profileObj.email , photo : response.profileObj.imageUrl}
       const user_token = jwthandler.generate_token(user);
       console.log(user_token)
@@ -76,12 +79,12 @@ class Login extends Component{
     }
 
     render() {
-        console.log('Called again')
+        // console.log('Called again')
         var URL_parsed = parser(window.location.href)
         const equal_to = URL_parsed.query.indexOf("=")
-        if(URL_parsed.query.substr(equal_to+1)!=""){
+        if(URL_parsed.query.substr(equal_to+1)!==""){
 
-          console.log("This is called here")
+          // console.log("This is called here")
             window.localStorage.setItem("cclab-token",URL_parsed.query.substr(equal_to+1))
             this.props.history.push("./Home") 
         }
