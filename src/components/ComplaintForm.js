@@ -20,7 +20,7 @@ class ComplaintForm extends Component
         // console.log(complaint)
         Axios.post('/Complaints',complaint).then((res)=>{
             // console.log(complaint)
-            console.log("Complaint successfully sent")
+            // console.log("Complaint successfully sent")
         })
         .catch((error)=>{
             console.log(error + "Occured in sending")
@@ -29,7 +29,7 @@ class ComplaintForm extends Component
     }
 
     handleSubmit = (e)=>{
-        console.log("Clicked form")
+        // console.log("Clicked form")
         e.preventDefault();
         // console.log(e)
         this.setState({Room_no:e.target[0].value,System_no:e.target[1].value,Issue:e.target[2].value},(e)=>{
@@ -63,7 +63,7 @@ class ComplaintForm extends Component
                 <form onSubmit={this.handleSubmit} id="complaintForm" >
                     <div className="row">
                         <div className="col-25">
-                        <label for="fname">Room Number</label>
+                        <label htmlFor="fname">Room Number</label>
                         </div>
                         <div className="col-75">
                         <input type="text" id="rno" name="firstname" placeholder="Room Number.." required></input>
@@ -71,7 +71,7 @@ class ComplaintForm extends Component
                     </div>
                     <div className="row">
                         <div className="col-25">
-                        <label for="lname">System Number</label>
+                        <label htmlFor="lname">System Number</label>
                         </div>
                         <div className="col-75">
                         <input type="text" id="lname" name="lastname" placeholder="Sys no.." required></input>
@@ -80,7 +80,7 @@ class ComplaintForm extends Component
                     
                     <div className="row">
                         <div className="col-25">
-                        <label for="subject">Issue</label>
+                        <label htmlFor="subject">Issue</label>
                         </div>
                         <div className="col-75">
                         <textarea id="subject" name="subject" placeholder="..." style={{"height":"200px"}} required></textarea>

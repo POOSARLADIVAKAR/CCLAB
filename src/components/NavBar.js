@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import { Nav, Navbar} from 'react-bootstrap' ;
 import {Link} from 'react-router-dom';
 import "./../cssfiles/Navbar.css"
-import Pagination from 'react-bootstrap'
 
 const jwt = require('jsonwebtoken')
 class NavBar extends Component{
@@ -39,7 +38,7 @@ class NavBar extends Component{
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link to="Home" style={{"color": "rgb(255,255,255)"}}>
+                        <Nav.Link as={Link} to="Home" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems" >Home</span>
                         </Nav.Link>
                         <Nav.Link as={Link} to="Resources" style={{"color": "rgb(255,255,255)"}}>

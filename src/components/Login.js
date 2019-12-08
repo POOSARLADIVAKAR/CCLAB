@@ -1,10 +1,6 @@
 import React, { Component} from 'react'
 import './../cssfiles/Login.css'
 import {Button} from 'react-bootstrap';
-import ReactDOM from 'react-dom';
-import App from './../App';
-import axios from 'axios';
-import { parse } from '@babel/parser';
 import { GoogleLogin } from 'react-google-login';
 const jwthandler = require("./../config/token")
 var parser = require("url-parse") 
@@ -23,7 +19,7 @@ class Login extends Component{
       // console.log(URL_parsed)
       const equal_to = URL_parsed.query.indexOf("=")
       // console.log(URL_parsed.query.substr(equal_to+1))
-      if(URL_parsed.query.substr(equal_to+1)!=""){
+      if(URL_parsed.query.substr(equal_to+1)!==""){
           window.localStorage.setItem("cclab-token",URL_parsed.query.substr(equal_to+1))
           this.props.history.push("./Home")
       }
@@ -58,14 +54,14 @@ class Login extends Component{
     }
 
     responseGoogle = (response) => {
-      console.log(response);
+      // console.log(response);
       const user = {username : response.profileObj.givenName , email : response.profileObj.email , photo : response.profileObj.imageUrl}
       const user_token = jwthandler.generate_token(user);
       console.log(user_token)
       var bitsMail = /bits-pilani.ac.in/;
       if(!bitsMail.test(user.email)){
           // res.redirect('http://localhost:3000');
-          console.log("Not present")
+          // console.log("Not present")
           this.props.history.push("./")
       }
       else{
@@ -76,12 +72,12 @@ class Login extends Component{
     }
 
     render() {
-        console.log('Called again')
+        // console.log('Called again')
         var URL_parsed = parser(window.location.href)
         const equal_to = URL_parsed.query.indexOf("=")
-        if(URL_parsed.query.substr(equal_to+1)!=""){
+        if(URL_parsed.query.substr(equal_to+1)!==""){
 
-          console.log("This is called here")
+          // console.log("This is called here")
             window.localStorage.setItem("cclab-token",URL_parsed.query.substr(equal_to+1))
             this.props.history.push("./Home") 
         }

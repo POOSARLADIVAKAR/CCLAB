@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Nav, Navbar} from 'react-bootstrap' ;
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import "./../cssfiles/Navbar.css"
 
 const jwt = require('jsonwebtoken')
@@ -35,33 +35,33 @@ class Nav_user extends Component{
         // console.log(this.state.photo)
         return (
             <Navbar  expand="lg"  variant = "light" style={{"backgroundColor":"rgb(33,150,243)"}} >
-                <Navbar.Brand>
+                <Navbar.Brand as={Link} to="Home">
                     <span className="brandText" style={{"fontSize":"20px"}} >CC-LAB</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link ><NavLink to="Home" style={{"color": "rgb(255,255,255)"}}>
+                        <Nav.Link as={Link} to="Home" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems" >Home</span>
-                        </NavLink></Nav.Link>
-                        <Nav.Link><NavLink to="Resources" style={{"color": "rgb(255,255,255)"}}>
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="Resources" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">Resources</span>
-                        </NavLink></Nav.Link>
-                        <Nav.Link><NavLink to="UserComplaints" style={{"color": "rgb(255,255,255)"}}>
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="UserComplaints" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">Complaints</span>
-                        </NavLink></Nav.Link>
-                        <Nav.Link><NavLink to="UserHistory" style={{"color": "rgb(255,255,255)"}}>
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="UserHistory" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">My Bookings</span>
-                        </NavLink></Nav.Link>
-                        <Nav.Link><NavLink to="UserLostItems" style={{"color": "rgb(255,255,255)"}}>
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="UserLostItems" style={{"color": "rgb(255,255,255)"}}>
                             <span className="navItems">Lost&Found</span>
-                        </NavLink></Nav.Link>
+                        </Nav.Link>
                     </Nav>
                     <span className = "navigator">
                         <span className="navItems">{this.state.Displayname}</span>
                         <img className = "img" alt="" src={this.state.photo}></img>                    
                     </span>
-                    <i className="fa fa-power-off fa-2x " style={{"padding-left":"20px","color":"#ddd"}} onClick={this.logOut}></i>            
+                    <i className="fa fa-power-off fa-2x " style={{"paddingLeft":"20px","color":"#ddd"}} onClick={this.logOut}></i>            
                 </Navbar.Collapse>
             </Navbar>
         );
