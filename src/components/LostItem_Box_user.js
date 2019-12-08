@@ -1,6 +1,4 @@
 import React,{ Component } from "react";
-import Complaints from "./Complaints";
-import Axios from 'axios'
 import '../cssfiles/LostItem_Box_User.css'
 //this page is for user views al un collected elements
 class LostItem_Box_user extends Component{
@@ -16,8 +14,8 @@ class LostItem_Box_user extends Component{
         this.date_string = ""
     }
     render(){
-        console.log("LostItem_Box_user called")
-        if(this.state.Date!=undefined){
+        // console.log("LostItem_Box_user called")
+        if(this.state.Date!==undefined){
             this.submit_time = new Date(this.state.Date)
             this.date_string = this.submit_time.getDate()+"-"+(this.submit_time.getMonth()+1)+"-"+this.submit_time.getFullYear()
         }

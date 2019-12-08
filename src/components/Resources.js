@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import NavBar from './NavBar'
-import Nav_user from './Nav_user'
+import NavUser from './Nav_user'
 import './../cssfiles/Resource.css'
 import Axios from 'axios'
 
@@ -9,7 +9,7 @@ var jwt = require("jsonwebtoken");
 class Resources extends Component{
     constructor(props){
         super(props)
-        this.state = { Nav_bar : <Nav_user/> , 
+        this.state = { Nav_bar : <NavUser/> , 
             keys : ["Systems","Projector","Operating_systems","Softwares"],
             data: [],
             room : 0
@@ -18,16 +18,16 @@ class Resources extends Component{
         this.edit = ""
         this.room_name = "D208A"
     }
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         const token = window.localStorage.getItem("cclab-token")
-        if((token=="")||(token==null)){
+        if((token==="")||(token===null)){
             this.props.history.push("/")
         }
         else{
             const decode_token = jwt.decode(token)
-            console.log("in resources page")
-            console.log(decode_token)
-            if(decode_token.email == "f20170209@hyderabad.bits-pilani.ac.in"){
+            // console.log("in resources page")
+            // console.log(decode_token)
+            if(decode_token.email === "f20170209@hyderabad.bits-pilani.ac.in"){
                 this.setState({Nav_bar : <NavBar/>})
                 this.edit =  <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit</button>
             }
@@ -39,28 +39,28 @@ class Resources extends Component{
 
     }
     getRoom = (e)=>{
-        console.log(document.getElementById(e.target.id).textContent)
+        // console.log(document.getElementById(e.target.id).textContent)
         this.room_name = document.getElementById(e.target.id).textContent
         this.setState({room: Number(e.target.id)},()=>{
             this.render()
         })   
     }
     send_data = (e) =>{
-        console.log("Submit_data clicked")
+        // console.log("Submit_data clicked")
         let update_data = this.state.data[this.state.room]
-        console.log(update_data)
-        if(e.target[0].value != "") update_data["Systems"] = e.target[0].value
-        if(e.target[1].value != "") update_data["Projector"] = e.target[1].value
-        if(e.target[2].value != "") update_data["Operating_systems"] = e.target[2].value
-        if(e.target[3].value != "") update_data["Softwares"] = e.target[3].value
+        // console.log(update_data)
+        if(e.target[0].value !== "") update_data["Systems"] = e.target[0].value
+        if(e.target[1].value !== "") update_data["Projector"] = e.target[1].value
+        if(e.target[2].value !== "") update_data["Operating_systems"] = e.target[2].value
+        if(e.target[3].value !== "") update_data["Softwares"] = e.target[3].value
         Axios.post("http://localhost:4000/Resources/update",update_data).then((res)=>{
-            console.log(res)
+            // console.log(res)
         })
         this.render()
     }
 
     render(){
-        if(this.state.data.length == 0){
+        if(this.state.data.length === 0){
             return(
                 <div>
                     {this.state.Nav_bar}
@@ -96,7 +96,7 @@ class Resources extends Component{
                     </div>
                     {   
                         this.state.keys.map((item,i)=>{
-                            if(item=="Operating_systems")
+                            if(item==="Operating_systems")
                             {
                                 return(
                                 <div className="tr" key ={i}>
@@ -124,10 +124,10 @@ class Resources extends Component{
                     <button type="button" className="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div className="modal-body" style={{"padding":"40px 50px"}}>
-                    <form role="form" onSubmit ={this.send_data} >
+                    <form onSubmit ={this.send_data} >
                         {
                             (this.state.keys.map((item,i)=>{
-                                if(item=="Operating_systems")
+                                if(item==="Operating_systems")
                                 {
                                     return (
                                     <div className="form-group" key={i}>
@@ -138,7 +138,7 @@ class Resources extends Component{
                                 }
                                 return (
                                     <div className="form-group" key={i}>
-                                        <label for={item} className = "label_class" >{item}</label>
+                                        <label htmlFor={item} className = "label_class" >{item}</label>
                                         <input type="text" className="form-control" id={item} placeholder={this.state.data[this.state.room][this.state.keys[i]]}></input>
                                     </div>
                                 )

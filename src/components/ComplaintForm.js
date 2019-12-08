@@ -47,16 +47,16 @@ class ComplaintForm extends Component
         })
     }
     
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         const token = window.localStorage.getItem("cclab-token")
-        if((token!="")&&(token!=null)){
+        if((token!=="")&&(token!==null)){
             const decode_token = jwt.decode(token)
             this.setState({email:decode_token.email})
         }
     }
 
     render(){
-        const token = window.localStorage.getItem("cclab-token")
+        // const token = window.localStorage.getItem("cclab-token")
 
         return(
             <div className="container" id="form_container_id">

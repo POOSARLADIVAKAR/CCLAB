@@ -5,10 +5,9 @@
 
 
 import React, {Component} from 'react';
-import Nav_user from './Nav_user';
+import NavUser from './Nav_user';
 import axios from 'axios';
-import LostItem_Box_user from './LostItem_Box_user.js'
-import { thisExpression } from '@babel/types';
+import LostItemBoxUser from './LostItem_Box_user.js'
 import '../cssfiles/UserLostItems.css'
 
 class UserLostItems extends Component
@@ -21,16 +20,16 @@ class UserLostItems extends Component
         }
     }
 
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
       const token = window.localStorage.getItem("cclab-token")
-        if((token=="")||(token==null)){
+        if((token==="")||(token===null)){
             this.props.history.push("/")
         }
         
         axios.get('http://localhost:4000/getItems').then((res)=>{ 
         //default database sends Collected = false items    
         this.setState({data : res.data },()=>{
-                console.log(this.state.data)
+                // console.log(this.state.data)
             })
             // console.log(res)
         })
@@ -39,12 +38,12 @@ class UserLostItems extends Component
     render(){
           return (
             <div style={{"height":"100vh"}}>
-              <Nav_user/>
+              <NavUser/>
                   <div className="bottom-content-LostFound">
                       {
-                          (this.state.data.length==0)?(<div><h1>NO ITEMS FOUND</h1></div>):
+                          (this.state.data.length===0)?(<div><h1>NO ITEMS FOUND</h1></div>):
                           (this.state.data.map(data=>(
-                            <LostItem_Box_user props={data} key={data._id}/>
+                            <LostItemBoxUser props={data} key={data._id}/>
                            )))
                       }
                   </div>

@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import Nav_user from './Nav_user';
+import NavUser from './Nav_user';
 import axios from 'axios';
-import Complaints_Box_user from './Complaints_Box_user.js'
+import ComplaintsBoxUser from './Complaints_Box_user.js'
 import ComplaintForm from './ComplaintForm';
-import { thisExpression } from '@babel/types';
 var jwt = require("jsonwebtoken");
 
 class UserComplaints extends Component
@@ -18,16 +17,16 @@ class UserComplaints extends Component
         }
     }
 
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         // console.log("IN home component")
         const token = window.localStorage.getItem("cclab-token")
-        if((token=="")||(token==null)){
+        if((token==="")||(token===null)){
             this.props.history.push("/")
         }
         else{
             const decode_token = jwt.decode(token)
             this.setState({email:decode_token.email},()=>{
-                console.log(this.state)
+                // console.log(this.state)
             })
         }
     }
@@ -41,9 +40,9 @@ class UserComplaints extends Component
         //   change this 
         axios.post('http://localhost:4000/Complaints/mycomplaints',{"email":this.state.email}).then((res)=>{ //senf user email and search by that
             this.setState({data : res.data },()=>{
-                console.log(this.state.data)
+                // console.log(this.state.data)
             })
-            console.log(res)
+            // console.log(res)
         })
 
         this.setState({lodgeClick:false})
@@ -53,7 +52,7 @@ class UserComplaints extends Component
     render(){
         return (
             <div>
-              <Nav_user/>
+              <NavUser/>
               <div className="parent"> 
                 <div className="tab">
                     <button id = "Lodge"  onClick={this.lodgeClicked} className="tablinks" >Lodge Compliant</button>
@@ -69,9 +68,9 @@ class UserComplaints extends Component
                   <div id = "user_complaint_form">
                       
                       {
-                          (this.state.lodgeClick==true)?(<ComplaintForm />):
+                          (this.state.lodgeClick===true)?(<ComplaintForm />):
                           (this.state.data.map(data=>(
-                            <Complaints_Box_user props={data} key={data._id}/>
+                            <ComplaintsBoxUser props={data} key={data._id}/>
                            )))
                       }
                   </div>

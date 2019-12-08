@@ -1,8 +1,6 @@
 import React,{Component} from 'react';
 import '../cssfiles/ComplaintForm.css';
 import Axios from 'axios'
-var jwt = require("jsonwebtoken");
-
 
 class LostItemForm extends Component
 {
@@ -50,7 +48,7 @@ class LostItemForm extends Component
                 <form onSubmit={this.handleSubmit} id="complaintForm" >
                     <div className="row">
                         <div className="col-25">
-                        <label for="fname">Room Number</label>
+                        <label htmlFor="fname">Room Number</label>
                         </div>
                         <div className="col-75">
                         <input type="text" id="rno" name="firstname" placeholder="Room Number.." required></input>
@@ -58,7 +56,7 @@ class LostItemForm extends Component
                     </div>
                     <div className="row">
                         <div className="col-25">
-                        <label for="lname">Date</label>
+                        <label htmlFor="lname">Date</label>
                         </div>
                         <div className="col-75">
                         <input type="text" id="lname" name="lastname" placeholder="YYYY-MM-DD" required></input>
@@ -67,7 +65,7 @@ class LostItemForm extends Component
                     
                     <div className="row">
                         <div className="col-25">
-                        <label for="subject">Item</label>
+                        <label htmlFor="subject">Item</label>
                         </div>
                         <div className="col-75">
                         <textarea id="subject" name="subject" placeholder="..." style={{"height":"200px"}} required></textarea>

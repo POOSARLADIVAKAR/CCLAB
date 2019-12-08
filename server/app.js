@@ -37,7 +37,7 @@ app.use(bodyParser.json()); //for any json i.e from front end
 app.use(bodyParser.urlencoded({ extended: false })) //for any url data eg:postman data
 
 mongoose.connect('mongodb://127.0.0.1:27017/myapp',{useNewUrlParser: true},() => {
-    console.log('connected to mongodb');
+    // console.log('connected to mongodb');
 }).catch(err => console.error(err)) ;
 
 const db=mongoose.connection;
@@ -45,18 +45,18 @@ db.on('error',console.error.bind(console,'MongoDb Error'));
 
 
 app.get('/',(req,res)=>{
-    console.log('requested `/` route');
+    // console.log('requested `/` route');
     // res.redirect("http://localhost:4000/auth/google")
     res.send('in /')
 });
 
 
 app.post('/Complaints',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     complaintModel.find({Logged_user : req.body.email,Room_no : req.body.room ,Issue : req.body.desc,}).then((Complaint)=>{
         if(Complaint.length !=0 ){
-            console.log("Alredy found")
-            console.log(Complaint)
+            // console.log("Alredy found")
+            // console.log(Complaint)
             res.send(Complaint)
         }
         else{
@@ -68,8 +68,8 @@ app.post('/Complaints',(req,res)=>{
                 Issue : req.body.desc,
                 Solved : false
             }).save().then((newComplaint)=>{
-                console.log("Newly created complaint")
-                console.log(newComplaint)
+                // console.log("Newly created complaint")
+                // console.log(newComplaint)
                 res.send(newComplaint)
             })
         }
@@ -77,9 +77,9 @@ app.post('/Complaints',(req,res)=>{
 })
 
 app.post('/Complaints/search',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     complaintModel.find({Room_no : req.body.Room_no}).sort({Date_time : -1}).then((log)=>{
-        console.log(log)
+        // console.log(log)
         // log.sort(function(a, b){return  (new Date(b.Date_time))-(new Date(a.Date_time)) });
         res.send(log)
     })
@@ -102,7 +102,7 @@ app.post('/Complaints/update',(req,res)=>{
     // console.log("Data received")
     sendEmail(req.body.User_email, 'CC-Lab Complaint Resolved', "Your complaint has been resolved");
     complaintModel.update({_id: req.body.id},{Solved:true}  ).then((updated)=>{
-        console.log(updated)    
+        // console.log(updated)    
     })
     res.send("updated successfuly")
 })
@@ -111,8 +111,8 @@ app.post('/Complaints/mycomplaints',(req,res)=>{
     complaintModel.find({Logged_user : req.body.email}).sort({Date_time : -1}).then((log)=>{
         // items.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) }); 
         //already working sorting
-        console.log(log)
-        console.log(JSON.stringify(log))
+        // console.log(log)
+        // console.log(JSON.stringify(log))
         res.send(JSON.stringify(log))
     })
 })
@@ -124,9 +124,9 @@ app.get('/Resources/getData',(req,res)=>{
 })
 
 app.post('/Resources/update',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     resourceModel.find({Room_no : req.body.Room_no}).then((items)=>{
-        console.log(items)
+        // console.log(items)
     })
 
     resourceModel.update({Room_no : req.body.Room_no},{...req.body}).then((updated)=>{
@@ -137,7 +137,7 @@ app.post('/Resources/update',(req,res)=>{
 })
 
 app.post('/Resources/insert',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     new resourceModel({
 
         Room_no : req.body.Room_no,
@@ -147,14 +147,14 @@ app.post('/Resources/insert',(req,res)=>{
         Softwares : req.body.Softwares
 
     }).save().then((newResource)=>{
-        console.log("Newly created Resource")
-                console.log(newResource)
+        // console.log("Newly created Resource")
+                // console.log(newResource)
                 res.send(newResource)
     })
 })
 
 app.post('/LostItem',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     new lostItemModel({
         Room_no : req.body.Room_no,
         Date : new Date(req.body.Date),
@@ -162,8 +162,8 @@ app.post('/LostItem',(req,res)=>{
         Collected : false
 
     }).save().then((newItem)=>{
-        console.log("Found a new Item")
-                console.log(newItem)
+        // console.log("Found a new Item")
+                // console.log(newItem)
                 res.send(newItem)
     })
 })
@@ -176,7 +176,7 @@ app.get('/getItems',(req,res)=>{
 })
 
 app.post('/returnedItem',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     lostItemModel.update({_id : req.body._id},{Collected : true}).then((updated)=>{
         res.send(updated)
     })
@@ -184,7 +184,7 @@ app.post('/returnedItem',(req,res)=>{
 
 
 app.listen(4000, () => {
-    console.log('app now listening for requests on port 4000');
+    // console.log('app now listening for requests on port 4000');
 });
 
 

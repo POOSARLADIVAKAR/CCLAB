@@ -19,10 +19,10 @@ class History_Box_User extends Component
 
 
     render(){
-        if(this.state.data.length!=0){
+        if(this.state.data.length!==0){
             this.submit_time = new Date(this.state.data["Date"])
             this.string_date = this.submit_time.getDate()+"-"+(this.submit_time.getMonth()+1)+"-"+this.submit_time.getFullYear()
-            console.log(this.submit_time.getTime())
+            // console.log(this.submit_time.getTime())
         }
         return(
             <div>
@@ -30,11 +30,11 @@ class History_Box_User extends Component
                     <div className="card-body" >
                         <h2>{this.state.data["Belongs_to"].toUpperCase()}</h2>
                         <div >
-                        {console.log("History box called")}
+                        {/* {console.log("History box called")} */}
                         {   
                             this.state.keys.map((item,index)=>
                                     {   //console.log(item,index)
-                                        if((item!="_id")&&(item!="__v")&&(item!="Granted"&&(item!="Class_Rooms")&&(item!="Date")&&(item!="Belongs_to")&&(item!="Rejected")&&(item!="Comment")&&(item!="User_email"))){
+                                        if((item!=="_id")&&(item!=="__v")&&(item!=="Granted"&&(item!=="Class_Rooms")&&(item!=="Date")&&(item!=="Belongs_to")&&(item!=="Rejected")&&(item!=="Comment")&&(item!=="User_email"))){
                                             return(
                                                 <div className="container-History" key={index}>
                                                         <div className="mdl-cell mdl-cell--12-col ">
@@ -46,7 +46,7 @@ class History_Box_User extends Component
                                                 </div> 
                                             )
                                         }
-                                        else if (item=="Class_Rooms"){
+                                        else if (item==="Class_Rooms"){
                                             return(
                                                 <div className="container-History" key={index}>
                                                         <div className="mdl-cell mdl-cell--12-col ">
@@ -58,7 +58,7 @@ class History_Box_User extends Component
                                                 </div> 
                                             )
                                         }
-                                        else if(item=="Date"){
+                                        else if(item==="Date"){
                                             return(
                                                 <div className="container-History" key={index}>
                                                         <div className="mdl-cell mdl-cell--12-col ">
@@ -70,6 +70,7 @@ class History_Box_User extends Component
                                                 </div> 
                                             )
                                         }
+                                        return ""
                                     })
                             }
                         </div>
@@ -85,7 +86,7 @@ class History_Box_User extends Component
                                             </div>
                                     </div>
                                 )
-                            :((this.state.data["Granted"]==true)?(<div className="container-History">
+                            :((this.state.data["Granted"]===true)?(<div className="container-History">
                             <div className="mdl-cell mdl-cell--12-col ">
                                 <div className="mdl-grid">
                                     <div className="mdl-cell mdl-cell--6-col field">Comment</div>
