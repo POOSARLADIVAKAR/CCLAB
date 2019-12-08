@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.post('/extraClasses/insert',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     new ECmodel({
         User_email : req.body[`user_email`],
         User_Name : req.body[`username`],
@@ -34,7 +34,7 @@ app.post('/extraClasses/insert',(req,res)=>{
 })
 
 // app.post('/placements/insert',(req,res)=>{
-//     console.log(req.body)
+    // console.log(req.body)
 //     // new Pmodel({
 
 //     // }).save().then((newPrequest)=>{
@@ -44,7 +44,7 @@ app.post('/extraClasses/insert',(req,res)=>{
 // })
 
 app.post('/workshops/insert',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     new Wmodel({
         User_email : req.body[`user_email`],
         User_Name : req.body[`username`],
@@ -64,7 +64,7 @@ app.post('/workshops/insert',(req,res)=>{
 })
 
 app.post('/midsem/insert',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     new Mmodel({
         User_email : req.body[`user_email`],
         User_Name : req.body[`username`],
@@ -84,7 +84,7 @@ app.post('/midsem/insert',(req,res)=>{
 })
 
 app.post('/compre/insert',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     new Cmodel({
         User_email : req.body[`user_email`],
         User_Name : req.body[`username`],
@@ -111,7 +111,7 @@ app.post('/compre/insert',(req,res)=>{
 app.get('/extraClasses/getitems',(req,res)=>{
     ECmodel.find({Granted : true}).sort({Date : 1}).then((data)=>{
         // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
-        console.log(data)
+        // console.log(data)
         res.send(data)
     })
 })
@@ -119,7 +119,7 @@ app.get('/extraClasses/getitems',(req,res)=>{
 app.get('/placements/getitems',(req,res)=>{
     Pmodel.find({Granted : true}).sort({Date : 1}).then((data)=>{
         // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
-        console.log(data)
+        // console.log(data)
         res.send(data)
     })
 })
@@ -127,7 +127,7 @@ app.get('/placements/getitems',(req,res)=>{
 app.get('/workshops/getitems',(req,res)=>{
     Wmodel.find({Granted : true}).sort({Date : 1}).then((data)=>{
         // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
-        console.log(data)
+        // console.log(data)
         res.send(data)
     })
 })
@@ -135,7 +135,7 @@ app.get('/workshops/getitems',(req,res)=>{
 app.get('/midsem/getitems',(req,res)=>{
     Mmodel.find({Granted : true}).sort({Date : 1}).then((data)=>{
         // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
-        console.log(data)
+        // console.log(data)
         res.send(data)
     })
 })
@@ -143,14 +143,14 @@ app.get('/midsem/getitems',(req,res)=>{
 app.get('/compre/getitems',(req,res)=>{
     Cmodel.find({Granted : true}).sort({Date : 1}).then((data)=>{
         // data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
-        console.log(data)
+        // console.log(data)
         res.send(data)
     })
 })
 
 //send this to requests tab or page with a accept and reject also button
 app.get('/all',(req,res)=>{
-    console.log("all requested")
+    // console.log("all requested")
     var data = new Array()
     ECmodel.find({Granted : false,Rejected : false}).sort({Date : 1}).then((ECdata)=>{
         // console.log(typeof(ECdata))
@@ -169,7 +169,7 @@ app.get('/all',(req,res)=>{
                     data = data.concat(Cdata)
                 }).then(()=>{
                     data.sort(function(a, b){return  (new Date(b.Date))-(new Date(a.Date)) });
-                    console.log(data)
+                    // console.log(data)
                     res.send(data)
                 })
             })
@@ -182,7 +182,7 @@ app.put('/extraClasses/update',(req,res)=>{
     req.body.Granted = true
     sendEmail(req.body.User_email, 'CC-Lab Request Accepted', "Your Request for ExtraClasses has been Accepted");
     ECmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
-        console.log(updated)
+        // console.log(updated)
         res.send(updated)
     })
 })
@@ -191,7 +191,7 @@ app.put('/workshops/update',(req,res)=>{
     req.body.Granted = true
     sendEmail(req.body.User_email, 'CC-Lab Request Accepted', "Your Request for Workshop has been Accepted");
     Wmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
-        console.log(updated)
+        // console.log(updated)
         res.send(updated)
     })
 })
@@ -200,7 +200,7 @@ app.put('/midsem/update',(req,res)=>{
     req.body.Granted = true
     sendEmail(req.body.User_email, 'CC-Lab Request Accepted', "Your Request for Midsem has been Accepted");
     Mmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
-        console.log(updated)
+        // console.log(updated)
         res.send(updated)
     })
 })
@@ -209,7 +209,7 @@ app.put('/compre/update',(req,res)=>{
     req.body.Granted = true
     sendEmail(req.body.User_email, 'CC-Lab Request Accepted', "Your Request for Compre has been Accepted");
     Cmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
-        console.log(updated)
+        // console.log(updated)
         res.send(updated)
     })
 })
@@ -228,7 +228,7 @@ app.put('/extraClasses/reject',(req,res)=>{
     req.body.Rejected = true
     req.body.Granted = false
     ECmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
-        console.log(updated)
+        // console.log(updated)
         res.send(updated)
     })
 })
@@ -244,7 +244,7 @@ app.put('/workshops/reject',(req,res)=>{
     req.body.Granted = false
     sendEmail(req.body.User_email, 'CC-Lab Request Rejected', req.body.Comment);
     Wmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
-        console.log(updated)
+        // console.log(updated)
         res.send(updated)
     })
 })
@@ -260,7 +260,7 @@ app.put('/midsem/reject',(req,res)=>{
     req.body.Granted = false
     sendEmail(req.body.User_email, 'CC-Lab Request Rejected', req.body.Comment);
     Mmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
-        console.log(updated)
+        // console.log(updated)
         res.send(updated)
     })
 })
@@ -277,7 +277,7 @@ app.put('/compre/reject',(req,res)=>{
     req.body.Granted = false
     sendEmail(req.body.User_email, 'CC-Lab Request Rejected', req.body.Comment);
     Cmodel.findOneAndUpdate({_id : ObjectID(req.body._id)},{...req.body}).then((updated)=>{
-        console.log(updated)
+        // console.log(updated)
         res.send(updated)
     })
 })
@@ -286,8 +286,7 @@ app.put('/compre/reject',(req,res)=>{
 
 
 app.post('/mybookings/accepted',(req,res)=>{
-    console.log(("**********************"))
-    console.log(req.body)
+    // console.log(req.body)
     var data = new Array()
     ECmodel.find({User_email : req.body.email,Granted:true}).sort({Date : 1}).then((ECdata)=>{
         data = data.concat(ECdata)
@@ -301,7 +300,7 @@ app.post('/mybookings/accepted',(req,res)=>{
                 Cmodel.find({User_email : req.body.email,Granted:true}).sort({Date : 1}).then((Cdata)=>{
                     data = data.concat(Cdata)
                 }).then(()=>{
-                    console.log(data)
+                    // console.log(data)
                     data.sort((a,b) => (a.Date < b.Date) ? 1 : ((b.Date < a.Date) ? -1 : 0)); 
                     res.send(data)
                 })
@@ -311,7 +310,7 @@ app.post('/mybookings/accepted',(req,res)=>{
 })
 
 app.post('/mybookings/pending',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     var data = new Array()
     ECmodel.find({User_email : req.body.email,Granted:false,Rejected:false}).sort({Date : 1}).then((ECdata)=>{
         data = data.concat(ECdata)
@@ -325,7 +324,7 @@ app.post('/mybookings/pending',(req,res)=>{
                 Cmodel.find({User_email : req.body.email,Granted:false,Rejected:false}).sort({Date : 1}).then((Cdata)=>{
                     data = data.concat(Cdata)
                 }).then(()=>{
-                    console.log(data)
+                    // console.log(data)
                     data.sort((a,b) => (a.Date < b.Date) ? 1 : ((b.Date < a.Date) ? -1 : 0)); 
                     res.send(data)
                 })
@@ -335,7 +334,7 @@ app.post('/mybookings/pending',(req,res)=>{
 })
 
 app.post('/mybookings/rejected',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     var data = new Array()
     ECmodel.find({User_email : req.body.email,Rejected:true}).sort({Date : 1}).then((ECdata)=>{
         data = data.concat(ECdata)
@@ -349,7 +348,7 @@ app.post('/mybookings/rejected',(req,res)=>{
                 Cmodel.find({User_email : req.body.email,Rejected:true}).sort({Date : 1}).then((Cdata)=>{
                     data = data.concat(Cdata)
                 }).then(()=>{
-                    console.log(data)
+                    // console.log(data)
                     data.sort((a,b) => (a.Date < b.Date) ? 1 : ((b.Date < a.Date) ? -1 : 0)); 
                     res.send(data)
                 })
@@ -359,9 +358,9 @@ app.post('/mybookings/rejected',(req,res)=>{
 })
 
 app.post('/mybookings/search',(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     let str=req.body["search_string"]
-    console.log(str)
+    // console.log(str)
     currCards=req.body["data"]
     updatedCards = currCards.filter(function(item){
         if(item["Belongs_to"]==="extraClasses")
@@ -382,55 +381,55 @@ app.post('/mybookings/search',(req,res)=>{
         }
         })
         
-      console.log("updated cardssssssssssssssss")
-      console.log(updatedCards)
+    //   console.log("updated cardssssssssssssssss")
+    //   console.log(updatedCards)
     res.send(updatedCards)
 })
 
 app.post('/extraClasses/search',(req,res)=>{
-    console.log(req.body)
-    console.log("called")
+    // console.log(req.body)
+    // console.log("called")
     ECmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
         res.send(searchResult)
     })
 })
 
 app.post('/placements/search',(req,res)=>{
-    console.log(req.body)
-    console.log("called")
+    // console.log(req.body)
+    // console.log("called")
     Pmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
         res.send(searchResult)
     })
 })
 
 app.post('/workshops/search',(req,res)=>{
-    console.log(req.body)
-    console.log("called")
+    // console.log(req.body)
+    // console.log("called")
     Wmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
         res.send(searchResult)
     })
 })
 
 app.post('/midsems/search',(req,res)=>{
-    console.log(req.body)
-    console.log("called")
+    // console.log(req.body)
+    // console.log("called")
     Mmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
         res.send(searchResult)
     })
 })
 
 app.post('/compre/search',(req,res)=>{
-    console.log(req.body)
-    console.log("called")
+    // console.log(req.body)
+    // console.log("called")
     Cmodel.find({Rejected: false,Granted:true,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((searchResult)=>{
         res.send(searchResult)
     })
 })
 
 app.post('/newRequests/search',(req,res)=>{
-    console.log("search in all requests")
-    console.log(req.body)
-    console.log("called")
+    // console.log("search in all requests")
+    // console.log(req.body)
+    // console.log("called")
     var arr= new Array()
     ECmodel.find({Rejected: false,Granted:false,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((ecData)=>{
         arr=arr.concat(ecData)
@@ -441,8 +440,8 @@ app.post('/newRequests/search',(req,res)=>{
                 Cmodel.find({Rejected: false,Granted:false,Class_Rooms:req.body["Room_no"]}).sort({Date_Time:-1}).then((cData)=>{
                     arr=arr.concat(cData)
                 }).then(()=>{
-                    console.log("gathered data")
-                    console.log(arr)
+                    // console.log("gathered data")
+                    // console.log(arr)
                     res.send(arr)
                 })
             })
