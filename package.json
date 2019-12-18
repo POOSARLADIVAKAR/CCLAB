@@ -8,6 +8,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "googleapis": "^45.0.0",
+    "heroku": "^7.35.0",
     "http-proxy-middleware": "^0.20.0",
     "jsonwebtoken": "^8.5.1",
     "materialize-css": "^1.0.0-rc.2",
