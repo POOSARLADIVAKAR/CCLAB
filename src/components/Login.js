@@ -68,7 +68,7 @@ class Login extends Component{
       var bitsMail = /bits-pilani.ac.in/;
       if(!bitsMail.test(user.email)){
           // res.redirect('http://localhost:3000');
-          console.log("Not present")
+          // console.log("Not present")
           this.props.history.push("./")
       }
       else{

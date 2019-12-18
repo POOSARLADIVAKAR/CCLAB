@@ -16,7 +16,7 @@ class LostItemForm extends Component
     sendLostItem = (item) => {
         // console.log(item)
         Axios.post('/LostItem',item).then((res)=>{
-            console.log("item sent successfully")
+            // console.log("item sent successfully")
             // console.log(res)
         })
         .catch((error)=>{

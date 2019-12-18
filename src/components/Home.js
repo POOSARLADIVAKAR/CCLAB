@@ -16,7 +16,7 @@ class Home extends Component{
             M_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"],
             C_keys : ["Faculty Name","Course No","Course Title","Class Rooms","Date of Exam","Time"],
             roomSelected:0,
-            calendar: <iframe title="D208A" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=aXBwYm01Y2w2NTB0cDdib3QxaWM4aXFpcmNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK&amp;showCalendars=1&amp;showTabs=1&amp;showDate=1&amp;showNav=1&amp;showTitle=1" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe>
+            calendar: <iframe title="D208A" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=aXBwYm01Y2w2NTB0cDdib3QxaWM4aXFpcmNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK&amp;showCalendars=1&amp;showTabs=1&amp;showDate=1&amp;showNav=1&amp;showTitle=1" style={{"borderWidth":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe>
         }   
         this.token = {}
     }
@@ -40,7 +40,7 @@ class Home extends Component{
 
     extraClasses= (e) => {
         e.preventDefault()
-        console.log("Extra Classes Clicked")
+        // console.log("Extra Classes Clicked")
         var request = {}
         request["Course No"] = e.target[0].value
         request["Course Title"] = e.target[1].value
@@ -66,7 +66,7 @@ class Home extends Component{
     }
 
     placements= (e) => {
-        console.log("placements Clicked")
+        // console.log("placements Clicked")
         // Axios.get('http://localhost:4000/requests/placements/insert').then((res)=>{
             // console.log(res)
             // this.setState({Data:res.data})
@@ -160,17 +160,17 @@ class Home extends Component{
         // console.log("in get calendar method")
         let room=e.target.id
         if(room==="D208A")
-            this.setState({calendar : <iframe title="D208A" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=aXBwYm01Y2w2NTB0cDdib3QxaWM4aXFpcmNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK&amp;showCalendars=1&amp;showTabs=1&amp;showDate=1&amp;showNav=1&amp;showTitle=1" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+            this.setState({calendar : <iframe title="D208A" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=aXBwYm01Y2w2NTB0cDdib3QxaWM4aXFpcmNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK&amp;showCalendars=1&amp;showTabs=1&amp;showDate=1&amp;showNav=1&amp;showTitle=1" style={{"borderWidth":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D208B")
-            this.setState({calendar : <iframe title="D208B" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%234285F4&amp;ctz=Asia%2FKolkata&amp;src=b3FsM3BodjllcnZzYm1mZW5oaG1uNWRibW9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23743500&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+            this.setState({calendar : <iframe title="D208B" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%234285F4&amp;ctz=Asia%2FKolkata&amp;src=b3FsM3BodjllcnZzYm1mZW5oaG1uNWRibW9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23743500&amp;showTz=0&amp;mode=WEEK" style={{"borderWidth":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D208C")
-            this.setState({calendar : <iframe title="D208C" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=ODVla25tMjl2b2VhYXVsbXVkcDlrcDB1YjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23336699&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+            this.setState({calendar : <iframe title="D208C" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=ODVla25tMjl2b2VhYXVsbXVkcDlrcDB1YjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23336699&amp;showTz=0&amp;mode=WEEK" style={{"borderWidth":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D311")
-            this.setState({calendar : <iframe title="D311" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=azFzM2lhZWZtZGxsc2hnaDE4NGNqM24xZmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2330487E&amp;mode=WEEK&amp;showTz=0" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+            this.setState({calendar : <iframe title="D311" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=azFzM2lhZWZtZGxsc2hnaDE4NGNqM24xZmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2330487E&amp;mode=WEEK&amp;showTz=0" style={{"borderWidth":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D312")
-            this.setState({calendar : <iframe title="D312" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=b20yNXJnN2E4M2c3bDRvMTNuaDBkaWJ2M2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+            this.setState({calendar : <iframe title="D312" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=b20yNXJnN2E4M2c3bDRvMTNuaDBkaWJ2M2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2370237F&amp;showTz=0&amp;mode=WEEK" style={{"borderWidth":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
         else if(room==="D313")
-            this.setState({calendar : <iframe title="D313" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=MWM5ajUyNjNoazF1OXB1cWM0cnUxbnVsNmtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23871111&amp;showTz=0&amp;mode=WEEK" style={{"border-width":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
+            this.setState({calendar : <iframe title="D313" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23039BE5&amp;ctz=Asia%2FKolkata&amp;src=MWM5ajUyNjNoazF1OXB1cWM0cnUxbnVsNmtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23871111&amp;showTz=0&amp;mode=WEEK" style={{"borderWidth":"0", "width":"75%", "height":"65vh", "display":"block", "margin":"auto", "frameborder":"0", "scrolling":"no"}}></iframe> })
 
     }
 
@@ -215,37 +215,37 @@ class Home extends Component{
                                                         if((item==="Course No")||(item==="Course Title")){
                                                             return (
                                                                 <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label>
+                                                                    <label htmlFor={item} className = "label_class" >{item}</label>
                                                                     <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required></input>
                                                                 </div>
                                                             )
                                                         }
                                                         else if (item === "Class Rooms"){
                                                             return (
-                                                                <div>
+                                                                <div key="ECClasses">
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline1"></input>
-                                                                        <label className="custom-control-label 1" for="defaultInline1">D208A</label>
+                                                                        <label className="custom-control-label 1" htmlFor="defaultInline1">D208A</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline2"></input>
-                                                                        <label className="custom-control-label 2" for="defaultInline2">D208B</label>
+                                                                        <label className="custom-control-label 2" htmlFor="defaultInline2">D208B</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline3"></input>
-                                                                        <label className="custom-control-label 3" for="defaultInline3">D208C</label>
+                                                                        <label className="custom-control-label 3" htmlFor="defaultInline3">D208C</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline4"></input>
-                                                                        <label className="custom-control-label 4" for="defaultInline4">D311</label>
+                                                                        <label className="custom-control-label 4" htmlFor="defaultInline4">D311</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline5"></input>
-                                                                        <label className="custom-control-label 5" for="defaultInline5">D312</label>
+                                                                        <label className="custom-control-label 5" htmlFor="defaultInline5">D312</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline6"></input>
-                                                                        <label className="custom-control-label 6" for="defaultInline6">D313</label>
+                                                                        <label className="custom-control-label 6" htmlFor="defaultInline6">D313</label>
                                                                     </div>
                                                                 </div>
                                                             )
@@ -253,7 +253,7 @@ class Home extends Component{
                                                         else if(item==="Date"){
                                                             return (
                                                                 <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label>
+                                                                    <label htmlFor={item} className = "label_class" >{item}</label>
                                                                     <div >
                                                                         <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                     </div>
@@ -263,7 +263,7 @@ class Home extends Component{
                                                         else if(item==="Time"){
                                                             return (
                                                                 <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label><br></br>
+                                                                    <label htmlFor={item} className = "label_class" >{item}</label><br></br>
                                                                     <span style = {{"display":"inline"}}>
                                                                         <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
                                                                         <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
@@ -306,37 +306,37 @@ class Home extends Component{
                                                         if((item==="Name of Workshop")||(item==="Name of Department/Club")){
                                                             return (
                                                                 <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label>
+                                                                    <label htmlFor={item} className = "label_class" >{item}</label>
                                                                     <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required ></input>
                                                                 </div>
                                                             )
                                                         }
                                                         else if (item === "Class Rooms"){
                                                             return (
-                                                                <div>
+                                                                <div key="WorkshopClasses">
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline19"></input>
-                                                                        <label className="custom-control-label 1" for="defaultInline19">D208A</label>
+                                                                        <label className="custom-control-label 1" htmlFor="defaultInline19">D208A</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline20"></input>
-                                                                        <label className="custom-control-label 2" for="defaultInline20">D208B</label>
+                                                                        <label className="custom-control-label 2" htmlFor="defaultInline20">D208B</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline21"></input>
-                                                                        <label className="custom-control-label 3" for="defaultInline21">D208C</label>
+                                                                        <label className="custom-control-label 3" htmlFor="defaultInline21">D208C</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline22"></input>
-                                                                        <label className="custom-control-label 4" for="defaultInline22">D311</label>
+                                                                        <label className="custom-control-label 4" htmlFor="defaultInline22">D311</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline23"></input>
-                                                                        <label className="custom-control-label 5" for="defaultInline23">D312</label>
+                                                                        <label className="custom-control-label 5" htmlFor="defaultInline23">D312</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline24"></input>
-                                                                        <label className="custom-control-label 6" for="defaultInline24">D313</label>
+                                                                        <label className="custom-control-label 6" htmlFor="defaultInline24">D313</label>
                                                                     </div>
                                                                 </div>
                                                             )
@@ -344,7 +344,7 @@ class Home extends Component{
                                                         else if(item==="Date"){
                                                             return (
                                                                 <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label>
+                                                                    <label htmlFor={item} className = "label_class" >{item}</label>
                                                                     <div >
                                                                         <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                     </div>
@@ -354,7 +354,7 @@ class Home extends Component{
                                                         else if(item==="Time"){
                                                             return (
                                                                 <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label><br></br>
+                                                                    <label htmlFor={item} className = "label_class" >{item}</label><br></br>
                                                                     <span style = {{"display":"inline"}}>
                                                                         <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
                                                                         <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
@@ -396,37 +396,37 @@ class Home extends Component{
                                                         if((item==="Course No")||(item==="Course Title")){
                                                             return (
                                                                 <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label>
+                                                                    <label htmlFor={item} className = "label_class" >{item}</label>
                                                                     <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required></input>
                                                                 </div>
                                                             )
                                                         }
                                                         else if (item === "Class Rooms"){
                                                             return (
-                                                                <div>
+                                                                <div key="MidsemClasses">
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline7"></input>
-                                                                        <label className="custom-control-label 1" for="defaultInline7">D208A</label>
+                                                                        <label className="custom-control-label 1" htmlFor="defaultInline7">D208A</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline8"></input>
-                                                                        <label className="custom-control-label 2" for="defaultInline8">D208B</label>
+                                                                        <label className="custom-control-label 2" htmlFor="defaultInline8">D208B</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline9"></input>
-                                                                        <label className="custom-control-label 3" for="defaultInline9">D208C</label>
+                                                                        <label className="custom-control-label 3" htmlFor="defaultInline9">D208C</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline10"></input>
-                                                                        <label className="custom-control-label 4" for="defaultInline10">D311</label>
+                                                                        <label className="custom-control-label 4" htmlFor="defaultInline10">D311</label>
                                                                     </div>
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline11"></input>
-                                                                        <label className="custom-control-label 5" for="defaultInline11">D312</label>
+                                                                        <label className="custom-control-label 5" htmlFor="defaultInline11">D312</label>
                                                                     </div>                                                    
                                                                     <div className="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox" className="custom-control-input" id="defaultInline12"></input>
-                                                                        <label className="custom-control-label 6" for="defaultInline12">D313</label>
+                                                                        <label className="custom-control-label 6" htmlFor="defaultInline12">D313</label>
                                                                     </div>
                                                                 </div>
                                                             )
@@ -434,7 +434,7 @@ class Home extends Component{
                                                         else if(item==="Date of Exam"){
                                                             return (
                                                                 <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label>
+                                                                    <label htmlFor={item} className = "label_class" >{item}</label>
                                                                     <div >
                                                                         <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                     </div>
@@ -444,7 +444,7 @@ class Home extends Component{
                                                         else if(item==="Time"){
                                                             return (
                                                                 <div className="form-group" key={i}>
-                                                                    <label for={item} className = "label_class" >{item}</label><br></br>
+                                                                    <label htmlFor={item} className = "label_class" >{item}</label><br></br>
                                                                     <span style = {{"display":"inline"}}>
                                                                         <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
                                                                         <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
@@ -486,37 +486,37 @@ class Home extends Component{
                                                     if((item==="Course No")||(item==="Course Title")){
                                                         return (
                                                             <div className="form-group" key={i}>
-                                                                <label for={item} className = "label_class" >{item}</label>
+                                                                <label htmlFor={item} className = "label_class" >{item}</label>
                                                                 <input type="text" className="form-control" id={item} placeholder={"Enter "+item} required></input>
                                                             </div>
                                                         )
                                                     }
                                                     else if (item === "Class Rooms"){
                                                         return (
-                                                            <div>
+                                                            <div key="CompreClasses">
                                                                 <div className="custom-control custom-checkbox custom-control-inline">
                                                                     <input type="checkbox" className="custom-control-input" id="defaultInline13"></input>
-                                                                    <label className="custom-control-label 1" for="defaultInline13">D201A</label>
+                                                                    <label className="custom-control-label 1" htmlFor="defaultInline13">D201A</label>
                                                                 </div>
                                                                 <div className="custom-control custom-checkbox custom-control-inline">
                                                                     <input type="checkbox" className="custom-control-input" id="defaultInline14"></input>
-                                                                    <label className="custom-control-label 2" for="defaultInline14">D201B</label>
+                                                                    <label className="custom-control-label 2" htmlFor="defaultInline14">D201B</label>
                                                                 </div>                                                    
                                                                 <div className="custom-control custom-checkbox custom-control-inline">
                                                                     <input type="checkbox" className="custom-control-input" id="defaultInline15"></input>
-                                                                    <label className="custom-control-label 3" for="defaultInline15">D201C</label>
+                                                                    <label className="custom-control-label 3" htmlFor="defaultInline15">D201C</label>
                                                                 </div>
                                                                 <div className="custom-control custom-checkbox custom-control-inline">
                                                                     <input type="checkbox" className="custom-control-input" id="defaultInline16"></input>
-                                                                    <label className="custom-control-label 4" for="defaultInline16">D311</label>
+                                                                    <label className="custom-control-label 4" htmlFor="defaultInline16">D311</label>
                                                                 </div>
                                                                 <div className="custom-control custom-checkbox custom-control-inline">
                                                                     <input type="checkbox" className="custom-control-input" id="defaultInline17"></input>
-                                                                    <label className="custom-control-label 5" for="defaultInline17">D312</label>
+                                                                    <label className="custom-control-label 5" htmlFor="defaultInline17">D312</label>
                                                                 </div>                                                    
                                                                 <div className="custom-control custom-checkbox custom-control-inline">
                                                                     <input type="checkbox" className="custom-control-input" id="defaultInline18"></input>
-                                                                    <label className="custom-control-label 6" for="defaultInline18">D313</label>
+                                                                    <label className="custom-control-label 6" htmlFor="defaultInline18">D313</label>
                                                                 </div>
                                                             </div>
                                                         )
@@ -524,7 +524,7 @@ class Home extends Component{
                                                     else if(item==="Date of Exam"){
                                                         return (
                                                             <div className="form-group" key={i}>
-                                                                <label for={item} className = "label_class" >{item}</label>
+                                                                <label htmlFor={item} className = "label_class" >{item}</label>
                                                                 <div >
                                                                     <input type="date" className="form-control" id={item} style = {{"width":"200px","textAlign":"center","marginLeft":"100px"}} required></input>
                                                                 </div>
@@ -534,7 +534,7 @@ class Home extends Component{
                                                     else if(item==="Time"){
                                                         return (
                                                             <div className="form-group" key={i}>
-                                                                <label for={item} className = "label_class" >{item}</label><br></br>
+                                                                <label htmlFor={item} className = "label_class" >{item}</label><br></br>
                                                                 <span style = {{"display":"inline"}}>
                                                                     <input type="time" id={item}  style = {{"width":"100px","marginRight":"50px"}} required></input>
                                                                     <input type="time" id={item}  style = {{"width":"100px","marginLeft":"50px"}} required></input>
