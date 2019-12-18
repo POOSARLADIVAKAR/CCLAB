@@ -25,8 +25,8 @@ class UserLostItems extends Component
         if((token==="")||(token===null)){
             this.props.history.push("/")
         }
-        
-        axios.get('http://localhost:4000/getItems').then((res)=>{ 
+        // axios.get('http://localhost:4000/getItems').then((res)=>{ 
+        axios.get('/getItems').then((res)=>{ 
         //default database sends Collected = false items    
         this.setState({data : res.data },()=>{
                 // console.log(this.state.data)

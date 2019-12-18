@@ -32,7 +32,8 @@ class Resources extends Component{
                 this.edit =  <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit</button>
             }
         }
-        Axios.get('http://localhost:4000/Resources/getData').then((res)=>{
+        // Axios.get('http://localhost:4000/Resources/getData').then((res)=>{
+        Axios.get('/Resources/getData').then((res)=>{
             this.setState({data : res.data },()=>{
             })
         })
@@ -53,7 +54,8 @@ class Resources extends Component{
         if(e.target[1].value !== "") update_data["Projector"] = e.target[1].value
         if(e.target[2].value !== "") update_data["Operating_systems"] = e.target[2].value
         if(e.target[3].value !== "") update_data["Softwares"] = e.target[3].value
-        Axios.post("http://localhost:4000/Resources/update",update_data).then((res)=>{
+        // Axios.post("http://localhost:4000/Resources/update",update_data).then((res)=>{
+        Axios.post("/Resources/update",update_data).then((res)=>{
             // console.log(res)
         })
         this.render()

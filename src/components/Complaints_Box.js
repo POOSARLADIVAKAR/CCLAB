@@ -18,7 +18,8 @@ class Complaints_Box extends Component{
         this.date_string = ""
     }
     solved = ()=>{
-        Axios.post('http://localhost:4000/Complaints/update',this.state).then((res)=>{
+        // Axios.post('http://localhost:4000/Complaints/update',this.state).then((res)=>{
+        Axios.post('/Complaints/update',this.state).then((res)=>{
             window.location.reload()
         })
     }

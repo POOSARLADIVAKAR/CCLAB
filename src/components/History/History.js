@@ -24,7 +24,8 @@ class History extends Component{
 
     extraClasses= (e)=> {
         // console.log("Extra Classes Clicked")
-        Axios.get('http://localhost:4000/requests/extraClasses/getitems').then((res)=>{
+        // Axios.get('http://localhost:4000/requests/extraClasses/getitems').then((res)=>{
+        Axios.get('/requests/extraClasses/getitems').then((res)=>{
             // console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
@@ -34,7 +35,8 @@ class History extends Component{
 
     placements= (e)=>{
         // console.log("placements Clicked")
-        Axios.get("http://localhost:4000/requests/placements/getitems").then((res)=>{
+        // Axios.get("http://localhost:4000/requests/placements/getitems").then((res)=>{
+        Axios.get("/requests/placements/getitems").then((res)=>{
             // console.log(res)
             this.setState({histData:[]})
             // this.setState({histData:res.data})
@@ -44,7 +46,8 @@ class History extends Component{
 
     workshops= (e)=>{
         // console.log("workshops Clicked")
-        Axios.get('http://localhost:4000/requests/workshops/getitems').then((res)=>{
+        // Axios.get('http://localhost:4000/requests/workshops/getitems').then((res)=>{
+        Axios.get('/requests/workshops/getitems').then((res)=>{
             // console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
@@ -53,7 +56,8 @@ class History extends Component{
     }
     midsems= (e)=>{
         // console.log("midsems Clicked")
-        Axios.get('http://localhost:4000/requests/midsem/getitems').then((res)=>{
+        // Axios.get('http://localhost:4000/requests/midsem/getitems').then((res)=>{
+        Axios.get('/requests/midsem/getitems').then((res)=>{
             // console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
@@ -63,7 +67,8 @@ class History extends Component{
 
     compre= (e)=>{
         // console.log("compre Clicked")
-        Axios.get('http://localhost:4000/requests/compre/getitems').then((res)=>{
+        // Axios.get('http://localhost:4000/requests/compre/getitems').then((res)=>{
+        Axios.get('/requests/compre/getitems').then((res)=>{
             // console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
@@ -73,7 +78,8 @@ class History extends Component{
 
     requests = (e) =>{
         // console.log("requests clicked")
-        Axios.get('http://localhost:4000/requests/all').then((res)=>{
+        // Axios.get('http://localhost:4000/requests/all').then((res)=>{
+        Axios.get('/requests/all').then((res)=>{
             // console.log(res)
             this.setState({histData:[]})
             this.setState({histData:res.data})
@@ -86,7 +92,8 @@ class History extends Component{
         var search_string = {}
         search_string["Room_no"] = document.getElementById("searchInput").value
         document.getElementById("searchInput").value = ""
-        Axios.post('http://localhost:4000/requests/'+this.state.tab+'/search',search_string).then((res)=>{
+        // Axios.post('http://localhost:4000/requests/'+this.state.tab+'/search',search_string).then((res)=>{
+        Axios.post('/requests/'+this.state.tab+'/search',search_string).then((res)=>{
             this.setState({histData:[]})
             this.setState({histData : res.data })
         //   console.log(res.data)

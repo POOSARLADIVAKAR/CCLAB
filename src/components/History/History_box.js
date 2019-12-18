@@ -30,7 +30,8 @@ class History_Box extends Component
             // console.log(document.getElementById("Comment").value)
         }
         // console.log(this.state.data)
-        Axios.put("http://localhost:4000/requests/"+this.state.data["Belongs_to"]+"/reject",this.state.data).then((res)=>{
+        // Axios.put("http://localhost:4000/requests/"+this.state.data["Belongs_to"]+"/reject",this.state.data).then((res)=>{
+        Axios.put("/requests/"+this.state.data["Belongs_to"]+"/reject",this.state.data).then((res)=>{
             // console.log(res)
             window.location.reload()
         })
@@ -39,7 +40,8 @@ class History_Box extends Component
     handleAccept = ()=>{
         // console.log("accept clicked")
         // console.log(this.state.data["Belongs_to"])
-        Axios.put("http://localhost:4000/requests/"+this.state.data["Belongs_to"]+"/update",this.state.data).then((res)=>{
+        // Axios.put("http://localhost:4000/requests/"+this.state.data["Belongs_to"]+"/update",this.state.data).then((res)=>{
+        Axios.put("/requests/"+this.state.data["Belongs_to"]+"/update",this.state.data).then((res)=>{
             // console.log(res)
             window.location.reload()
         })

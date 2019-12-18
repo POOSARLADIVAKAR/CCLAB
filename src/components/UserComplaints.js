@@ -37,8 +37,9 @@ class UserComplaints extends Component
       }
     
     myComplClicked = ()=>{
-        //   change this 
-        axios.post('http://localhost:4000/Complaints/mycomplaints',{"email":this.state.email}).then((res)=>{ //senf user email and search by that
+        //   change this
+        // axios.post('http://localhost:4000/Complaints/mycomplaints',{"email":this.state.email}).then((res)=>{ //senf user email and search by that 
+        axios.post('/Complaints/mycomplaints',{"email":this.state.email}).then((res)=>{ //senf user email and search by that
             this.setState({data : res.data },()=>{
                 // console.log(this.state.data)
             })

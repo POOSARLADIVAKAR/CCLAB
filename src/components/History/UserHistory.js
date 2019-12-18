@@ -33,7 +33,8 @@ class UserHistory extends Component
     acceptClicked = ()=>{
         // console.log("accept clickeddd")
         // console.log(this.user)
-        axios.post('http://localhost:4000/requests/mybookings/accepted',this.user).then((res)=>{ 
+        // axios.post('http://localhost:4000/requests/mybookings/accepted',this.user).then((res)=>{ 
+        axios.post('/requests/mybookings/accepted',this.user).then((res)=>{ 
         this.setState({data:[]})
         this.setState({data : res.data },()=>{
             // console.log(this.state.data)
@@ -46,7 +47,8 @@ class UserHistory extends Component
 
     pendingClicked = ()=>{
         // console.log(this.user)
-        axios.post('http://localhost:4000/requests/mybookings/pending',this.user).then((res)=>{ 
+        // axios.post('http://localhost:4000/requests/mybookings/pending',this.user).then((res)=>{ 
+        axios.post('/requests/mybookings/pending',this.user).then((res)=>{ 
         this.setState({data:[]})        
         this.setState({data : res.data },()=>{
             // console.log(this.state.data)
@@ -59,7 +61,8 @@ class UserHistory extends Component
 
     rejectClicked = ()=>{
         // console.log(this.user)
-        axios.post('http://localhost:4000/requests/mybookings/rejected',this.user).then((res)=>{ 
+        // axios.post('http://localhost:4000/requests/mybookings/rejected',this.user).then((res)=>{ 
+        axios.post('/requests/mybookings/rejected',this.user).then((res)=>{ 
         this.setState({data:[]})        
         this.setState({data : res.data },()=>{
             // console.log(this.state.data)
@@ -76,7 +79,8 @@ class UserHistory extends Component
         search_obj["search_string"]=document.getElementById("searchInput").value
         search_obj["data"]=this.state.backUpData
         // console.log(search_obj)
-        axios.post('http://localhost:4000/requests/mybookings/search',search_obj).then((res)=>{
+        // axios.post('http://localhost:4000/requests/mybookings/search',search_obj).then((res)=>{
+        axios.post('/requests/mybookings/search',search_obj).then((res)=>{
             this.setState({data:[]})        
             this.setState({data : res.data })
         })

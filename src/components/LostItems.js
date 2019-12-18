@@ -38,7 +38,8 @@ class LostItems extends Component
     
     myComplClicked = ()=>{
         //   change this 
-        axios.get('http://localhost:4000/getItems').then((res)=>{ //senf user email and search by that
+        // axios.get('http://localhost:4000/getItems').then((res)=>{ //senf user email and search by that
+        axios.get('/getItems').then((res)=>{ //senf user email and search by that
             this.setState({data : res.data },()=>{
                 // console.log(this.state.data)
             })

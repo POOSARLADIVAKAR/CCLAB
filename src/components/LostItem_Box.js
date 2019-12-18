@@ -16,7 +16,8 @@ class LostItem_Box extends Component{
     }
     Collected = ()=>{
         // console.log("Clicked Solved")
-        Axios.post('http://localhost:4000/returnedItem',{...this.state}).then((res)=>{
+        // Axios.post('http://localhost:4000/returnedItem',{...this.state}).then((res)=>{
+        Axios.post('/returnedItem',{...this.state}).then((res)=>{
             window.location.reload()
         })
     }

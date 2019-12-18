@@ -18,7 +18,8 @@ class Complaints extends Component{
           this.props.history.push("/")
       }
       else{
-        axios.get('http://localhost:4000/Complaints/log').then((res) => {
+        // axios.get('http://localhost:4000/Complaints/log').then((res) => {
+        axios.get('/Complaints/log').then((res) => {
           this.setState({data : res.data })
           }
         )
@@ -35,14 +36,16 @@ class Complaints extends Component{
 
 
   logClicked = ()=>{
-    axios.get('http://localhost:4000/Complaints/log').then((res) => {
+    // axios.get('http://localhost:4000/Complaints/log').then((res) => {
+    axios.get('/Complaints/log').then((res) => {
       this.setState({data : res.data })
       }
     )
   }
 
   solvedClicked = ()=>{
-    axios.get('http://localhost:4000/Complaints/solved').then((res)=>{
+    // axios.get('http://localhost:4000/Complaints/solved').then((res)=>{
+    axios.get('/Complaints/solved').then((res)=>{
       this.setState({data : res.data })
     })
   }
@@ -51,7 +54,8 @@ class Complaints extends Component{
     var search_string = {}
     search_string["Room_no"] = document.getElementById("search_bar").value
     // console.log(search_string)
-    axios.post('http://localhost:4000/Complaints/search',search_string).then((res)=>{
+    // axios.post('http://localhost:4000/Complaints/search',search_string).then((res)=>{
+    axios.post('/Complaints/search',search_string).then((res)=>{
       this.setState({data : res.data })
       // console.log(res.data)
     })
