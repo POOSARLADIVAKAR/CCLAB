@@ -182,8 +182,8 @@ app.post('/returnedItem',(req,res)=>{
     })
 })
 
-
-app.listen(4000, () => {
+var port = process.env.PORT || 4000
+app.listen(port, () => {
     // console.log('app now listening for requests on port 4000');
 });
 
