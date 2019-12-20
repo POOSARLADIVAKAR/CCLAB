@@ -17,9 +17,9 @@ import UserHistory from './components/History/UserHistory'
 var jwt = require("jsonwebtoken");
 dotenv.config();
 
-
-// axios.defaults.baseURL = process.env.REACT_APP_API_URI_LOCAL; //dotenv is a module that loads variables from a .env file into process.env 
-axios.defaults.baseURL = process.env.REACT_APP_API_URI_GLOBAL;
+// console.log(process.env) all variables you added with one new NODE_ENV variable
+axios.defaults.baseURL = process.env.REACT_APP_API_URI_LOCAL; //dotenv is a module that loads variables from a .env file into process.env 
+// axios.defaults.baseURL = process.env.REACT_APP_API_URI_GLOBAL;
 //and is ideal for storing usernames, passwords, URL's and other sensitive bits and bobs.
 
 class App extends Component{

@@ -36,10 +36,14 @@ app.use(cookieParser())
 app.use(bodyParser.json()); //for any json i.e from front end
 app.use(bodyParser.urlencoded({ extended: false })) //for any url data eg:postman data
 
+//Here 127.0.0.1 reperesents localhost change this to online mongodb while deploying
 mongoose.connect('mongodb://127.0.0.1:27017/myapp',{useNewUrlParser: true},() => {
     // console.log('connected to mongodb');
 }).catch(err => console.error(err)) ;
 
+// mongoose.connect(keys.mongodb.dbURI,()=>{
+//     console.log("Online Database connected")
+// })
 const db=mongoose.connection;
 db.on('error',console.error.bind(console,'MongoDb Error'));
 
@@ -181,10 +185,11 @@ app.post('/returnedItem',(req,res)=>{
         res.send(updated)
     })
 })
-
+// console.log(process.env)
+// console.log(process.env.port) will be given while deployed process.env.port
 var port = process.env.PORT || 4000
 app.listen(port, () => {
-    // console.log('app now listening for requests on port 4000');
+    console.log(`app now listening for requests on port ${port}`);
 });
 
 

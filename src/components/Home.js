@@ -271,7 +271,8 @@ class Home extends Component{
                                                                 </div>
                                                             )
                                                         }
-                                                        return 0
+                                                        // return 0
+                                                        return ""
                                                         // else if(item=="Phone No"){
                                                         //     return (
                                                         //         <div className="form-group" key={i}>
@@ -362,7 +363,8 @@ class Home extends Component{
                                                                 </div>
                                                             )
                                                         }
-                                                        return 0
+                                                        // return 0
+                                                        return ""
                                                         // else if(item=="Phone No"){
                                                         //     return (
                                                         //         <div className="form-group" key={i}>
@@ -452,7 +454,8 @@ class Home extends Component{
                                                                 </div>
                                                             )
                                                         }
-                                                        return 0
+                                                        // return 0
+                                                        return ""
                                                         // else if(item=="Phone No"){
                                                         //     return (
                                                         //         <div className="form-group" key={i}>
@@ -542,7 +545,8 @@ class Home extends Component{
                                                             </div>
                                                         )
                                                     }
-                                                    return 0
+                                                    // return 0
+                                                    return ""
                                                     // else if(item=="Phone No"){
                                                     //         return (
                                                     //             <div className="form-group" key={i}>
